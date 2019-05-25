@@ -1,0 +1,25 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { Loading } from '../Components'
+
+export default (ChildComponent) => {
+  class RequireAuth extends Component {
+    render() {
+        switch (this.props.auth) {
+          case null:
+            return <Redirect to="/" />
+          default:
+            if(this.props.auth.__typename === 'User' ) {
+              return <ChildComponent {...this.props}/>
+            } else {
+              return <Redirect to="/" />
+            }
+        }
+      }
+    }
+function mapStateToProps({ auth }) {
+  return { auth }
+}
+ return connect(mapStateToProps)(RequireAuth)
+}

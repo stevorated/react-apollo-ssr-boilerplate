@@ -1,0 +1,75 @@
+body {
+  background: rgb(199, 212, 206);
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+ul.header-navbar {
+  background: rosybrown; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header-navbar-li {
+  padding: .2rem;
+  margin-right: 1rem;
+  list-style-type: none;
+}
+
+.header-navbar-link2 {
+  font-size: 1.2rem;
+  color: white;
+  transition: all .4s ease;
+}
+
+.header-navbar-link {
+  border-radius: .5rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: white;
+  transition: all .4s ease;
+}
+.header-navbar-link2:hover {
+  text-decoration: none;
+}
+.header-navbar-link:hover {
+  text-decoration: none;
+  background: #4CAF50; 
+}
+
+.logo-text {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 4rem;
+  transition: all .4s ease;
+}
+
+.logo-text:hover {
+  text-decoration: none
+}
+
+.big-btn {
+  margin-top: 2rem;
+  padding: 1.5rem 3rem;
+  border-radius: .5rem;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: all .4s ease;
+  opacity: .92;
+}
+.big-btn:active, .big-btn:focus, .big-btn:hover  {
+  outline: none;
+  opacity: 1.5;
+}
