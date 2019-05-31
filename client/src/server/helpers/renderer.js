@@ -8,9 +8,9 @@ import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
 
 
-import Layout from '../shared/Routes/Layout'
+import Layout from '../../shared/Routes/Layout'
 // import 'bootstrap/dist/css/bootstrap.css'
-import '../assets/css/style.css'
+import '../../assets/css/style.css'
 
 export default function renderer(req, store, client, context) {
   
