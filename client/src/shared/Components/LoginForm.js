@@ -11,10 +11,10 @@ function LoginForm (props) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [ emailGood, setEmailGood ] = useState(false)
-  const [ passwordGood , setPasswordGood] = useState(false)
-  const [ emailError, setEmailError ] = useState(false)
-  const [ passwordError , setPasswordError ] = useState(false)
+  const [emailGood, setEmailGood ] = useState(false)
+  const [passwordGood , setPasswordGood] = useState(false)
+  const [emailError, setEmailError ] = useState(false)
+  const [passwordError , setPasswordError ] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -23,7 +23,6 @@ function LoginForm (props) {
         setEmailGood(false)
         setPasswordGood(false)
         const res = await props.loginUser(email, password)
-        console.log(res)
       }
     } catch (error) {
       // console.log(error)
@@ -56,7 +55,7 @@ function LoginForm (props) {
     }
   }
   return (
-    <Container style={{ marginTop: '5rem'}}>
+    <Container>
       <Row className="d-flex justify-content-center py-5">
       <Col xs={10}>
         <Form 
@@ -66,6 +65,7 @@ function LoginForm (props) {
           <FormGroup>
             <Label for="email">Email</Label>
             <Input
+            value={email}
             valid={emailGood}
             invalid={emailError}
             type="email"
@@ -73,17 +73,16 @@ function LoginForm (props) {
             id="email"
             placeholder="your email please"
             onChange={handleChangeInput}
-            value={email}
             />
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
             <Input
             value={password}
-            onChange={handleChangeInput}
-            autoComplete="off"
             valid={passwordGood}
             invalid={passwordError} 
+            onChange={handleChangeInput}
+            autoComplete="off"
             type="password" 
             name="password" 
             id="password" 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { renderRoutes } from 'react-router-config'
 import { connect } from 'react-redux'
 import { 
@@ -9,7 +9,7 @@ import routes from './mainRoutes'
 import { Footer } from '../Components'
 
 const MainContent = () => (
-  <Container className="text-center">{renderRoutes(routes)}</Container>
+  <Container fluid className="text-center">{renderRoutes(routes)}</Container>
 )
 
 function Layout ({auth}) {

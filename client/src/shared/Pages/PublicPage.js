@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import { HelmetComponent } from '../Components'
 import { Container } from 'reactstrap'
+import { elevationJs } from '../Utils'
+import styled from 'styled-components'
 
-function HomePage() {
+function PublicPage() {
   const [btnText, setBtnText] = useState('CLICK ME')
   const [counter, setCounter] = useState(0)
 
   const handleClick = () => {
+    
     if(counter === 0) {
       setBtnText('AND AGAIN')
       setCounter(1)
@@ -27,8 +30,9 @@ function HomePage() {
   return (
     <Container>
       <HelmetComponent pageTitle="Home" ogTitle="Home" />
-      <h1>HomePage</h1>
-      <button 
+      <h1>Public Page</h1>
+      <button
+      style={elevationJs[3]}
       onClick={handleClick}
       className="big-btn"
       >
@@ -39,5 +43,5 @@ function HomePage() {
 }
 
 export default {
-  component: HomePage
+  component: PublicPage
 }

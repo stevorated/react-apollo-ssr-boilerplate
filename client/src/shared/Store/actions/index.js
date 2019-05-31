@@ -1,6 +1,19 @@
 import gql from 'graphql-tag'
 import { GET_MA_DETAILS, GET_ME, GET_USERS } from '../../Apollo/Queries/'
-import { LOGIN_USER_MUT, LOGOUT_USER } from '../../Apollo/Mutaions'
+import { REGISTER_USER_MUT, LOGIN_USER_MUT, LOGOUT_USER } from '../../Apollo/Mutaions'
+
+export const registerUser = (fname, lname, username, email, password) => async (dispatch, getState, client) => {
+
+  const {data} = await client.mutate({
+    variables: {fname, lname, username, email, password},
+    mutation: REGISTER_USER_MUT
+  })
+  
+  dispatch({
+    type: 'REGISTER_USER',
+    payload: data
+  })
+}
 
 export const loginUser = (email, password) => async (dispatch, getState, client) => {
 
@@ -16,6 +29,7 @@ export const loginUser = (email, password) => async (dispatch, getState, client)
 }
 
 export const logoutUser = () => async (dispatch, getState, client) => {
+
   const {data} = await client.mutate({
     mutation: LOGOUT_USER
   })
@@ -23,6 +37,7 @@ export const logoutUser = () => async (dispatch, getState, client) => {
     type: 'LOGOUT_USER',
     payload: null
   })
+  client.cache.data.data = {}
 }
 
 

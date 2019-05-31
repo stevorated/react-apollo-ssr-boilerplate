@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { Loading } from '../Components'
+import { isMongoId } from 'validator' 
 
 export default (ChildComponent) => {
   class RequireAuth extends Component {
@@ -10,7 +10,7 @@ export default (ChildComponent) => {
           case null:
             return <Redirect to="/" />
           default:
-            if(this.props.auth.__typename === 'User' ) {
+            if(isMongoId(this.props.auth.id)) {
               return <ChildComponent {...this.props}/>
             } else {
               return <Redirect to="/" />
@@ -18,6 +18,7 @@ export default (ChildComponent) => {
         }
       }
     }
+
 function mapStateToProps({ auth }) {
   return { auth }
 }

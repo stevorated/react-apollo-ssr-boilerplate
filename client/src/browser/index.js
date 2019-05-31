@@ -8,20 +8,19 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import Helmet from 'react-helmet'
-
 import client from './apolloClient'
 import reducers from '../shared/Store/reducers'
 import Layout from '../shared/Routes/Layout'
-// import 'bootstrap/dist/css/bootstrap.css'
-const initialState = window.__INITIAL_STATE__ 
 import styled from 'styled-components'
+import 'bootstrap/dist/css/bootstrap.css'
+import '../assets/css/style.css'
 
 const store = createStore(
   reducers, 
-  initialState, 
+  window.__INITIAL_STATE__ , 
   composeWithDevTools(applyMiddleware(thunk.withExtraArgument(client)))
   )
-
+  
 hydrate(
   <ApolloProvider client={client}>
     <Provider store={store}>
@@ -32,7 +31,6 @@ hydrate(
   </ApolloProvider>
   ,document.getElementById('root')
 )
-delete window.__INITIAL_STATE__
 
 const AppContainer = styled.div`
   display: flex;

@@ -1,13 +1,15 @@
 import PrivatePage from './PrivatePage'
-import HomePage from './HomePage'
+import PublicPage from './PublicPage'
 import LoginPage from './LoginPage'
+import RegisterPage from './RegisterPage'
 import NotFoundPage from './NotFoundPage'
 import TestPage from './TestPage'
 
 export {
   TestPage,
   PrivatePage,
-  HomePage,
+  PublicPage,
   LoginPage,
+  RegisterPage,
   NotFoundPage,
 }

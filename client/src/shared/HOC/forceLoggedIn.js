@@ -11,7 +11,7 @@ export default (ChildComponent) => {
             return <ChildComponent {...this.props}/>
           default:
             if(this.props.auth.__typename === 'User' ) {
-              return <Redirect to="/" />
+              return <Redirect to="/admins" />
             } else {
               return <ChildComponent {...this.props}/>
             }

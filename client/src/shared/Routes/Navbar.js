@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { elevation } from '../Utils'
+import { elevationJs } from '../Utils'
 import { logoutUser } from '../Store/actions'
 
 function NavbarHeader ({auth, logoutUser}) {
@@ -23,15 +23,19 @@ function NavbarHeader ({auth, logoutUser}) {
   const authBtn = auth ? (
     <NavLink className='nav-link' to="/login" onClick={handleLogout}>Logout</NavLink>
   ) : (
+    <div className="d-md-flex">
     <NavLink className='nav-link' to="/login" onClick={handleClick}  >Login</NavLink>
+    <NavLink className='nav-link' to="/register" onClick={handleClick}  >Register</NavLink>
+    </div>
   )
   return (
-      <StyledNavbar color="dark" dark expand="md" fixed="top">
-        <HeaderLink 
-        className="text-white" 
-        onClick={handleClick}
-        to="/">Wisdom Of De Crowd
-        </HeaderLink>
+      <Navbar color="dark" style={elevationJs[4]} dark expand="md" fixed="top">
+          <NavLink 
+          style={{fontSize: '1.1rem'}}
+          className="nav-link text-white" 
+          onClick={handleClick}
+          to="/">Wisdom Of De Crowd
+          </NavLink>
         <NavbarToggler
         onClick={handleToggleNav} 
         />
@@ -71,7 +75,7 @@ function NavbarHeader ({auth, logoutUser}) {
             </NavItem>
           </Nav>
         </Collapse>
-      </StyledNavbar>
+      </Navbar>
   )
 }
 
@@ -81,18 +85,6 @@ function mapStateToProps({ auth }) {
 
 export default connect(mapStateToProps, {logoutUser})(NavbarHeader)
 
-const StyledNavbar = styled(Navbar)`
-  ${elevation[4]};
-  `
-
-const HeaderLink = styled(NavLink)`
-  &:hover {
-    text-decoration: none;
-  }
-  &:active {
-    text-decoration: none;
-  }
-`
 
 // <Switch>
 // {routes.map(route => <Route key={route.name} {...route} />)}

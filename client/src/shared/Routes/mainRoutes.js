@@ -1,7 +1,8 @@
 import {
   TestPage,
-  LoginPage, 
-  HomePage, 
+  LoginPage,
+  RegisterPage,
+  PublicPage, 
   NotFoundPage, 
   PrivatePage
 } from '../Pages'
@@ -14,7 +15,7 @@ const routes = [
       {
         path: '/',
         exact: true,
-        ...HomePage
+        ...PublicPage
       },
       {
         ...PrivatePage,
@@ -24,6 +25,11 @@ const routes = [
         path: '/login',
         exact: true,
         ...LoginPage
+      },
+      {
+        path: '/register',
+        exact: true,
+        ...RegisterPage
       },
       {
         path: '/logout',
