@@ -7,6 +7,9 @@ import ProfileContainer from './ProfileContainer'
 import Wisdoms from './Wisdoms'
 import ScrollContainer from './ScrollContainer'
 import InfoContainer from './InfoContainer'
+import Comment from './Comment'
+import Comments from './Comments'
+import AddCommentForm from './AddCommentForm'
 
 export {
   Loading,
@@ -17,5 +20,8 @@ export {
   Wisdoms,
   ScrollContainer,
   InfoContainer,
-  RegisterForm
+  RegisterForm,
+  Comments,
+  Comment,
+  AddCommentForm
 }

@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap'
 import { isEmail, isLength } from 'validator'
-import { graphql } from 'react-apollo' // TODO: put in other elements
-import serialize from 'serialize-javascript'
 import { loginUser } from '../Store/actions'
 
 
@@ -15,6 +13,7 @@ function LoginForm (props) {
   const [passwordGood , setPasswordGood] = useState(false)
   const [emailError, setEmailError ] = useState(false)
   const [passwordError , setPasswordError ] = useState(false)
+  const [formError, setFormError] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -25,7 +24,7 @@ function LoginForm (props) {
         const res = await props.loginUser(email, password)
       }
     } catch (error) {
-      // console.log(error)
+      setFormError(true)
     }
 
   }
@@ -60,7 +59,8 @@ function LoginForm (props) {
       <Col xs={10}>
         <Form 
         onSubmit={handleLogin}
-        method="post">
+        method="post"
+        >
           <h1 className="display-4 mb-5">Login</h1>
           <FormGroup>
             <Label for="email">Email</Label>
@@ -80,7 +80,7 @@ function LoginForm (props) {
             <Input
             value={password}
             valid={passwordGood}
-            invalid={passwordError} 
+            invalid={passwordError || formError} 
             onChange={handleChangeInput}
             autoComplete="off"
             type="password" 
@@ -88,8 +88,8 @@ function LoginForm (props) {
             id="password" 
             placeholder="shh.. secret.." 
             />
-           {props.error &&  <FormFeedback className="mt-2" tooltip>{props.error}</FormFeedback>}
-          </FormGroup>
+            {formError && <FormFeedback className="mt-3"><strong>Wrong Details</strong></FormFeedback>}
+            </FormGroup>
           <Button>Sign In</Button> 
         </Form>
       </Col>

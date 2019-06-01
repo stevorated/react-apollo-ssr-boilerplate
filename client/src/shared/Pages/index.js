@@ -11,5 +11,5 @@ export {
   PublicPage,
   LoginPage,
   RegisterPage,
-  NotFoundPage,
+  NotFoundPage
 }

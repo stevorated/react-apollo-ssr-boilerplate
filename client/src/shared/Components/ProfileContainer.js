@@ -10,19 +10,18 @@ const imgAvatar = Avatar.replace('build','').replace('/public','')
 function ProfileContainer({ auth }) {
   const { fname, lname, email, username } = auth
   return (
-    <Card>
+    <div className="my-4 p-2" >
     {auth && 
       <Fragment>
       <FlatCard>
         <BigProfileImg
-        className="my-4" 
+        className="text-center mt-2"
         src={imgAvatar} 
         alt=""
         />
-        <p>{username}</p>
-        <p>{fname}</p>
-        <p>{lname}</p>
-        <p>{email}</p>
+        <p className="text-capitalize">{fname} {lname}</p>
+        <p className="mt-5">{username}</p>
+        <p className="">{email}</p>
       </FlatCard>
       <FlatCard className="m-1">
         <p>somthing</p>
@@ -33,7 +32,7 @@ function ProfileContainer({ auth }) {
       </FlatCard>
       </Fragment>
     }
-      </Card>
+      </div>
   )
 }
 const mapStateToProps = ({ auth }) => ({ auth })

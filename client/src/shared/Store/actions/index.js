@@ -1,22 +1,26 @@
 import gql from 'graphql-tag'
-import { GET_MA_DETAILS, GET_ME, GET_USERS } from '../../Apollo/Queries/'
+import { GET_MA_DETAILS, GET_ME, GET_USERS, GET_MA_POSTS } from '../../Apollo/Queries/'
 import { REGISTER_USER_MUT, LOGIN_USER_MUT, LOGOUT_USER } from '../../Apollo/Mutaions'
+import { onError } from 'apollo-link-error';
 
-export const registerUser = (fname, lname, username, email, password) => async (dispatch, getState, client) => {
 
-  const {data} = await client.mutate({
-    variables: {fname, lname, username, email, password},
-    mutation: REGISTER_USER_MUT
-  })
-  
+export const pushError = (error) => async (dispatch, getState, client) => {
   dispatch({
-    type: 'REGISTER_USER',
-    payload: data
+    type: 'ERROR_LIST_PUSH',
+    payload: error
   })
 }
 
-export const loginUser = (email, password) => async (dispatch, getState, client) => {
+export const registerUser = (data) => async (dispatch, getState, client) => {
+    dispatch({
+      type: 'REGISTER_USER',
+      payload: data
+    })
 
+}
+
+
+export const loginUser = (email, password) => async (dispatch, getState, client) => {
   const {data} = await client.mutate({
     variables: {email, password},
     mutation: LOGIN_USER_MUT
@@ -37,9 +41,21 @@ export const logoutUser = () => async (dispatch, getState, client) => {
     type: 'LOGOUT_USER',
     payload: null
   })
-  client.cache.data.data = {}
+  
+  client.cache.reset()
+  client.resetStore()
 }
 
+
+export const fetchMyPosts = () => async (dispatch, getState, client) => {
+  const {data} = await client.query({
+    query: GET_MA_POSTS
+  })
+  dispatch({
+    type: 'FETCH_MY_POSTS',
+    payload: data
+  })
+}
 
 export const fetchUsers = () => async (dispatch, getState, client) => {
   const {data} = await client.query({

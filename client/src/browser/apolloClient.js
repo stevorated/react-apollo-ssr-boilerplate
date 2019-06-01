@@ -14,14 +14,15 @@ const linkHttp = new HttpLink({
 })
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
+  // operation.setContext({context: {errors: []}})
   if (graphQLErrors) {
     for (let err of graphQLErrors) {
-      console.log(graphQLErrors)
-      switch (err.extensions.code) {
-        case 'UNAUTHENTICATED':
-          console.log(err.message)
-          break
-      }
+      // const context = operation.getContext().context.errors
+      // context.push(err.message)
+      // operation.setContext({context: {
+      //   errors: context
+      // }})
+      // console.log(operation.getContext())
     }
   }
   if(networkError) {

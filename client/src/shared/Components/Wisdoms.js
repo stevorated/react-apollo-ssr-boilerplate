@@ -1,14 +1,25 @@
 import React from 'react'
 import { Wisdom } from '../Elements'
+import { connect } from 'react-redux'
+import { fetchMyPosts } from '../Store/actions'
 
-export default function Wisdoms() {
+
+function Wisdoms({ posts }) {
+  const renderQuery = () => {
+    const myName = `${posts.fname} ${posts.lname}`
+    return posts.posts.map(({ id, body, comments, createdAt })=>{
+      return <Wisdom key={id} body={body} name={myName} comments={comments} createdAt={createdAt} />
+    })
+  }
   return (
     <div>
-      <Wisdom />
-      <Wisdom />
-      <Wisdom />
-      <Wisdom />
-      <Wisdom />
+      {posts.posts && renderQuery()}
     </div>
   )
 }
+
+function mapStateToProps({ posts }) {
+  return { posts }
+}
+
+export default connect(mapStateToProps)(Wisdoms)

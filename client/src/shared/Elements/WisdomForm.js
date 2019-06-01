@@ -14,7 +14,7 @@ export default function WisdomForm() {
   return (
     <div>
       <Row>
-        <Col sm={12}>
+        <Col>
           <div>
             <StyledCard>
               <CardBody>
@@ -34,7 +34,7 @@ export default function WisdomForm() {
 
 const StyledCard = styled(Card)`
 ${elevation[3]}
-margin: .6rem;
+margin-top: .6rem;
 margin-bottom: 1rem;
 ${transition({
             property: 'box-shadow'

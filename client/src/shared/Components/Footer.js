@@ -1,15 +1,29 @@
 import React, { useState }  from 'react'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap'
+import { Navbar } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 function Footer () {
   const [collapsed, toggleNavbar] = useState(false)
   return (
-    <div>
-      <Navbar color="dark" dark expand="md" fixed="bottom">
-        <NavbarBrand href="/">Wisdom Of De Crowd</NavbarBrand>
+    <FooterDiv>
+      <Navbar color="dark" dark fixed="bottom">
+        <StyledLink 
+        className="nav-link text-white" 
+        to="/">Wisdom Of De Crowd&copy;
+        </StyledLink>
       </Navbar>
-    </div>
+    </FooterDiv>
   )
   }
 
-  export default Footer
+export default Footer
+const FooterDiv = styled.div`
+  opacity:0.6;
+`
+const StyledLink = styled(NavLink)`
+opacity:0.6;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 0.9rem;
+padding: 0;
+`

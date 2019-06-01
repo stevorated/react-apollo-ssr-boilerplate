@@ -2,51 +2,54 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../Store/actions'
 import { HelmetComponent } from '../Components'
+import { fetchMyPosts } from '../Store/actions'
 import requireAuth from '../HOC/requireAuth'
 import { ProfileContainer, ScrollContainer, InfoContainer } from '../Components'
 import { mediaQs } from '../Utils'
 
 class PrivatePage extends Component {
   componentDidMount() {
-    this.props.fetchUsers()
+    this.props.fetchMyPosts()
   }
-  renderQuery() {
-    return this.props.users.map(({ id, fname, lname }) => {
-      return <h4 key={id}>{lname} {fname}</h4>
-    })
-  }
+
   render() {
-    return (
+    return(
       <Row>
         <FloatLeft lg="2">
           <ProfileContainer />
         </FloatLeft>
-        <Col lg="8" className="offset-lg-2 order-3 order-lg-2" >
+        <Col lg="7" className="offset-xl-2 order-3 order-lg-2" >
           <ScrollContainer />
         </Col>
-        <Col lg="2" className="order-2 order-lg-3">
+        <Col lg="3" className="order-2 order-lg-3">
           <InfoContainer />
         </Col>
       </Row>
     )
-  }
+  } 
 }
 
 function mapStateToProps({ users }) {
   return { users }
 }
 
-export default {
-  component: connect(mapStateToProps, { fetchUsers })(requireAuth(PrivatePage)),
-  loadData: ({ dispatch }) => dispatch(fetchUsers())
-}
-
-
 const FloatLeft = styled(Col)`
   position: fixed!important;
+  top: 3.5rem;
+  left: 0.9rem;
   ${mediaQs.papabear `
     position: static!important;
   `}
+  ${mediaQs.brotherbear `
+    position: static!important;
+  `}
+  ${mediaQs.mamabear `
+    position: static!important;
+  `}
 `
+
+export default {
+  component: connect(mapStateToProps, {fetchMyPosts})(requireAuth(PrivatePage)),
+  loadData: ({ dispatch }) => dispatch(fetchMyPosts())
+}

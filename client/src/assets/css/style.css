@@ -7,6 +7,10 @@ body {
 
 }
 
+div#root, .container-fluid {
+  padding: 0.3rem!important;
+}
+
 ul.header-navbar {
   background: rosybrown; 
   display: flex;

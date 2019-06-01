@@ -21,6 +21,31 @@ export const GET_MA_DETAILS = gql`
   }
 }
 `
+
+export const GET_MA_POSTS = gql`
+{
+  me {
+    id
+    fname
+    lname
+    posts {
+      id
+      body
+      createdAt
+      comments {
+        id
+        body
+        createdAt
+        createdBy {
+          fname
+          lname
+        }
+      }
+    }
+  }
+}
+`
+
 export const GET_USERS = gql`
 {
   users {
