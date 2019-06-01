@@ -1,7 +1,10 @@
 export default (state=[], {type, payload}) => {
   switch (type) {
     case 'FETCH_MY_POSTS':
-      return payload.me
+      return {
+        ...state,
+        ...payload.me
+      }
     case 'CREATE_POST':
       return {
         ...state,

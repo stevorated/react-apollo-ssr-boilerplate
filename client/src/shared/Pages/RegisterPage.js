@@ -12,7 +12,12 @@ class RegisterPage extends Component {
   }
   state = {
     formGood: false,
-    retry: false
+    retry: false,
+    fname: '',
+    lname: '',
+    email: '', 
+    username: '',
+    password: ''
   }
   
   handleFormState = (data) => {
@@ -22,6 +27,7 @@ class RegisterPage extends Component {
       ...data
     })
   }
+
   render() {
     return (
       <ApolloConsumer>
@@ -34,20 +40,33 @@ class RegisterPage extends Component {
             }}
           >
             {(signUp, {loading, error}) => {
-              if (loading) return <Loading />
               if (error) {
                 // console.log(signUp)
                 for (let err of error.graphQLErrors) {
                   // console.log(err.extensions.exception.errors)
-                  return <RegisterForm 
-                  register={signUp} 
-                  errors={err.extensions.exception.errors} 
-                  state={this.state} 
-                  setFormState={this.handleFormState} 
-                  />
+                  return (
+                  <div>
+                    <RegisterForm 
+                    register={signUp} 
+                    errors={err.extensions.exception.errors} 
+                    state={this.state} 
+                    setFormState={this.handleFormState} 
+                    />
+                    {loading && <Loading />}
+                  </div>
+                  )
                 }
               }
-              return <RegisterForm register={signUp} state={this.state} setFormState={this.handleFormState} />
+              return (
+              <div>
+                <RegisterForm 
+                register={signUp} 
+                state={this.state} 
+                setFormState={this.handleFormState} 
+                />
+                {loading && <Loading />}
+              </div>
+              )
             }}
           </Mutation>
         )}

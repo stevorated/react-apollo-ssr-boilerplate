@@ -79,7 +79,8 @@ export const fetchUsers = () => async (dispatch, getState, client) => {
 
 export const fetchCurrentUser = () => async (dispatch, getState, client) => {
   const { data } = await client.query({
-    query: GET_ME
+    query: GET_ME,
+
   })
   dispatch({
     type: 'FETCH_CURRENT_USER', 
@@ -89,7 +90,8 @@ export const fetchCurrentUser = () => async (dispatch, getState, client) => {
 
 export const fetchMyDetails = () => async (dispatch, getState, client) => {
   const { data } = await client.query({
-    query: GET_MA_DETAILS
+    query: GET_MA_DETAILS,
+    notifyOnNetworkStatusChange
   })
   dispatch({
     type: FETCH_MY_DETAILS, 

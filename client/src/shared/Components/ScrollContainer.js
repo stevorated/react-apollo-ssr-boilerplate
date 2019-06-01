@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
-import { WisdomFormContainer } from '.'
-import Wisdoms from './Wisdoms'
+import { WisdomFormContainer } from './Post'
+import { Wisdoms } from './Post'
 import styled from 'styled-components'
 
 function ScrollContainer() {

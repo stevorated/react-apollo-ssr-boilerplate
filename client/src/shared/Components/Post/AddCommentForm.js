@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Form, FormGroup, Input, Button } from 'reactstrap'
 import { isAlphanumeric, isLength } from 'validator'
-import { Card } from '../Elements'
+import { Card } from '../../Elements'
 
 export default function AddCommentForm({openForm, state, setFormState, createComment, id, errors}) {
 
@@ -10,15 +10,8 @@ export default function AddCommentForm({openForm, state, setFormState, createCom
   const handleSubmit = (e) => {
     e.preventDefault()
     if(isLength(state.body,{min:2, max: 250})) {
-
       setFormState({formGood:true})
       setFormState({retry :true})
-      console.log(state.formGood)
-      const newData = { 
-        body: state.body,
-        post: id
-      }
-      console.log(newData)
       createComment({variables:{
         body: state.body,
         post: id

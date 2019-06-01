@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Wisdom } from '../Elements'
+import { Wisdom } from '../../Elements'
 import { connect } from 'react-redux'
-import { fetchMyPosts } from '../Store/actions'
+import { fetchMyPosts } from '../../Store/actions'
 
 
 function Wisdoms({posts}) {

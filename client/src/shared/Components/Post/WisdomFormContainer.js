@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
-import { CREATE_COMMENT_MUT } from '../Apollo/Mutaions'
-import { AddCommentForm , Loading } from '.'
-import { pushComment } from '../Store/actions'
+import { CREATE_POST_MUT } from '../../Apollo/Mutaions'
+import { GET_MA_POSTS } from '../../Apollo/Queries'
+import { Loading } from '..'
+import { WisdomForm } from '../../Elements'
+import { createPost } from '../../Store/actions'
 
-class AddCommentContainer extends Component {
+class WisdomFormContainer extends Component {
   constructor(props) {
     super(props)
-  }
-  state = {
-    formGood: false,
-    retry: false,
-    body: ''
+    this.state = {
+      body: ''
+    }
   }
   
   handleFormState = (data) => {
@@ -27,33 +27,32 @@ class AddCommentContainer extends Component {
       <ApolloConsumer>
         {client => (
           <Mutation
-            mutation={CREATE_COMMENT_MUT}
-            onCompleted={({createComment}) => this.props.pushComment(createComment)}     
+            mutation={CREATE_POST_MUT}
+            onCompleted={({createPost}) => this.props.createPost(createPost)}     
+            refetchQueries={[{query:GET_MA_POSTS}]}
             >
-            {(createComment, {loading, error}) => {
+            {(createPost, {loading, error}) => {
               if (loading) return <Loading />
               if (error) {
                 for (let err of error.graphQLErrors) {
                   console.log(err.extensions.exception.errors)
                   return (
-                    <AddCommentForm 
+                    <WisdomForm 
                     id={this.props.id}
-                    openForm={this.props.openForm}
                     errors={err.extensions.exception.errors} 
                     state={this.state} 
                     setFormState={this.handleFormState}
-                    createComment={createComment} 
+                    createPost={createPost} 
                     />
                   )
                 }
               }
               return( 
-              <AddCommentForm 
+              <WisdomForm
               id={this.props.id}
-              openForm={this.props.openForm} 
               state={this.state} 
               setFormState={this.handleFormState}
-              createComment={createComment}  
+              createPost={createPost}  
               />
               )
             }}
@@ -65,4 +64,4 @@ class AddCommentContainer extends Component {
   }
 }
 
-export default connect(undefined, { pushComment })(AddCommentContainer)
+export default connect(undefined, { createPost })(WisdomFormContainer)
