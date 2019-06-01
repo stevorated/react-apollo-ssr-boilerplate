@@ -11,21 +11,6 @@ class RegisterPage extends Component {
     super(props)
   }
   state = {
-    fname:'',
-    lname:'',
-    username:'',
-    email:'',
-    password:'',
-    fnameGood: false,
-    lnameGood: false,
-    usernameGood: false,
-    emailGood: false,
-    passwordGood: false,
-    fnameError: false,
-    lnameError: false,
-    usernameError: false,
-    emailError: false,
-    passwordError: false,
     formGood: false,
     retry: false
   }

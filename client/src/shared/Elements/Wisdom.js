@@ -3,12 +3,13 @@ import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
 import styled from 'styled-components'
-import { Comments, AddCommentForm } from '../Components'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Comments, AddCommentForm, AddCommentContainer } from '../Components'
 import { SmallProfileImg } from '.'
 import { black, elevation, transition } from '../Utils'
 import Avatar from '../../assets/new_logo.png'
+import moment from 'moment'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
+
 
 export default function Wisdom(props) {
   const [ showForm, setShowForm ] = useState(false)
@@ -45,10 +46,10 @@ export default function Wisdom(props) {
             </div>
           </div>
         </CardBody>
-        {showForm && <AddCommentForm openForm={openForm} />}
+        {showForm && <AddCommentContainer id={props.id} openForm={openForm} />}
       </StyledCard>
       
-      {showComments &&  <Comments comments={props.comments} />}
+      {showComments &&  <Comments comments={props.comments} id={props.id} />}
     </div>
   )
 }

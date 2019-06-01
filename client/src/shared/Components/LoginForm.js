@@ -26,7 +26,6 @@ function LoginForm (props) {
     } catch (error) {
       setFormError(true)
     }
-
   }
   const handleChangeInput = (e) => {
     const input = e.target.value

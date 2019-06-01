@@ -35,6 +35,9 @@ export const GET_MA_POSTS = gql`
       comments {
         id
         body
+        post {
+          id
+        }
         createdAt
         createdBy {
           fname

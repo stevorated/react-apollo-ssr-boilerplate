@@ -10,6 +10,8 @@ import InfoContainer from './InfoContainer'
 import Comment from './Comment'
 import Comments from './Comments'
 import AddCommentForm from './AddCommentForm'
+import AddCommentContainer from './AddCommentContainer'
+import WisdomFormContainer from './WisdomFormContainer'
 
 export {
   Loading,
@@ -23,5 +25,7 @@ export {
   RegisterForm,
   Comments,
   Comment,
-  AddCommentForm
+  AddCommentForm,
+  AddCommentContainer,
+  WisdomFormContainer
 }

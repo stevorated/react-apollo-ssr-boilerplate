@@ -1,5 +1,51 @@
 import gql from 'graphql-tag'
 
+export const CREATE_POST_MUT = gql`
+    mutation (
+	$body: String!
+) {
+  createPost (body: $body) {
+    id
+    body
+    comments {
+      id
+      body
+      createdAt
+      createdBy {
+        fname
+        lname
+      }
+      post {
+        id
+      }
+    }
+  }
+}
+`
+
+export const CREATE_COMMENT_MUT = gql`
+  mutation (
+  $post: String!,
+	$body: String!
+) {
+  createComment (
+    body: $body,
+    post: $post
+  ) {
+		id
+    body
+    post {
+      id
+    }
+    createdAt
+    createdBy {
+      fname
+      lname
+    }
+  }
+}
+`
+
 export const REGISTER_USER_MUT = gql`
  mutation ($fname: String!, $lname: String!, $username: String!, $email: String!, $password: String!) {
   signUp (

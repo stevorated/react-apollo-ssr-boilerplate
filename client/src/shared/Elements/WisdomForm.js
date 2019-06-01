@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-  Col, Row, Input, Card, CardSubtitle, Button, CardBody
+  Container, Col, Row, Input, Card, CardSubtitle, Button, CardBody, Form
 } from 'reactstrap'
-
+import { isLength } from 'validator'
 import {
   elevation,
   transition
@@ -10,24 +10,48 @@ import {
 
 import styled from 'styled-components'
 
-export default function WisdomForm() {
+export default function WisdomForm({id, errors, state, setFormState, createPost}) {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(isLength(state.body,{min:2, max: 250})) {
+      createPost({variables:{
+        body: state.body,
+      }})
+      setFormState({body: ''})
+    }
+    // openForm()
+  }
+
+  const handleOnChange = (e) => {
+    setFormState({retry :false})
+    const value = e.target.value
+    const name = e.target.name
+    const newData = {
+      [name]: value
+    }
+    setFormState(newData)
+  }
   return (
-    <div>
-      <Row>
-        <Col>
-          <div>
-            <StyledCard>
-              <CardBody>
-                <CardSubtitle className="mb-1">Share Your Wisdom</CardSubtitle>
-                <Input className="mb-2" type="textarea" name="text" id="exampleText" />
-                <Button>Button</Button>
-                <Button className="mr-auto">Button</Button>
-              </CardBody>
-            </StyledCard>
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <Container fluid>
+      <StyledCard>
+        <CardBody>
+        <CardSubtitle className="mb-1">Share Your Wisdom</CardSubtitle>
+          <Form onSubmit={handleSubmit}>
+            <Input 
+            value={state.body}
+            onChange={handleOnChange}
+            className="mb-2" 
+            type="textarea" 
+            name="body" 
+            id="Post_add_body" 
+            />
+            <div className="d-flex">
+              <Button className="ml-auto">Button</Button>
+            </div>
+          </Form>
+        </CardBody>
+      </StyledCard>
+    </Container>
   )
 }
 

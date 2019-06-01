@@ -1,22 +1,32 @@
-import gql from 'graphql-tag'
 import { GET_MA_DETAILS, GET_ME, GET_USERS, GET_MA_POSTS } from '../../Apollo/Queries/'
-import { REGISTER_USER_MUT, LOGIN_USER_MUT, LOGOUT_USER } from '../../Apollo/Mutaions'
-import { onError } from 'apollo-link-error';
+import { LOGIN_USER_MUT, LOGOUT_USER } from '../../Apollo/Mutaions'
 
+export const createPost = (data) => (dispatch, getState, client) => {
+  dispatch({
+    type: 'CREATE_POST',
+    payload: data
+  })
+} 
 
-export const pushError = (error) => async (dispatch, getState, client) => {
+export const pushComment = (data) => (dispatch, getState, client) => {
+  dispatch({
+    type: 'PUSH_NEW_COMMENT',
+    payload: data
+  })
+}
+
+export const pushError = (error) => (dispatch, getState, client) => {
   dispatch({
     type: 'ERROR_LIST_PUSH',
     payload: error
   })
 }
 
-export const registerUser = (data) => async (dispatch, getState, client) => {
-    dispatch({
-      type: 'REGISTER_USER',
-      payload: data
-    })
-
+export const registerUser = (data) => (dispatch, getState, client) => {
+  dispatch({
+    type: 'REGISTER_USER',
+    payload: data
+  })
 }
 
 
@@ -86,3 +96,4 @@ export const fetchMyDetails = () => async (dispatch, getState, client) => {
     payload: data
   })
 }
+

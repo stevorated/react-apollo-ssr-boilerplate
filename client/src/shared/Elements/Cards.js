@@ -23,6 +23,7 @@ export const Card = styled.div `
 
 export const FlatCard = styled.div `
       color: ${black};
+      background: white;
       border-radius: .3rem;
       padding: 0.5rem;
       margin-bottom: .3rem;

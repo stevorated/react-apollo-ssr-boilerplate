@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
-import { WisdomForm } from '../Elements'
+import { WisdomFormContainer } from '.'
 import Wisdoms from './Wisdoms'
 import styled from 'styled-components'
 
 function ScrollContainer() {
   return (
     <StyledDiv>
-      <WisdomForm />
+      <WisdomFormContainer />
       <Wisdoms />
     </StyledDiv>
   )
