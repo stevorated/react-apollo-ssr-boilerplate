@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_COMMENT_MUT } from '../../Apollo/Mutaions'
+import { GET_MA_POSTS } from '../../Apollo/Queries'
 import { AddCommentForm , Loading } from '..'
 import { pushComment } from '../../Store/actions'
 
@@ -28,7 +29,8 @@ class AddCommentContainer extends Component {
         {client => (
           <Mutation
             mutation={CREATE_COMMENT_MUT}
-            onCompleted={({createComment}) => this.props.pushComment(createComment)}     
+            refetchQueries={[{query:GET_MA_POSTS}]}     
+            onCompleted={({createComment}) => this.props.pushComment(createComment)}
             >
             {(createComment, {loading, error}) => {
               if (loading) return <Loading />
