@@ -6,7 +6,7 @@ export default gql`
   }
   type Comment {
     id: ID!
-    post: Post!
+    post: Post # // TODO: return to be required after rewset DB
     body: String!
     createdBy: User!
     createdAt: String!

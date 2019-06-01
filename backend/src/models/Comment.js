@@ -5,6 +5,7 @@ const ObjectId = Schema.Types.ObjectId
 const commentSchema = new mongoose.Schema({
   post: {
     type: ObjectId,
+    required: true,
     ref: 'Post'
   },
   body: {

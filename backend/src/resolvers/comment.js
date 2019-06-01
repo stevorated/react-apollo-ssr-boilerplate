@@ -14,7 +14,7 @@ export default {
       //   throw new UserInputError('One or more UserIds are INVALID')
       // }
       // userIds.push(userId)
-      const comment = await Comment.create({ body, createdBy: userId })
+      const comment = await Comment.create({ body, createdBy: userId, post })
       // await User.updateOne({_id: })
       await Post.updateOne({ _id: post }, { $push: { comments: comment } })
       return comment
