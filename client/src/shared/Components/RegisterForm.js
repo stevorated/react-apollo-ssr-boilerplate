@@ -5,40 +5,40 @@ import { isEmail, isLength } from 'validator'
 import { registerUser } from '../Store/actions'
 
 
-function RegisterForm (props) {
+function RegisterForm ({state, handleFormState, register, errors}) {
 
-  let state = props.state
-
-  const [fnameGood, setFirstNameGood] = useState(false)
-  const [fnameError, setFirstNameError] = useState(false)
-  const [lnameGood, setLastNameGood] = useState(false)
-  const [lnameError, setLastNameError] = useState(false)
-  const [usernameGood, setUsernameGood] = useState(false)
-  const [usernameError, setUsernameError] = useState(false)
-  const [emailGood, setEmailGood] = useState(false)
-  const [emailError, setEmailError] = useState(false)
-  const [passwordGood , setPasswordGood] = useState(false)
-  const [passwordError , setPasswordError ] = useState(false)
+  const {  
+    fname,
+    lname,
+    email, 
+    username,
+    password,
+    fnameGood,
+    fnameError,
+    lnameGood,
+    lnameError,
+    usernameGood,
+    usernameError,
+    emailGood,
+    emailError, 
+    passwordGood,
+    passwordError
+  } = state
 
   const handleReg = async (e) => {
     e.preventDefault()
     try {
-      if(state.formGood || (emailGood && passwordGood && usernameGood && fnameGood && lnameGood)) {
-        const res = await props.register({variables:{
-          fname:state.fname, 
-          lname: state.lname, 
-          email: state.email, 
-          username: state.username, 
-          password: state.password
+      if(emailGood && passwordGood) {
+        const res = await register({variables:{
+          fname, 
+          lname, 
+          email, 
+          username, 
+          password
         }})
       }
     } catch (error) {
       // console.log(error)
-    }
-  }
-  const handleForm = (e) => {
-    if(emailGood && passwordGood && usernameGood && fnameGood && lnameGood) {
-      props.setFormState({formGood: true})
     }
   }
   const handleChangeInput = (e) => {
@@ -49,50 +49,48 @@ function RegisterForm (props) {
     }
     switch (name) {
       case 'fname':
+        
         if(value && !isLength(value, {min:2, max: 30})) {
-          setFirstNameError(true)
+          handleFormState({fnameError:true})
         } else if (value && isLength(value, {min:2, max: 30})) {
-          setFirstNameError(false)
-          setFirstNameGood(true)
+          handleFormState({fnameError: false})
+          handleFormState({fnameGood: true})
         }
-        props.setFormState(newData)
-        break
+
+        return handleFormState(newData)
+
       case 'lname':
         if(value && !isLength(value, {min:2, max: 30})) {
-          setLastNameError(true)
+          handleFormState({lnameError: true})
         } else if (value && isLength(value, {min:2, max: 30})) {
-          setLastNameError(false)
-          setLastNameGood(true)
+          handleFormState({lnameError: false})
+          handleFormState({lnameGood: true})
         }
-        props.setFormState(newData)
-        break
+        return handleFormState(newData)
       case 'username':
           if(value && !isLength(value, {min:2, max: 30})) {
-            setUsernameError(true)
+            handleFormState({usernameError: true})
           } else if (value && isLength(value, {min:2, max: 30})) {
-            setUsernameError(false)
-            setUsernameGood(true)
+            handleFormState({usernameError: false})
+            handleFormState({usernameGood: true})
           }
-        props.setFormState(newData)
-        break
+        return handleFormState(newData)
       case 'email':
         if(value && !isEmail(value)){
-          setEmailError(true)
+          handleFormState({emailError: true})
         } else if(value && isEmail(value) ) {
-          setEmailError(false)
-          setEmailGood(true)
+          handleFormState({emailError: false})
+          handleFormState({emailGood: true})
         }
-        props.setFormState(newData)
-        break
+        return handleFormState(newData)
       case 'password':
           if(value && !value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*^?&#])[A-Za-z\d@$!%#*^?&]{8,30}$/)) {
-            setPasswordError(true)
+            handleFormState({passwordError: true})
           } else if (value && value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*^?&#])[A-Za-z\d@$!%#*^?&]{8,30}$/)) {
-            setPasswordError(false)
-            setPasswordGood(true)
+            handleFormState({passwordError: false})
+            handleFormState({passwordGood: true})
           }
-        props.setFormState(newData)
-        break
+        return handleFormState(newData)
       default:
         break
     }
@@ -102,7 +100,6 @@ function RegisterForm (props) {
       <Row className="d-flex justify-content-center py-5">
       <Col xs={10}>
         <Form 
-        onChange={handleForm}
         onSubmit={handleReg}
         method="post">
           <h1 className="display-4 mb-5">Register</h1>
@@ -110,73 +107,73 @@ function RegisterForm (props) {
             <Label for="fname-reg">first name</Label>
             <Input
             valid={fnameGood}
-            invalid={fnameError || (!!props.errors && !!props.errors.fname)}
+            invalid={fnameError || (!!errors && !!errors.fname)}
             type="text"
             name="fname"
             id="fname-reg"
             placeholder="first name please"
             onChange={handleChangeInput}
-            value={state.fname}
+            value={fname}
             />
-            {props.errors && (props.errors.fname && <FormFeedback>{props.errors.fname.message}</FormFeedback>)}
+            {errors && (errors.fname && <FormFeedback>{errors.fname.message}</FormFeedback>)}
           </FormGroup>
           <FormGroup>
             <Label for="lname-reg">last name</Label>
             <Input
             valid={lnameGood}
-            invalid={lnameError|| (!!props.errors && !!props.errors.lname)}
+            invalid={lnameError|| (!!errors && !!errors.lname)}
             type="text"
             name="lname"
             id="lname-reg"
             placeholder="last name please"
             onChange={handleChangeInput}
-            value={state.lname}
+            value={lname}
             />
             
-            {props.errors && (props.errors.lname && <FormFeedback>{props.errors.lname.message}</FormFeedback>)}
+            {errors && (errors.lname && <FormFeedback>{errors.lname.message}</FormFeedback>)}
           </FormGroup>
           <FormGroup>
             <Label for="username">username</Label>
             <Input
             valid={usernameGood}
-            invalid={usernameError || (!!props.errors && !!props.errors.username)}
+            invalid={usernameError || (!!errors && !!errors.username)}
             type="text"
             name="username"
             id="username-reg"
             placeholder="username please"
             onChange={handleChangeInput}
-            value={state.username}
+            value={username}
             />
-            {props.errors && (props.errors.username && <FormFeedback>{props.errors.username.message}</FormFeedback>)}
+            {errors && (errors.username && <FormFeedback>{errors.username.message}</FormFeedback>)}
           </FormGroup>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input
             valid={emailGood}
-            invalid={emailError || (!!props.errors && !!props.errors.email)}
+            invalid={emailError || (!!errors && !!errors.email)}
             type="email"
             name="email"
             id="email-reg"
             placeholder="your email please"
             onChange={handleChangeInput}
-            value={state.email}
+            value={email}
             />
-            {props.errors && (props.errors.email && <FormFeedback>{props.errors.email.message}</FormFeedback>)}
+            {errors && (errors.email && <FormFeedback>{errors.email.message}</FormFeedback>)}
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
             <Input
-            value={state.password}
+            value={password}
             onChange={handleChangeInput}
             autoComplete="off"
             valid={passwordGood}
-            invalid={passwordError|| (!!props.errors && !!props.errors.password)} 
+            invalid={passwordError|| (!!errors && !!errors.password)} 
             type="password" 
             name="password" 
             id="password-reg" 
             placeholder="shh.. secret.." 
             />
-            {props.errors && (props.errors.password && <FormFeedback>{props.errors.password.message}</FormFeedback>)}
+            {errors && (errors.password && <FormFeedback>{errors.password.message}</FormFeedback>)}
           </FormGroup>
           <Button>Sign In</Button>
           

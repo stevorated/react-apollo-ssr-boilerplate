@@ -7,8 +7,8 @@ import { onError } from 'apollo-link-error'
 const cache = new InMemoryCache().restore(window.__APOLLO_STATE__)
 
 const linkHttp = new HttpLink({
-  ssrMode: true,
-  uri: 'http://localhost:4004/graphql',
+  ssrMode: false,
+  uri: 'http://localhost:4001/graphql',
   credentials: 'include',
   ssrForceFetchDelay: 100,
 })

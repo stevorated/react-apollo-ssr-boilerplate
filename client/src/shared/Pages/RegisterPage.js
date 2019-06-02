@@ -17,15 +17,21 @@ class RegisterPage extends Component {
     lname: '',
     email: '', 
     username: '',
-    password: ''
+    password: '',
+    fnameGood: false,
+    fnameError: false,
+    lnameGood: false,
+    lnameError: false,
+    usernameGood: false,
+    usernameError: false,
+    emailGood: false,
+    emailError: false,
+    passwordGood: false,
+    passwordError: false
   }
   
   handleFormState = (data) => {
-    const currentState = this.state
-    this.setState({
-      ...currentState,
-      ...data
-    })
+    this.setState(data)
   }
 
   render() {
@@ -50,7 +56,7 @@ class RegisterPage extends Component {
                     register={signUp} 
                     errors={err.extensions.exception.errors} 
                     state={this.state} 
-                    setFormState={this.handleFormState} 
+                    handleFormState={this.handleFormState} 
                     />
                     {loading && <Loading />}
                   </div>
@@ -62,7 +68,7 @@ class RegisterPage extends Component {
                 <RegisterForm 
                 register={signUp} 
                 state={this.state} 
-                setFormState={this.handleFormState} 
+                handleFormState={this.handleFormState} 
                 />
                 {loading && <Loading />}
               </div>

@@ -6,16 +6,11 @@ import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
-
-
 import Layout from '../../shared/Routes/Layout'
-// import 'bootstrap/dist/css/bootstrap.css'
-import '../../assets/css/style.css'
 
 export default function renderer(req, store, client, context) {
   
   const sheet = new ServerStyleSheet()
-
 
   const App = (
   <ApolloProvider client={client}>
@@ -26,6 +21,7 @@ export default function renderer(req, store, client, context) {
     </Provider>
   </ApolloProvider>
   )
+
   const content = renderToString(sheet.collectStyles(App))
   const styles = sheet.getStyleTags()
   const helmet = Helmet.renderStatic()
@@ -37,8 +33,7 @@ export default function renderer(req, store, client, context) {
       ${styles}
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
       <link rel="stylesheet" href="styles/main.css"/>
       </head>
       <body>
@@ -50,7 +45,6 @@ export default function renderer(req, store, client, context) {
         <script>
           window.__APOLLO_STATE__ = ${serialize(client.extract())}
         </script>
-
         <script src="bundle.js"></script>
       </body>
     </html>

@@ -13,6 +13,9 @@ import { HttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 
+import '../assets/css/bootstrap.min.css'
+import '../assets/css/style.css'
+
 const { GRAPH_URL }  = process.env
 const PORT = process.env.PORT || 3000
 
@@ -21,9 +24,9 @@ app.use(cookieParser())
 app.use(cors())
 app.use(express.static('build/public'))
 
-app.get('*', async (req, res, next) => {
-
+app.get('*', async (req, res) => {
   const linkHttp = createHttpLink({
+    ssrMode: true,
     uri: GRAPH_URL,
     credentials: 'include',
     headers: {
@@ -52,10 +55,11 @@ app.get('*', async (req, res, next) => {
     cache: new InMemoryCache({
       addTypename: false
     }),
-    link
+    link,
   })
-
+  console.log(client.extract())
   const store = await createStore(client)
+  console.log(store.getState())
   const promises = await matchRoutes(routes, req.path)
     .map(({ route }) => {
       return route.loadData ? route.loadData(store) : null
