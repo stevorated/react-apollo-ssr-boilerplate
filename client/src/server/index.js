@@ -57,9 +57,8 @@ app.get('*', async (req, res) => {
     }),
     link,
   })
-  console.log(client.extract())
   const store = await createStore(client)
-  console.log(store.getState())
+
   const promises = await matchRoutes(routes, req.path)
     .map(({ route }) => {
       return route.loadData ? route.loadData(store) : null

@@ -77,7 +77,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'public/styles/[name].css',
+      filename: '/styles/[name].css',
       chunkFilename: '[id].css',
     })
   ],
