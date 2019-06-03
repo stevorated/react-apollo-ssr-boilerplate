@@ -1,8 +1,8 @@
 import { css } from 'styled-components'
 
 const sizes = {
-   papabear: 1150,
-   brotherbear: 900,
+   papabear: 1200,
+   brotherbear: 1100,
    mamabear: 700,
    babybear: 400
 }

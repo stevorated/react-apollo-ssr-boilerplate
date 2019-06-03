@@ -7,7 +7,7 @@ body {
 
 }
 
-div#root, .container-fluid {
+div#root, .container-fluid, .container, .row {
   padding: 0.2rem!important;
 }
 
