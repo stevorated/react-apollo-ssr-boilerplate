@@ -7,9 +7,9 @@ import styled from 'styled-components'
 function PublicPage() {
   const [btnText, setBtnText] = useState('CLICK ME')
   const [counter, setCounter] = useState(0)
-
+  const title = "Public Page"
   const handleClick = () => {
-    
+
     if(counter === 0) {
       setBtnText('AND AGAIN')
       setCounter(1)
@@ -29,7 +29,7 @@ function PublicPage() {
   }
   return (
     <Container>
-      <HelmetComponent pageTitle="Home" ogTitle="Home" />
+      <HelmetComponent pageTitle={title} ogTitle={title} />
       <h1>Public Page</h1>
       <button
       style={elevationJs[3]}

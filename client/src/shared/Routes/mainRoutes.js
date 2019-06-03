@@ -18,8 +18,9 @@ const routes = [
         ...PublicPage
       },
       {
+        path: '/admins',
+        exact: true,
         ...PrivatePage,
-        path: '/admins'
       },
       {
         path: '/login',

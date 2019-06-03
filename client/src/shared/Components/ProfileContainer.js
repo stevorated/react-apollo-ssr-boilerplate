@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BigProfileImg, FlatCard } from '../Elements'
 import Avatar from '../../assets/new_logo.png'
-
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 function ProfileContainer({ auth }) {

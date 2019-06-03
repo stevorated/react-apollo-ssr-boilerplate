@@ -9,13 +9,21 @@ import { ProfileContainer, ScrollContainer, InfoContainer } from '../Components'
 import { mediaQs } from '../Utils'
 
 class PrivatePage extends Component {
-  componentDidMount() {
-    this.props.fetchMyPosts()
+
+  constructor () {
+    super()
+    this.title = 'Wall Page'
   }
 
+  componentDidMount() {
+    this.props.fetchMyPosts()
+    
+  }
+  
   render() {
     return(
       <Row>
+        <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="2">
           <ProfileContainer />
         </FloatLeft>

@@ -5,7 +5,7 @@ export default function HelmetComponent({pageTitle, ogTitle}) {
   return (
     <div>
       <Helmet>
-        <title>My App-{pageTitle}</title>
+        <title>{pageTitle}</title>
         <meta property="og:title" content={ogTitle} />
       </Helmet>
     </div>

@@ -29,8 +29,8 @@ class AddCommentContainer extends Component {
         {client => (
           <Mutation
             mutation={CREATE_COMMENT_MUT}
-            refetchQueries={[{query:GET_MA_POSTS}]}     
             onCompleted={({createComment}) => this.props.pushComment(createComment)}
+            refetchQueries={[{query:GET_MA_POSTS}]}     
             >
             {(createComment, {loading, error}) => {
               if (loading) return <Loading />

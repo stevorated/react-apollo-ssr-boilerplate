@@ -16,18 +16,18 @@ import '../assets/css/bootstrap.min.css'
 import '../assets/css/style.css'
 
 const store = createStore(
-  reducers, 
-  window.__INITIAL_STATE__ , 
+  reducers,
+  window.__INITIAL_STATE__,
   composeWithDevTools(applyMiddleware(thunk.withExtraArgument(client)))
-  )
+)
 
 hydrate(
-  <ApolloProvider client={client}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ApolloProvider client={client}>
       <BrowserRouter>
         <Layout />
       </BrowserRouter>
-    </Provider>
-  </ApolloProvider>
-  ,document.getElementById('root')
+    </ApolloProvider>
+  </Provider>
+  , document.getElementById('root')
 )
