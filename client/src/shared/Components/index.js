@@ -7,12 +7,10 @@ import ProfileContainer from './ProfileContainer'
 import ScrollContainer from './ScrollContainer'
 import InfoContainer from './InfoContainer'
 import { 
-  Wisdoms,
   Comment,
   Comments,
   AddCommentForm,
-  AddCommentContainer,
-  WisdomFormContainer
+  AddCommentContainer
  } from './Post'
 
 export {
@@ -21,13 +19,11 @@ export {
   HelmetComponent,
   Footer,
   ProfileContainer,
-  Wisdoms,
   ScrollContainer,
   InfoContainer,
   RegisterForm,
   Comments,
   Comment,
   AddCommentForm,
-  AddCommentContainer,
-  WisdomFormContainer
+  AddCommentContainer
 }

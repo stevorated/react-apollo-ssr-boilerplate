@@ -7,9 +7,10 @@ export const {
   SESSION_NAME,
   SESSION_LIFE,
   SESSION_SECRET,
-  REDIS_HOST,
-  REDIS_PASS,
-  REDIS_PORT
+  SESSION_DB_HOST,
+  SESSION_DB_PORT,
+  SESSION_DB_NAME,
+  SESSION_DB_COLLECTION
 } = process.env
 
 export const IN_PROD = NODE_ENV === 'production'

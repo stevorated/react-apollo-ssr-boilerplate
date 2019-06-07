@@ -10,7 +10,7 @@ import {
 
 import styled from 'styled-components'
 
-export default function WisdomForm({id, errors, state, setFormState, createPost}) {
+export default function PostForm({id, errors, state, setFormState, createPost}) {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(isLength(state.body,{min:2, max: 250})) {
@@ -46,7 +46,7 @@ export default function WisdomForm({id, errors, state, setFormState, createPost}
             id="Post_add_body" 
             />
             <div className="d-flex">
-              <Button className="ml-auto">Button</Button>
+              <Button className="ml-auto">Post</Button>
             </div>
           </Form>
         </CardBody>

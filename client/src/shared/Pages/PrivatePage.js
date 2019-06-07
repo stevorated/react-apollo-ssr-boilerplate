@@ -5,19 +5,21 @@ import { connect } from 'react-redux'
 import { HelmetComponent } from '../Components'
 import { fetchMyPosts } from '../Store/actions'
 import requireAuth from '../HOC/requireAuth'
+import checkLoggedIn from '../HOC/checkLoggedIn'
 import { ProfileContainer, ScrollContainer, InfoContainer } from '../Components'
 import { mediaQs } from '../Utils'
 
 class PrivatePage extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.title = 'Wall Page'
   }
 
   componentDidMount() {
-    this.props.fetchMyPosts()
-    
+    console.log('component mounted',this.props.posts.length)
+    const postCount = this.props.posts.length
+    this.props.fetchMyPosts(postCount)
   }
   
   render() {
@@ -38,13 +40,13 @@ class PrivatePage extends Component {
   } 
 }
 
-function mapStateToProps({ users }) {
-  return { users }
+function mapStateToProps({ users, posts }) {
+  return { users, posts }
 }
 
 const FloatLeft = styled(Col)`
   position: fixed!important;
-  top: 3.5rem;
+  top: 4rem;
   left: 0.9rem;
   ${mediaQs.papabear `
     position: static!important;
@@ -58,6 +60,6 @@ const FloatLeft = styled(Col)`
 `
 
 export default {
-  component: connect(mapStateToProps, {fetchMyPosts})(requireAuth(PrivatePage)),
+  component: connect(mapStateToProps, {fetchMyPosts})(checkLoggedIn(requireAuth(PrivatePage))),
   loadData: ({ dispatch }) => dispatch(fetchMyPosts())
 }

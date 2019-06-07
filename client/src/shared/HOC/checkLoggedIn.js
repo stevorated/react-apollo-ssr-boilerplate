@@ -1,22 +1,37 @@
-import React from 'react'
-import { Redirect } from 'react-router'
-import { Query } from 'apollo-client'
+import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { Query } from 'react-apollo'
 import { GET_ME } from '../Apollo/Queries'
-import { logoutUser } from '../Store/actions'
+import { checkUserLoggedOut } from '../Store/actions'
 
-const checkLoggedIn = () => (
-  <Query
-    query={GET_ME}
-    pollInterval={500}
-  >
-    {({ loading, error, data, startPolling, stopPolling }) => {
-      if (loading) return null
-      if (error) return console.log(error)
+export default (ChildComponent) => {
+  class HOC extends Component {
+    constructor(props){
+      super(props)
+    }
+    render() {
       return (
-        <Redirect to="/" />
-      );
-    }}
-  </Query>
-)
+        <Query
+        query={GET_ME}
+        pollInterval={50000}
+      >
+        {({ loading, error, data, startPolling, stopPolling }) => {
+          if (error) {
+            console.log('loggin OUt')
+            {this.props.checkUserLoggedOut()}
+            return <Redirect to="/login" />
+          }else {
+            return (
+              <ChildComponent {...this.props} />
+            )
+          } 
+        }}
+      </Query>
+        
+      )
+      }
+    }
 
-export default checkLoggedIn
+ return connect(undefined, {checkUserLoggedOut})(HOC)
+}

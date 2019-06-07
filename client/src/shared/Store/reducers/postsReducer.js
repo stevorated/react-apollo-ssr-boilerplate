@@ -1,31 +1,28 @@
-export default (state=[], {type, payload}) => {
+export default (state = [], { type, payload }) => {
   switch (type) {
     case 'FETCH_MY_POSTS':
-      return {
-        ...state,
-        ...payload.me
-      }
+      return [...payload.getMyPosts]
+
+    case 'FETCH_MORE_POSTS':
+      return [...state.concat(payload)]
+
     case 'CREATE_POST':
-      return {
-        ...state,
-        posts: state.posts.concat(payload)
-      }
+      return [...payload.concat(state)]
+
     case 'PUSH_NEW_COMMENT':
       const { id } = payload.post
-      const updatedComments = state.posts.map((post)=> {
-        if(post.id === id) {
+      const updatedComments = state.map((post) => {
+        if (post.id === id) {
           return {
             ...post,
             comments: post.comments.concat(payload)
-          }} else {
-            return post
           }
+        } else {
+          return post
         }
-      )
-      return { 
-        ...state,
-        posts: updatedComments
-      }
+      })
+      return updatedComments
+
     default:
       return state
   }

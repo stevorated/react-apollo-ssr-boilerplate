@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap'
 import { isEmail, isLength } from 'validator'
 import { loginUser } from '../Store/actions'
+import forceLoggedIn from '../HOC/forceLoggedIn'
 
 
 function LoginForm (props) {
@@ -100,4 +101,4 @@ function LoginForm (props) {
 function mapStateToProps({auth}){
  return { auth }
 }
-export default connect(mapStateToProps, { loginUser })(LoginForm)
+export default connect(mapStateToProps, { loginUser })(forceLoggedIn(LoginForm))

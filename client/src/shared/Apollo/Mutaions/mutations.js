@@ -7,6 +7,12 @@ export const CREATE_POST_MUT = gql`
   createPost (body: $body) {
     id
     body
+    createdAt
+    createdBy {
+      id
+      fname
+      lname
+    }
     comments {
       id
       body

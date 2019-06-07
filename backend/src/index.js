@@ -2,14 +2,23 @@ import mongoose from 'mongoose'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import session from 'express-session'
-import connectRedis from 'connect-redis'
+import mongoDBStore from 'connect-mongodb-session'
+// import connectRedis from 'connect-redis'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import cookieParser from 'cookie-parser'
 import {
-  APP_PORT, IN_PROD, DB_HOST, DB_PORT, DB_NAME, SESSION_NAME, SESSION_LIFE, SESSION_SECRET, REDIS_HOST, REDIS_PASS, REDIS_PORT
+  APP_PORT,
+  IN_PROD,
+  DB_HOST,
+  DB_PORT,
+  DB_NAME,
+  SESSION_NAME,
+  SESSION_LIFE,
+  SESSION_SECRET,
+  SESSION_DB_COLLECTION
 } from './config'
-import schemaDirectives from './directives';
+import schemaDirectives from './directives'
 
 (async () => {
   try {
@@ -18,27 +27,31 @@ import schemaDirectives from './directives';
       useFindAndModify: false,
       useCreateIndex: true
     })
+
     const app = express()
     app.use(cookieParser('sid'))
     app.disable('x-powered-by')
 
-    const RedisStore = connectRedis(session)
+    const MongoSessionStore = mongoDBStore(session)
+    const store = new MongoSessionStore({
+      uri: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+      collection: SESSION_DB_COLLECTION
+    })
 
-    const store = new RedisStore({
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-      pass: REDIS_PASS
+    store.on('error', function (error) {
+      console.log(error)
     })
 
     app.use(session({
       store,
       name: SESSION_NAME,
       secret: SESSION_SECRET,
-      resave: true, // extend session life
+      resave: true,
+      rolling: true,
       saveUninitialized: false,
       cookie: {
         maxAge: parseInt(SESSION_LIFE),
-        sameSite: false,
+        sameSite: true,
         secure: IN_PROD
       }
     }))

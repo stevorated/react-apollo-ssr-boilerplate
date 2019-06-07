@@ -9,18 +9,16 @@ function ProfileContainer({ auth }) {
   return (
     <div className=" p-2" >
       {auth &&
-        <Fragment>
-          <FlatCard>
-            <BigProfileImg
-              className="text-center mt-2"
-              src={imgAvatar}
-              alt=""
-            />
-            <p className="text-capitalize">{fname} {lname}</p>
-            <p className="mt-5">{username}</p>
-            <p className="">{email}</p>
-          </FlatCard>
-        </Fragment>
+        <FlatCard>
+          <BigProfileImg
+            className="text-center mt-2"
+            src={imgAvatar}
+            alt=""
+          />
+          <p className="text-capitalize">{fname} {lname}</p>
+          <p className="mt-5">{username}</p>
+          <p className="">{email}</p>
+        </FlatCard>
       }
     </div>
   )

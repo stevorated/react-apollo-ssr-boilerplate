@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
-import { WisdomFormContainer } from './Post'
-import { Wisdoms } from './Post'
+import { PostFormContainer } from './Post'
+import { Posts } from './Post'
 import styled from 'styled-components'
+import { QueryMorePosts } from './Post'
 
 function ScrollContainer() {
   return (
     <StyledDiv>
-      <WisdomFormContainer />
-      <Wisdoms />
+      <PostFormContainer />
+      <Posts />
+      <QueryMorePosts />
     </StyledDiv>
   )
 }

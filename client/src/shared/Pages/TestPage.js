@@ -4,14 +4,15 @@ import { fetchUsers } from '../Store/actions'
 import { HelmetComponent} from '../Components'
 import requireAuth from '../HOC/requireAuth'
 import { Container } from 'reactstrap'
+import moment from 'moment'
 
 class PrivatePage extends Component {
   componentDidMount() {
     this.props.fetchUsers()
   }
   renderQuery() {
-    return this.props.users.map(({ id, fname, lname})=>{
-      return <h4 key={id}>{lname} {fname}</h4>
+    return this.props.users.map(({ id, fname, lname, username})=>{
+      return <h4 key={id}>{fname} {lname} {username}</h4>
     })
   }
   render() {

@@ -7,12 +7,12 @@ function Footer () {
   const [collapsed, toggleNavbar] = useState(false)
   return (
     <FooterDiv>
-      <Navbar color="dark" dark fixed="bottom">
-        <Link 
+      <FooterNavbar color="dark" dark fixed="bottom">
+        <StyledLink 
         className="nav-link text-white" 
         to="/">Wisdom Of De Crowd&copy;
-        </Link>
-      </Navbar>
+        </StyledLink>
+      </FooterNavbar>
     </FooterDiv>
   )
   }
@@ -20,6 +20,9 @@ function Footer () {
 export default Footer
 const FooterDiv = styled.div`
   opacity:0.6;
+`
+const FooterNavbar = styled(Navbar)`
+height: 2rem;
 `
 const StyledLink = styled(Link)`
 opacity:0.6;

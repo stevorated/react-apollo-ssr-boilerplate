@@ -1,7 +1,8 @@
 import Icon from './Icon'
-import WisdomForm from './WisdomForm'
-import Wisdom from './Wisdom'
+import PostForm from './PostForm'
+import Post from './Post'
 
+export * from './FormInputs'
 export * from './Images'
 export * from './Cards'
-export { Icon, WisdomForm, Wisdom } 
+export { Icon, PostForm, Post } 

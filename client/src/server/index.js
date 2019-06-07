@@ -41,7 +41,7 @@ app.get('*', async (req, res) => {
       for (let err of graphQLErrors) {
         switch (err.extensions.code) {
           case 'UNAUTHENTICATED':
-            console.log(err.message)
+            // console.log(err.message)
         }
       }
     }

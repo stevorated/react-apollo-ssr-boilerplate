@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_POST_MUT } from '../../Apollo/Mutaions'
 import { GET_MA_POSTS } from '../../Apollo/Queries'
 import { Loading } from '..'
-import { WisdomForm } from '../../Elements'
+import { PostForm } from '../../Elements'
 import { createPost } from '../../Store/actions'
 
-class WisdomFormContainer extends Component {
+class PostFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +15,9 @@ class WisdomFormContainer extends Component {
     }
   }
   
+  
   handleFormState = (data) => {
+    console.log('scroller?',this.scroller)
     const currentState = this.state
     this.setState({
       ...currentState,
@@ -32,30 +34,36 @@ class WisdomFormContainer extends Component {
             refetchQueries={[{query:GET_MA_POSTS}]}
             >
             {(createPost, {loading, error}) => {
-              if (loading) return <Loading />
               if (error) {
                 for (let err of error.graphQLErrors) {
                   console.log(err.extensions.exception.errors)
                   return (
-                    <WisdomForm 
-                    id={this.props.id}
-                    errors={err.extensions.exception.errors} 
-                    state={this.state} 
-                    setFormState={this.handleFormState}
-                    createPost={createPost} 
-                    />
+                    <Fragment>
+                      <PostForm 
+                      id={this.props.id}
+                      errors={err.extensions.exception.errors} 
+                      state={this.state} 
+                      setFormState={this.handleFormState}
+                      createPost={createPost}
+                      />
+                      {loading && <Loading />}
+                    </Fragment>
                   )
                 }
               }
               return( 
-              <WisdomForm
-              id={this.props.id}
-              state={this.state} 
-              setFormState={this.handleFormState}
-              createPost={createPost}  
-              />
+                <Fragment>
+                  <PostForm
+                  id={this.props.id}
+                  state={this.state} 
+                  setFormState={this.handleFormState}
+                  createPost={createPost}  
+                  />
+                  {loading && <Loading />}
+                </Fragment>
               )
             }}
+            
           </Mutation>
         )}
       </ApolloConsumer>
@@ -64,4 +72,4 @@ class WisdomFormContainer extends Component {
   }
 }
 
-export default connect(undefined, { createPost })(WisdomFormContainer)
+export default connect(undefined, { createPost })(PostFormContainer)

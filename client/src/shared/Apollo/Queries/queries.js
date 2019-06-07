@@ -21,28 +21,51 @@ export const GET_MA_DETAILS = gql`
   }
 }
 `
-
-export const GET_MA_POSTS = gql`
-{
-  me {
+export const FETCH_MORE_POSTS = gql`
+query getMorePosts( $limit: Int, $skip: Int ){
+  getMyPosts (limit: $limit, skip: $skip) {
     id
-    fname
-    lname
-    posts {
+    body
+    createdAt
+    createdBy {
+      id
+      fname
+      lname
+    }
+    comments {
       id
       body
       createdAt
-      comments {
+      createdBy {
         id
-        body
-        post {
-          id
-        }
-        createdAt
-        createdBy {
-          fname
-          lname
-        }
+        fname
+        lname
+      }
+    }
+  }
+}
+`
+
+
+export const GET_MA_POSTS = gql`
+query getMyPosts ($limit: Int, $skip: Int){
+  getMyPosts (limit: $limit, skip: $skip) {
+    id
+    body
+    createdAt
+    createdBy {
+      id
+      fname
+      lname
+    }
+    comments {
+      id
+      body
+      createdAt
+      createdBy {
+        id
+        fname
+        lname
       }
     }
   }
