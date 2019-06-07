@@ -48,7 +48,7 @@ export default {
   },
   User: {
     posts: async (user, args, context, info) => {
-      return (await user.populate('posts').execPopulate()).posts
+      return (await user.populate({ path: 'posts', options: { sort: { createdAt: -1 } } }).execPopulate()).posts
     }
   }
 }

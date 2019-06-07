@@ -5,6 +5,12 @@ export default gql`
     createPost(body: String): Post @auth
   }
 
+  extend type Query {
+    getMyPosts (sort: Int ,limit: Int, skip: Int): [Post] @auth
+    getUsersPosts (id: ID! sort: Int ,limit: Int, skip: Int): [Post] @auth
+    getPosts (limit: Int, skip: Int): [Post] @auth
+  }
+
   type Post {
     id: ID!
     body: String!
