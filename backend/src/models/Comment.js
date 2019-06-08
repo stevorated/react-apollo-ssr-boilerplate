@@ -12,7 +12,7 @@ const commentSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    maxlength: 250
+    maxlength: 500
   },
   createdBy: {
     type: ObjectId,

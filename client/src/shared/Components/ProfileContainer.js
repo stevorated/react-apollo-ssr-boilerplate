@@ -9,15 +9,14 @@ function ProfileContainer({ auth }) {
   return (
     <div className=" p-2" >
       {auth &&
-        <FlatCard>
+        <FlatCard className="m-0 p-0">
           <BigProfileImg
-            className="text-center mt-2"
+            className="text-center my-4"
             src={imgAvatar}
             alt=""
           />
           <p className="text-capitalize">{fname} {lname}</p>
-          <p className="mt-5">{username}</p>
-          <p className="">{email}</p>
+          <p className="my-5 py-5">{username}</p>
         </FlatCard>
       }
     </div>

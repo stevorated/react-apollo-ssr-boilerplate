@@ -45,6 +45,11 @@ function mapStateToProps({ users, posts }) {
   return { users, posts }
 }
 
+export default {
+  component: connect(mapStateToProps, {fetchMyPosts})(checkLoggedIn(requireAuth(PrivatePage))),
+  loadData: ({ dispatch }) => dispatch(fetchMyPosts())
+}
+
 const FloatLeft = styled(Col)`
   position: fixed!important;
   top: 4rem;
@@ -60,7 +65,4 @@ const FloatLeft = styled(Col)`
   `}
 `
 
-export default {
-  component: connect(mapStateToProps, {fetchMyPosts})(checkLoggedIn(requireAuth(PrivatePage))),
-  loadData: ({ dispatch }) => dispatch(fetchMyPosts())
-}
+

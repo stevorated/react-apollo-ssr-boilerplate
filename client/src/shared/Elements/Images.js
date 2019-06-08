@@ -5,8 +5,8 @@ export const BigProfileImg = styled.img`
 ${elevation[1]};
 filter: grayscale(20%);
 opacity: .8;
-width: 6rem;
-height: 6rem;
+width: 4rem;
+height: 4rem;
 border-radius: 50%;
 transition: all .4s ease;
 &:hover {

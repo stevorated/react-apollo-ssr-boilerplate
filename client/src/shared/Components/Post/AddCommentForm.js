@@ -9,7 +9,7 @@ export default function AddCommentForm({openForm, state, setFormState, createCom
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(isLength(state.body,{min:2, max: 250})) {
+    if(isLength(state.body,{min:2, max: 500})) {
       setFormState({formGood:true})
       setFormState({retry :true})
       createComment({variables:{

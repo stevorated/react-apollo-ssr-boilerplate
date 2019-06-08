@@ -10,7 +10,8 @@ import {
   Comment,
   Comments,
   AddCommentForm,
-  AddCommentContainer
+  AddCommentContainer,
+  DeletePostMutation
  } from './Post'
 
 export {
@@ -25,5 +26,6 @@ export {
   Comments,
   Comment,
   AddCommentForm,
-  AddCommentContainer
+  AddCommentContainer,
+  DeletePostMutation
 }

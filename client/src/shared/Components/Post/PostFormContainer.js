@@ -17,7 +17,6 @@ class PostFormContainer extends Component {
   
   
   handleFormState = (data) => {
-    console.log('scroller?',this.scroller)
     const currentState = this.state
     this.setState({
       ...currentState,

@@ -5,6 +5,7 @@ import Comments from './Comments'
 import PostFormContainer from './PostFormContainer'
 import Posts from './Posts'
 import QueryMorePosts from './QueryMorePosts'
+import DeletePostMutation from './DeletePostMutation'
 
 export {
   AddCommentContainer,
@@ -13,5 +14,6 @@ export {
   Comments,
   PostFormContainer,
   Posts,
-  QueryMorePosts
+  QueryMorePosts,
+  DeletePostMutation
 }

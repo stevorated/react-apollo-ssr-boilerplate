@@ -13,11 +13,13 @@ import styled from 'styled-components'
 export default function PostForm({id, errors, state, setFormState, createPost}) {
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(isLength(state.body,{min:2, max: 250})) {
+    if(isLength(state.body,{min:2, max: 500})) {
       createPost({variables:{
         body: state.body,
       }})
       setFormState({body: ''})
+    } else {
+      console.log('Form Too Long')
     }
     // openForm()
   }

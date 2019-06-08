@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    maxlength: 250
+    maxlength: 500
     // validate: {
     //   validator: email => User.doesntExist({ email }),
     //   message: ({ value }) => `Mail already exists`

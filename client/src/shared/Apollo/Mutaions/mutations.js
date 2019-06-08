@@ -1,5 +1,12 @@
 import gql from 'graphql-tag'
 
+export const DELETE_POST_MUT = gql`
+mutation ($post: ID!) {
+  deletePost (post: $post)
+}
+
+`
+
 export const CREATE_POST_MUT = gql`
     mutation (
 	$body: String!

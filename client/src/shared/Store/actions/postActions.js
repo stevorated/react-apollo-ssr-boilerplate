@@ -26,5 +26,12 @@ export const createPost = (data) => async (dispatch, getState, client) => {
     type: 'CREATE_POST',
     payload: [data]
   })
-  
+} 
+
+export const deletePostAction = (data) => async (dispatch, getState, client) => {
+  console.log('deletePostAction',data)
+  await dispatch({
+    type: 'CREATE_POSTd',
+    payload: [data]
+  })
 } 

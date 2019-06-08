@@ -35,6 +35,8 @@ export default function renderer(req, store, client, context) {
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
       ${styles}
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
       <link rel="icon" href="/f575a04ebbb31b5798a4c54783e745a2.png" type="image/png"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="styles/main.css"/>

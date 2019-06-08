@@ -1,8 +1,10 @@
 import Joi from 'joi'
 import mongoose from 'mongoose'
 import { createPost } from '../joiSchemas'
-import { User, Post } from '../models'
+import { User, Post, Comment } from '../models'
 import { UserInputError } from 'apollo-server-core'
+
+const { ObjectId } = mongoose.Types
 
 export default {
   Query: {
@@ -10,10 +12,10 @@ export default {
       if (sort !== 1 && sort !== -1) {
         throw new UserInputError(`invalid sort must be 1 or -1`)
       }
-      if (!mongoose.Types.ObjectId.isValid(req.session.userId)) {
+      if (!ObjectId.isValid(req.session.userId)) {
         throw new UserInputError(`invalid ID`)
       }
-      const posts = await Post.find({ createdBy: mongoose.Types.ObjectId(req.session.userId) }, null, { sort: { createdAt: sort }, limit, skip })
+      const posts = await Post.find({ createdBy: ObjectId(req.session.userId) }, null, { sort: { createdAt: sort }, limit, skip })
       return posts
     },
     getPosts: async (root, { limit = null, skip = 0 }, { req }, info) => {
@@ -24,10 +26,10 @@ export default {
       if (sort !== 1 && sort !== -1) {
         throw new UserInputError(`invalid sort must be 1 or -1`)
       }
-      if (!mongoose.Types.ObjectId.isValid(id)) {
+      if (!ObjectId.isValid(id)) {
         throw new UserInputError(`invalid ID`)
       }
-      const posts = await Post.find({ createdBy: mongoose.Types.ObjectId(id) }, null, { sort: { createdAt: sort }, limit, skip })
+      const posts = await Post.find({ createdBy: ObjectId(id) }, null, { sort: { createdAt: sort }, limit, skip })
       return posts
     }
   },
@@ -39,8 +41,28 @@ export default {
       const post = await Post.create({ body, createdBy: userId })
       await User.updateOne({ _id: userId }, { $push: { posts: post } })
       return post
+    },
+    deletePost: async (root, { post }, { req }, info) => {
+      try {
+        const postToDeleteExists = await Post.findById(post)
+        if (postToDeleteExists) {
+          const postOwner = await User.findById(postToDeleteExists.createdBy)
+          if (postOwner.id !== req.session.userId ) {
+            return new UserInputError('Hey It\'s Not Your Post!')
+          }
+          await User.updateOne({ _id: ObjectId(postOwner.id) }, { $pull: { posts: post } })
+          await Comment.deleteMany({ post })
+          await Post.findByIdAndDelete(postToDeleteExists)
+          return true
+        } else {
+          return new UserInputError('Invalid post ID!')
+        }
+      } catch (e) {
+        return e
+      }
     }
   },
+
   Post: {
     comments: async (user, args, context, info) => {
       return (await user.populate('comments').execPopulate()).comments

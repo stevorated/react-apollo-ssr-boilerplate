@@ -3,7 +3,7 @@ import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
 import styled from 'styled-components'
-import { Comments, AddCommentForm, AddCommentContainer } from '../Components'
+import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } from '../Components'
 import { SmallProfileImg } from '.'
 import { black, elevation, transition, timeAgo } from '../Utils'
 import Avatar from '../../assets/new_logo.png'
@@ -11,22 +11,45 @@ import moment from 'moment'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 export default function Post(props) {
-  
   const [ showForm, setShowForm ] = useState(false)
   const [ showComments, setShowComments ] = useState(false)
+  const [ hideDeletedComment, setHideDeletedComment ] = useState(false)
+  const [ clickDeleteCounter, setClickDeleteCounter ] = useState(0)
+  const [ deleteMessage, setDeleteMessage ] = useState('')
+
   const openForm = () => {
     setShowForm(!showForm)
   }
   const toggleComments = () => {
     setShowComments(!showComments)
   }
+  
+  const handleDelete = () => {
+    console.log(clickDeleteCounter)
+    if(clickDeleteCounter === 0) {
+      setDeleteMessage('You Sure? click twice')
+    }
+    if(clickDeleteCounter === 1) {
+      setDeleteMessage('final warning ... u sure?')
+    }
+    if(clickDeleteCounter === 2) {
+      setHideDeletedComment(true)
+    }
+  }
 
   const PostedTime = timeAgo(Date.now(),props.createdAt)
-  return (
+  return !hideDeletedComment ? (
     <div className="mb-5">
       <StyledCard >
         <CardBody>
-          <Button close />
+          <DeletePostMutation 
+          handleDelete={handleDelete}
+          hideDeletedComment={hideDeletedComment}
+          post={props.id} 
+          deleteMessage={deleteMessage} 
+          clickDeleteCounter={clickDeleteCounter} 
+          setClickDeleteCounter={setClickDeleteCounter}
+          close />
           <div className="d-flex">
             <SmallProfileImg
               className="mr-3"
@@ -53,6 +76,8 @@ export default function Post(props) {
       
       {showComments &&  <Comments comments={props.comments} id={props.id} />}
     </div>
+  ) : (
+    <span className="animated fadeOut">Done, Hope Your're Happy ..</span>
   )
 }
 
