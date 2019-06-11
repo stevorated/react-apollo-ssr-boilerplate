@@ -9,7 +9,7 @@ export default (state = [], { type, payload }) => {
     case 'CREATE_POST':
       return [...payload.concat(state)]
 
-    case 'PUSH_NEW_COMMENT':
+    case 'PUSH_COMMENT':
       const { id } = payload.post
       const updatedComments = state.map((post) => {
         if (post.id === id) {
