@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { onError } from 'apollo-link-error'
-
+import '../assets/css/animate.css'
 import '../assets/css/bootstrap.min.css'
 import '../assets/css/style.css'
 

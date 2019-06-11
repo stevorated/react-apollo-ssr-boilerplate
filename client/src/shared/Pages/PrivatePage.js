@@ -50,6 +50,14 @@ export default {
   loadData: ({ dispatch }) => dispatch(fetchMyPosts())
 }
 
+// const StyledInfo = styled(InfoContainer)`
+// /* ${mediaQs.mamabear `
+//     margin-top:0;
+// `} */
+//   margin-top: 0!important;
+// `
+
+
 const FloatLeft = styled(Col)`
   position: fixed!important;
   top: 4rem;

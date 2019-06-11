@@ -1,11 +1,15 @@
-import HelmetComponent from './HelmetComponent'
-import Loading from './Loading'
-import LoginForm from './LoginForm'
-import RegisterForm from './RegisterForm'
-import Footer from './Footer'
-import ProfileContainer from './ProfileContainer'
-import ScrollContainer from './ScrollContainer'
-import InfoContainer from './InfoContainer'
+import HelmetComponent from './Fragment/HelmetComponent'
+import Loading from './Fragment/Loading'
+import LoginForm from './authComponents/LoginForm'
+import RegisterForm from './authComponents/RegisterForm'
+import Footer from './Fragment/Footer'
+import ProfileContainer from './wall/ProfileContainer'
+import ScrollContainer from './wall/ScrollContainer'
+import InfoContainer from './wall/InfoContainer'
+// import FeedLeftBar from './Feed/FeedLeftBar'
+// import FeedRightBar from './Feed/FeedRightBar'
+// import FeedScroll from './Feed/FeedScroll'
+
 import { 
   Comment,
   Comments,
@@ -27,5 +31,8 @@ export {
   Comment,
   AddCommentForm,
   AddCommentContainer,
-  DeletePostMutation
+  DeletePostMutation,
+  // FeedLeftBar,
+  // FeedRightBar,
+  // FeedScroll
 }

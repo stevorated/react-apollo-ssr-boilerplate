@@ -4,24 +4,31 @@ import { connect } from 'react-redux'
 import { Post } from '../../Elements'
 
 
-function Posts({posts}) {
+function Posts(props) {
   
   const renderQuery = () => {
-    return posts.map(({ id, body, comments, createdAt, createdBy })=>{
-      const myName = `${createdBy.fname} ${createdBy.lname}`
-      return <Post key={id} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
-    })
+    if(props.myPostsMode) {
+      return props.posts.map(({ id, body, comments, createdAt, createdBy })=>{
+        const myName = `${createdBy.fname} ${createdBy.lname}`
+        return <Post key={id} myPostsMode={true} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
+      })
+    } else if (props.feedMode) {
+      return props.feed.map(({ id, body, comments, createdAt, createdBy })=>{
+        const myName = `${createdBy.fname} ${createdBy.lname}`
+        return <Post key={id} feedMode={true} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
+      })
+    }
   }
     return (
       <div>
-        {posts && renderQuery()}
+        {(props.posts && props.myPostsMode || props.feed) && renderQuery()}
       </div>
     )
   }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, feed }) {
 
-  return { posts }
+  return { posts, feed }
 }
 
 export default connect(mapStateToProps)(Posts)

@@ -11,7 +11,7 @@ import Helmet from 'react-helmet'
 import client from './apolloClient'
 import reducers from '../shared/Store/reducers'
 import Layout from '../shared/Routes/Layout'
-
+import '../assets/css/animate.css'
 import '../assets/css/bootstrap.min.css'
 import '../assets/css/style.css'
 

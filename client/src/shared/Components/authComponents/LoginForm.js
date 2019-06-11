@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap'
 import { isEmail, isLength } from 'validator'
-import { loginUser } from '../Store/actions'
-import forceLoggedIn from '../HOC/forceLoggedIn'
+import { loginUser } from '../../Store/actions'
+import forceLoggedIn from '../../HOC/forceLoggedIn'
 
 
 function LoginForm (props) {

@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_COMMENT_MUT } from '../../Apollo/Mutaions'
-import { GET_MA_POSTS } from '../../Apollo/Queries'
+import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
 import { AddCommentForm , Loading } from '..'
 import { pushComment } from '../../Store/actions'
 
 class AddCommentContainer extends Component {
   constructor(props) {
     super(props)
+    console.log(props)
+    console.log(this.props.commentCount)
+    console.log(this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS})
   }
   state = {
     formGood: false,
@@ -29,11 +32,16 @@ class AddCommentContainer extends Component {
         {client => (
           <Mutation
             mutation={CREATE_COMMENT_MUT}
-            onCompleted={({createComment}) => this.props.pushComment(createComment)}
-            refetchQueries={[{query:GET_MA_POSTS}]}     
+            onCompleted={({createComment}) => {
+              this.props.pushComment(createComment)
+              console.log('count',this.props.commentCount)
+              this.props.setShowComments(true)
+              this.props.setShowForm(false)
+            }}
+            refetchQueries={[this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS}]}     
             >
             {(createComment, {loading, error}) => {
-              if (loading) return <Loading />
+              // if (loading) return <Loading />
               if (error) {
                 for (let err of error.graphQLErrors) {
                   console.log(err.extensions.exception.errors)

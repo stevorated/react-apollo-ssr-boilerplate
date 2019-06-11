@@ -4,6 +4,7 @@ import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
 import NotFoundPage from './NotFoundPage'
 import TestPage from './TestPage'
+import FeedPage from './FeedPage'
 
 export {
   TestPage,
@@ -11,5 +12,6 @@ export {
   PublicPage,
   LoginPage,
   RegisterPage,
-  NotFoundPage
+  NotFoundPage,
+  FeedPage
 }

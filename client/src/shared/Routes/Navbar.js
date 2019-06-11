@@ -55,11 +55,14 @@ function NavbarHeader ({auth, logoutUser}) {
             <NavItem>
               <NavLink 
               className='nav-link' 
-              onClick={handleClick} 
-              to='/blabla'
+              onClick={handleClick}  
+              to='/feed'
               >
-              404
+              Feed
               </NavLink>
+            </NavItem>
+            <NavItem>
+            {authBtn}
             </NavItem>
             <NavItem>
               <NavLink 
@@ -69,9 +72,6 @@ function NavbarHeader ({auth, logoutUser}) {
               >
               test
               </NavLink>
-            </NavItem>
-            <NavItem>
-              {authBtn}
             </NavItem>
           </Nav>
         </Collapse>

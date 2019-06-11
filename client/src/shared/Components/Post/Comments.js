@@ -27,8 +27,15 @@ export default function Comments(props) {
   return (
     <div  className="mx-2" style={{opacity: '0.8'}}>
       {renderQuery()}
-      <Button onClick={openForm} className="ml-2">{showForm ? 'Hide' : 'Comment'}</Button>
-      {showForm && <Card className="pt-3 mt-3" ><AddCommentContainer id={id} openForm={openForm} /></Card>}
+      <Link to="#" onClick={openForm} className="ml-2">{showForm ? 'Hide' : 'Comment'}</Link>
+      {showForm && <Card className="pt-3 mt-3" >
+      <AddCommentContainer 
+      id={id} 
+      openForm={openForm} 
+      setShowComments={setShowComments} 
+      commentCount = {comments.length}
+      />
+      </Card>}
     </div>
   )
 }

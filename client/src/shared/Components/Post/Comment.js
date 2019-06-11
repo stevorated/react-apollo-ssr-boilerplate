@@ -9,7 +9,7 @@ const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 export default function Comment({ id, body, createdAt, name }) {
   return (
-    <FlatCard className="bg-white" >
+    <FlatCard className="bg-white animated fadeIn" >
       <div className="d-flex">
         <SmallProfileImg
           className="mr-3"

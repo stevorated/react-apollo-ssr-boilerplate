@@ -11,13 +11,12 @@ import styled from 'styled-components'
 
 import { DELETE_POST_MUT } from '../../Apollo/Mutaions'
 import { GET_MA_POSTS } from '../../Apollo/Queries'
-import { Loading } from '..'
+import { Loading } from '../'
 import { deletePostAction } from '../../Store/actions'
 
 class DeletePostMutation extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       showPopUp: true
     }

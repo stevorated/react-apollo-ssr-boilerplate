@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
-import { PostFormContainer } from './Post'
-import { Posts } from './Post'
+import { PostFormContainer } from '../Post'
+import { Posts } from '../Post'
 import styled from 'styled-components'
-import { QueryMorePosts } from './Post'
+import { QueryMorePosts } from '../Post'
 
 function ScrollContainer() {
   return (
     <StyledDiv>
-      <PostFormContainer />
-      <Posts />
+      <PostFormContainer myPostsMode={true} />
+      <Posts myPostsMode={true} />
       <QueryMorePosts />
     </StyledDiv>
   )

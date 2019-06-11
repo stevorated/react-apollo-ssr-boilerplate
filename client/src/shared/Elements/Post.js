@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect  } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
@@ -7,7 +8,6 @@ import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } fro
 import { SmallProfileImg } from '.'
 import { black, elevation, transition, timeAgo } from '../Utils'
 import Avatar from '../../assets/new_logo.png'
-import moment from 'moment'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 export default function Post(props) {
@@ -33,14 +33,19 @@ export default function Post(props) {
       setDeleteMessage('final warning ... u sure?')
     }
     if(clickDeleteCounter === 2) {
+      console.log('delete')
       setHideDeletedComment(true)
     }
   }
 
+  useEffect(()=>{
+  })
+  
+  const animatedClass = hideDeletedComment ? 'animated flipOutY' : 'animated fadeIn slower'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
-    <div className="mb-5">
-      <StyledCard >
+    <div className={`mb-5 ${animatedClass}`}>
+      <StyledCard  >
         <CardBody>
           <DeletePostMutation 
           handleDelete={handleDelete}
@@ -64,28 +69,49 @@ export default function Post(props) {
             {props.body}
           </CardText>
           <div className="d-flex">
-            <Button onClick={toggleComments}>{props.comments ? props.comments.length : '0'} Comments</Button>
-            <Button onClick={openForm} className="ml-2">{showForm ? 'Hide' : 'Comment'}</Button>
+            <Button style={{padding: '0.3rem'}} onClick={props.comments.length >0 ? toggleComments : (()=>{})}>{props.comments ? props.comments.length : '0'} Comments</Button>
+            
             <div className="ml-auto" >
               <Button className="ml-2"><i className="fas fa-heart"></i> 0 Likes</Button>
             </div>
           </div>
         </CardBody>
-        {showForm && <AddCommentContainer id={props.id} openForm={openForm} />}
+        {showForm && 
+          <AddCommentContainer
+          commentCount={props.comments.length}
+          setShowComments={setShowComments}
+          setShowForm={setShowForm}
+          feedMode={props.feedMode} 
+          myPostsMode={props.myPostsMode} 
+          id={props.id} 
+          openForm={openForm} />}
       </StyledCard>
-      
-      {showComments &&  <Comments comments={props.comments} id={props.id} />}
+      {!showComments && 
+        <Link 
+        to="#" 
+        onClick={openForm} 
+        className="ml-2">
+        {showForm ? 'Hide' : 'Comment'}
+        </Link>}
+      {showComments &&  
+        <Comments 
+        feedMode={props.feedMode} 
+        myPostsMode={props.myPostsMode}  
+        comments={props.comments} 
+        id={props.id} 
+        />}
     </div>
   ) : (
-    <span className="animated fadeOut">Done, Hope Your're Happy ..</span>
+    <span className="animated fadeOut turtle">Done, Hope Your're Happy ..</span>
   )
 }
+
+
 
 const CreatedAt = styled.p`
 font-size: .6rem;
 text-align: left;
 `
-
 const StyledCard = styled(Card)`
       color: ${black};
       border-radius: .3rem;
@@ -98,4 +124,7 @@ const StyledCard = styled(Card)`
       &:hover {
             ${elevation[4]};
       }
+`
+const StyledCardBody = styled(CardBody)`
+  transition: all 1s ease;
 `

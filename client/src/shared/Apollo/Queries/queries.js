@@ -72,6 +72,31 @@ query getMyPosts ($limit: Int, $skip: Int){
 }
 `
 
+export const FETCH_FEED = gql`
+query getFeed ($limit: Int, $skip: Int) {
+  getPosts(limit: $limit, skip: $skip) {
+    id
+    body
+    createdAt
+    createdBy {
+      id
+      fname
+      lname
+    }
+    comments {
+      id
+      body
+      createdAt
+      createdBy {
+        id
+        fname
+        lname
+      }
+    }
+  }
+}
+`
+
 export const GET_USERS = gql`
 {
   users {

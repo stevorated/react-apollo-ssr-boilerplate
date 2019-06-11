@@ -4,7 +4,8 @@ import {
   RegisterPage,
   PublicPage, 
   NotFoundPage, 
-  PrivatePage
+  PrivatePage,
+  FeedPage
 } from '../Pages'
 import App from '../App'
 
@@ -21,6 +22,11 @@ const routes = [
         path: '/admins',
         exact: true,
         ...PrivatePage,
+      },
+      {
+        path: '/feed',
+        exact: true,
+        ...FeedPage,
       },
       {
         path: '/login',

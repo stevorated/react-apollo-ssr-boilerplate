@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BigProfileImg, FlatCard } from '../Elements'
-import Avatar from '../../assets/new_logo.png'
+import { BigProfileImg, FlatCard } from '../../Elements'
+import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 function ProfileContainer({ auth }) {
   const { fname, lname, email, username } = auth
   return (
-    <div className=" p-2" >
+    <div className="m-0 mt-2" >
       {auth &&
         <FlatCard className="m-0 p-0">
           <BigProfileImg
@@ -16,7 +16,7 @@ function ProfileContainer({ auth }) {
             alt=""
           />
           <p className="text-capitalize">{fname} {lname}</p>
-          <p className="my-5 py-5">{username}</p>
+          <p className="mb-5 pb-5">{username}</p>
         </FlatCard>
       }
     </div>

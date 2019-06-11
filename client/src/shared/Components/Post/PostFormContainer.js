@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_POST_MUT } from '../../Apollo/Mutaions'
-import { GET_MA_POSTS } from '../../Apollo/Queries'
-import { Loading } from '..'
+import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
+import { Loading } from '../'
 import { PostForm } from '../../Elements'
 import { createPost } from '../../Store/actions'
 
@@ -30,7 +30,7 @@ class PostFormContainer extends Component {
           <Mutation
             mutation={CREATE_POST_MUT}
             onCompleted={({createPost}) => this.props.createPost(createPost)}     
-            refetchQueries={[{query:GET_MA_POSTS}]}
+            refetchQueries={[this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS}]}
             >
             {(createPost, {loading, error}) => {
               if (error) {
@@ -45,7 +45,6 @@ class PostFormContainer extends Component {
                       setFormState={this.handleFormState}
                       createPost={createPost}
                       />
-                      {loading && <Loading />}
                     </Fragment>
                   )
                 }
@@ -58,7 +57,6 @@ class PostFormContainer extends Component {
                   setFormState={this.handleFormState}
                   createPost={createPost}  
                   />
-                  {loading && <Loading />}
                 </Fragment>
               )
             }}

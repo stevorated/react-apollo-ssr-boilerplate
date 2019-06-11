@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { Form, FormGroup, Input, Button } from 'reactstrap'
 import { isAlphanumeric, isLength } from 'validator'
+import styled from 'styled-components'
 import { Card } from '../../Elements'
-
 export default function AddCommentForm({openForm, state, setFormState, createComment, id, errors}) {
 
   const [localState, setLocalstate] = useState({render: false})

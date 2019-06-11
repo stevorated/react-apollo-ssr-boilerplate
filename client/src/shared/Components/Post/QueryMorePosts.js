@@ -1,22 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Query } from 'react-apollo'
-import { fetchMorePosts } from '../../Store/actions'
+import { fetchMoreMyPosts } from '../../Store/actions'
 
 import Posts from '.'
-import Loading from '../Loading'
+import { Loading } from '../'
 import { FETCH_MORE_POSTS, GET_MA_POSTS } from '../../Apollo/Queries'
 
 const QueryMorePosts = (props) => {
   const length = props.posts.length
   console.log(length)
   return (
-    <Query 
+    <Query
     query={FETCH_MORE_POSTS}
     variables={{ limit: 5, skip: 5 }}
     onCompleted={
       ({getMyPosts})=> {
-        props.fetchMorePosts(getMyPosts)
+        props.fetchMoreMyPosts(getMyPosts)
       }
     }
     // refetchQueries={[{query:GET_MA_POSTS, variables:{limit: 10, skip: 0 }}]}
@@ -33,7 +33,7 @@ const QueryMorePosts = (props) => {
             //   [...prev.getMyPosts, ...fetchMoreResult.getMyPosts]
             // )
             if (!fetchMoreResult) return prev
-            props.fetchMorePosts(
+            props.fetchMoreMyPosts(
               [...fetchMoreResult.getMyPosts]
             ) 
           }
@@ -53,6 +53,6 @@ const mapStateToProps = ({posts}) => {
   return { posts }
 }
 
-export default connect(mapStateToProps, {fetchMorePosts})(QueryMorePosts)
+export default connect(mapStateToProps, {fetchMoreMyPosts})(QueryMorePosts)
 
 

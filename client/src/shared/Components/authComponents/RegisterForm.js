@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap'
 import { isEmail, isLength } from 'validator'
-import { registerUser } from '../Store/actions'
+import { registerUser } from '../../Store/actions'
 
 
 function RegisterForm ({state, handleFormState, register, errors}) {
