@@ -4,10 +4,10 @@ import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
 import styled from 'styled-components'
-import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } from '../Components'
-import { SmallProfileImg } from '.'
-import { black, elevation, transition, timeAgo } from '../Utils'
-import Avatar from '../../assets/new_logo.png'
+import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } from './'
+import { SmallProfileImg } from '../../Elements'
+import { black, elevation, transition, timeAgo } from '../../Utils'
+import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 export default function Post(props) {
@@ -33,7 +33,6 @@ export default function Post(props) {
       setDeleteMessage('final warning ... u sure?')
     }
     if(clickDeleteCounter === 2) {
-      console.log('delete')
       setHideDeletedComment(true)
     }
   }
@@ -44,7 +43,7 @@ export default function Post(props) {
   const animatedClass = hideDeletedComment ? 'animated flipOutY' : 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
-    <div className={`mb-5 ${animatedClass}`}>
+    <div className={`mb-3 ${animatedClass}`}>
       <StyledCard  >
         <CardBody>
           <DeletePostMutation 

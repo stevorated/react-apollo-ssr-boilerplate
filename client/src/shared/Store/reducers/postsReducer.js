@@ -6,6 +6,9 @@ export default (state = [], { type, payload }) => {
     case 'FETCH_MORE_POSTS':
       return [...state.concat(payload)]
 
+    case 'FETCH_MORE_POSTS':
+        return console.log(payload)
+
     case 'CREATE_POST':
       return [...payload.concat(state)]
 

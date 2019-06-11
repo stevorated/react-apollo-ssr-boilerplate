@@ -49,7 +49,7 @@ export const createPost = (data) => async (dispatch, getState, client) => {
 
 export const deletePostAction = (data) => async (dispatch, getState, client) => {
   await dispatch({
-    type: 'CREATE_POSTd',
+    type: 'DELETE_POST',
     payload: [data]
   })
 } 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Post } from '../../Elements'
+import { Post } from '../../Components'
 
 
 function Posts(props) {

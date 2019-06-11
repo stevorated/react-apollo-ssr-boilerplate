@@ -4,7 +4,7 @@ import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_POST_MUT } from '../../Apollo/Mutaions'
 import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
 import { Loading } from '../'
-import { PostForm } from '../../Elements'
+import { PostForm } from './'
 import { createPost } from '../../Store/actions'
 
 class PostFormContainer extends Component {

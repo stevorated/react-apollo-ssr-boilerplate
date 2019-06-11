@@ -10,7 +10,10 @@ import InfoContainer from './wall/InfoContainer'
 // import FeedRightBar from './Feed/FeedRightBar'
 // import FeedScroll from './Feed/FeedScroll'
 
-import { 
+import {
+  PostForm,
+  Posts,
+  Post,
   Comment,
   Comments,
   AddCommentForm,
@@ -19,6 +22,9 @@ import {
  } from './Post'
 
 export {
+  PostForm,
+  Posts,
+  Post,
   Loading,
   LoginForm,
   HelmetComponent,

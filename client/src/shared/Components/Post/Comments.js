@@ -33,6 +33,7 @@ export default function Comments(props) {
       id={id} 
       openForm={openForm} 
       setShowComments={setShowComments} 
+      setShowForm={setShowForm}
       commentCount = {comments.length}
       />
       </Card>}

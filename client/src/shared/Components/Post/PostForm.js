@@ -6,7 +6,7 @@ import { isLength } from 'validator'
 import {
   elevation,
   transition
-} from '../Utils'
+} from '../../Utils'
 
 import styled from 'styled-components'
 

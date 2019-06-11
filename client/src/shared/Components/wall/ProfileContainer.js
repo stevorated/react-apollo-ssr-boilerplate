@@ -16,7 +16,7 @@ function ProfileContainer({ auth }) {
             alt=""
           />
           <p className="text-capitalize">{fname} {lname}</p>
-          <p className="mb-5 pb-5">{username}</p>
+          <p className="mb-2 pb-2">{username}</p>
         </FlatCard>
       }
     </div>
