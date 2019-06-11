@@ -41,7 +41,7 @@ export default function Post(props) {
   useEffect(()=>{
   })
   
-  const animatedClass = hideDeletedComment ? 'animated flipOutY' : 'animated fadeIn slower'
+  const animatedClass = hideDeletedComment ? 'animated flipOutY' : 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
     <div className={`mb-5 ${animatedClass}`}>

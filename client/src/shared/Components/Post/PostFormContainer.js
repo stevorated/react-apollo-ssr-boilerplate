@@ -30,7 +30,7 @@ class PostFormContainer extends Component {
           <Mutation
             mutation={CREATE_POST_MUT}
             onCompleted={({createPost}) => this.props.createPost(createPost)}     
-            refetchQueries={[this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS}]}
+            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}
             >
             {(createPost, {loading, error}) => {
               if (error) {

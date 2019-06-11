@@ -38,7 +38,7 @@ class AddCommentContainer extends Component {
               this.props.setShowComments(true)
               this.props.setShowForm(false)
             }}
-            refetchQueries={[this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS}]}     
+            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}     
             >
             {(createComment, {loading, error}) => {
               // if (loading) return <Loading />

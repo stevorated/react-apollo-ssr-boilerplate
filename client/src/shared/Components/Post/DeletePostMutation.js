@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components'
 
 import { DELETE_POST_MUT } from '../../Apollo/Mutaions'
-import { GET_MA_POSTS } from '../../Apollo/Queries'
+import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
 import { Loading } from '../'
 import { deletePostAction } from '../../Store/actions'
 
@@ -39,7 +39,7 @@ class DeletePostMutation extends Component {
               await this.props.deletePostAction(deletePost)
               this.props.handleDelete()
             }}
-            refetchQueries={[{ query: GET_MA_POSTS }]}
+            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}
           >
             {(deletePost, { loading, error, called }) => {
               if (loading) return <Loading />
