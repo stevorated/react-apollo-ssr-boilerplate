@@ -32,11 +32,11 @@ class FeedPage extends Component {
     return(
       <Row>
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
-        <FloatLeft lg="2">
+        <FloatLeft lg="3">
           <FeedMenu />
           <FeedExtraLeft />
         </FloatLeft>
-        <Col lg="7" className="offset-xl-2 order-3 order-lg-2" >
+        <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
           <FeedScrollQuery />
         </Col>
         <Col lg="3" className="order-2 order-lg-3">
@@ -58,7 +58,7 @@ export default {
 }
 
 const FloatLeft = styled(Col)`
-  position: absolute !important;
+  position: fixed!important;
   top: 4.8rem;
   left: 0rem;
   ${mediaQs.papabear `
@@ -69,7 +69,7 @@ const FloatLeft = styled(Col)`
   `}
   ${mediaQs.mamabear `
     position: static!important;
-    display:none;
+    // display:none;
   `}
 `
 

@@ -67,9 +67,9 @@ margin-bottom: 1rem;
 ${transition({
             property: 'box-shadow'
       })};
-      &:hover {
-            ${elevation[4]};
-      }
+&:hover {
+      ${elevation[4]};
+}
 ` 
 
 const StyledInput = styled(Input)`
