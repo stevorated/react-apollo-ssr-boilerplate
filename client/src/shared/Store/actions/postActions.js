@@ -15,18 +15,20 @@ export const fetchMyPosts = (count = 5) => async (dispatch, getState, client) =>
   })
 }
 
+export const clearFeed = () => async (dispatch, getState, client) => {
+  dispatch({
+    type: 'CLEAR_FEED'
+  })
+}
+
 export const fetchFeed = (CrowserData, count = 5) => async (dispatch, getState, client) => {
   if(count > 10) {
     count = 10  
   }
   const data = CrowserData ? CrowserData : await client.query({
-      query: FETCH_FEED,
-      variables: { limit: count }
-    })
-  // const {data} = await client.query({
-  //   query: FETCH_FEED,
-  //   variables: { limit: count }
-  // })
+    query: FETCH_FEED,
+    variables: { limit: count }
+  })
   dispatch({
     type: 'FETCH_FEED',
     payload: data

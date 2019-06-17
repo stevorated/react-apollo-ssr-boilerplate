@@ -13,6 +13,7 @@ import styled from 'styled-components'
 const FeedScrollQuery = (props) => {
   return (
     <Query
+      // fetchPolicy='network-only' // IMPORTANT
       query={FETCH_FEED}
       variables={{ limit: 5, skip: 0}}
       onCompleted={

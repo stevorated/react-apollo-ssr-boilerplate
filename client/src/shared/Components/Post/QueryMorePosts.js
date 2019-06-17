@@ -29,9 +29,6 @@ const QueryMorePosts = (props) => {
             skip: length
           },
           updateQuery: (prev, { fetchMoreResult }) => {
-            // console.log(
-            //   [...prev.getMyPosts, ...fetchMoreResult.getMyPosts]
-            // )
             if (!fetchMoreResult) return prev
             props.fetchMoreMyPosts(
               [...fetchMoreResult.getMyPosts]

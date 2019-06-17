@@ -4,6 +4,8 @@ import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBeer } from '@fortawesome/free-solid-svg-icons'
 import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } from './'
 import { SmallProfileImg } from '../../Elements'
 import { black, elevation, transition, timeAgo } from '../../Utils'
@@ -25,7 +27,6 @@ export default function Post(props) {
   }
   
   const handleDelete = () => {
-    console.log(clickDeleteCounter)
     if(clickDeleteCounter === 0) {
       setDeleteMessage('You Sure? click twice')
     }
@@ -71,7 +72,10 @@ export default function Post(props) {
             <Button style={{padding: '0.3rem'}} onClick={props.comments.length >0 ? toggleComments : (()=>{})}>{props.comments ? props.comments.length : '0'} Comments</Button>
             
             <div className="ml-auto" >
-              <Button className="ml-2"><i className="fas fa-heart"></i> 0 Likes</Button>
+              <Button className="ml-2">
+              0 Likes 
+              <FontAwesomeIcon icon={faBeer} className="ml-2 text-warning" />
+              </Button>
             </div>
           </div>
         </CardBody>
@@ -113,6 +117,8 @@ text-align: left;
 `
 const StyledCard = styled(Card)`
       color: ${black};
+      background: whitesmoke;
+      opacity: .9;
       border-radius: .3rem;
       margin: .6rem;
       ${elevation[3]};

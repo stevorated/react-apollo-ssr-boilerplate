@@ -1,14 +1,20 @@
 import HelmetComponent from './Fragment/HelmetComponent'
 import Loading from './Fragment/Loading'
+import SmallLoading from './Fragment/SmallLoading'
 import LoginForm from './authComponents/LoginForm'
 import RegisterForm from './authComponents/RegisterForm'
 import Footer from './Fragment/Footer'
 import ProfileContainer from './wall/ProfileContainer'
 import ScrollContainer from './wall/ScrollContainer'
 import InfoContainer from './wall/InfoContainer'
+import SearchBar from './Fragment/SearchBar'
+import SearchBarSuggest from './Fragment/SearchBarSuggest'
+import ProfileScrollContainer from './Profile/ProfileScrollContainer'
 // import FeedLeftBar from './Feed/FeedLeftBar'
 // import FeedRightBar from './Feed/FeedRightBar'
 // import FeedScroll from './Feed/FeedScroll'
+
+import { FeedMenu } from './Feed'
 
 import {
   PostForm,
@@ -26,6 +32,7 @@ export {
   Posts,
   Post,
   Loading,
+  SmallLoading,
   LoginForm,
   HelmetComponent,
   Footer,
@@ -38,6 +45,10 @@ export {
   AddCommentForm,
   AddCommentContainer,
   DeletePostMutation,
+  SearchBar,
+  SearchBarSuggest,
+  ProfileScrollContainer,
+  FeedMenu
   // FeedLeftBar,
   // FeedRightBar,
   // FeedScroll

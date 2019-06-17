@@ -3,12 +3,11 @@ import { Container, Col, Row } from 'reactstrap'
 import { FlatCard } from '../../Elements'
 export default function FeedExtraLeft() {
   return (
-    <Container fluid>
+    <div >
       <FlatCard>
         <p>FeedExtra</p>
-        <p>FeedExtra</p>
       </FlatCard>
-    </Container>
+    </div>
 
   )
 }

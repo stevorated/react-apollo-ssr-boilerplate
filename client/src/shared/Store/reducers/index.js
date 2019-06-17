@@ -3,12 +3,14 @@ import authReducer from './authReducer'
 import userReducer from './usersReducer'
 import postsReducer from './postsReducer'
 import feedReducer from './feedReducer'
+import profilePostsReducer from './profilePostsReducer'
 
 const appReducer = combineReducers({
   users: userReducer,
   auth: authReducer,
   posts: postsReducer,
-  feed: feedReducer
+  feed: feedReducer,
+  profilePosts: profilePostsReducer
 })
 
 export default (state, action) => {

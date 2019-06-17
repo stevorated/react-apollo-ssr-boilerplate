@@ -2,6 +2,8 @@ const initialState = []
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case 'CLEAR_FEED':
+      return []
     case 'FETCH_FEED':
       return state[0] === undefined ? payload : [...state.concat(payload)]
       

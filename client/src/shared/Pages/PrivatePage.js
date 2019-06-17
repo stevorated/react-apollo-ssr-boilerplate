@@ -60,8 +60,8 @@ export default {
 
 const FloatLeft = styled(Col)`
   position: fixed!important;
-  top: 4rem;
-  left: 0.9rem;
+  top: 4.8rem;
+  left: 0rem;
   ${mediaQs.papabear `
     position: static!important;
   `}

@@ -3,8 +3,6 @@ import { Spinner } from 'reactstrap'
 
 export default function Loading() {
   return (
-    <div style={{margin: '8rem'}}>
-      <Spinner style={{ width: '3rem', height: '3rem' }} type="grow" />
-    </div>
+      <Spinner style={{ width: '1.5rem', height: '1.5rem' }} type="grow" />
   )
 }

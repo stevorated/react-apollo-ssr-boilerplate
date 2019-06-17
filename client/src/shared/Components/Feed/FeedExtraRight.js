@@ -4,12 +4,11 @@ import { FlatCard } from '../../Elements'
 export default class FeedExtraRight extends Component {
   render() {
     return (
-      <Container fluid>
+      <div>
         <FlatCard>
           <p>FeedExtra</p>
-          <p>FeedExtra</p>
         </FlatCard>
-      </Container>
+      </div>
     )
   }
 }

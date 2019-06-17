@@ -7,7 +7,6 @@ import forceLoggedIn from '../../HOC/forceLoggedIn'
 
 
 function LoginForm (props) {
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailGood, setEmailGood ] = useState(false)

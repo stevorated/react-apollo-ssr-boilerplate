@@ -39,7 +39,7 @@ export default function PostForm({id, errors, state, setFormState, createPost}) 
         <CardBody>
         <CardSubtitle className="mb-1">Share Your Wisdom</CardSubtitle>
           <Form onSubmit={handleSubmit}>
-            <Input 
+            <StyledInput 
             value={state.body}
             onChange={handleOnChange}
             className="mb-2" 
@@ -59,7 +59,9 @@ export default function PostForm({id, errors, state, setFormState, createPost}) 
 
 
 const StyledCard = styled(Card)`
-${elevation[3]}
+${elevation[3]};
+background: whitesmoke;
+opacity: .9;
 margin-top: .6rem;
 margin-bottom: 1rem;
 ${transition({
@@ -69,3 +71,8 @@ ${transition({
             ${elevation[4]};
       }
 ` 
+
+const StyledInput = styled(Input)`
+background: whitesmoke;
+opacity: .8;
+`

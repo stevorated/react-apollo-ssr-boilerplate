@@ -19,6 +19,20 @@ export default {
       }
       return users
     },
+    // TODO: pagination
+    searchUsers: (root, args, { req }, info) => {
+      const users = User.find({ $or: [
+        { fname: { $regex: `${args.filter.fname}`, $options: 'i' } },
+        { lname: { $regex: `${args.filter.lname}`, $options: 'i' } },
+        { username: { $regex: `${args.filter.username}`, $options: 'i' } },
+        { email: { $regex: `${args.filter.email}`, $options: 'i' } }
+      ]
+      }, null, { limit: 2 })
+      if (users.legnth) {
+        throw new UserInputError(`Found no Users`)
+      }
+      return users
+    },
     user: (root, { id }, { req }, info) => {
       // TODO: projection
       if (!mongoose.Types.ObjectId.isValid(id)) {

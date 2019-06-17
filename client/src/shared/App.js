@@ -8,7 +8,7 @@ function App({ route }) {
   
   return (
     
-    <Container fluid className="mx-0" style={{marginTop: '4rem', marginLeft: '0!important', marginRight: '0!important', padding: '0'}}>
+    <Container fluid className="mx-0 text-center" style={{marginTop: '4rem', marginLeft: '0!important', marginRight: '0!important', padding: '0'}}>
       
       {renderRoutes(route.routes)}
     </Container>

@@ -4,6 +4,7 @@ export default gql`
     extend type Query {
         me: User @auth
         user(id: ID!): User @auth
+        searchUsers(filter: UserFilter): [User]! @auth
         users: [User!]! @auth
     }
 
@@ -17,6 +18,13 @@ export default gql`
             ): User @guest
         signIn(email: String! , password: String!): User @guest
         signOut: Boolean @auth
+    }
+
+    input UserFilter {
+        email: String,
+        username: String,
+        lname: String,
+        fname: String
     }
 
     type User {

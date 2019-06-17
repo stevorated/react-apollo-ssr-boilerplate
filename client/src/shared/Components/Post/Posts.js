@@ -15,7 +15,12 @@ function Posts(props) {
     } else if (props.feedMode) {
       return props.feed.map(({ id, body, comments, createdAt, createdBy })=>{
         const myName = `${createdBy.fname} ${createdBy.lname}`
-        return <Post key={id} feedMode={true} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
+        return <Post key={`${id}-feed`} feedMode={true} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
+      })
+    } else if(props.profileMode) {
+      return props.profilePosts.map(({ id, body, comments, createdAt, createdBy })=>{
+        const myName = `${createdBy.fname} ${createdBy.lname}`
+        return <Post key={`${id}-profile`} feedMode={true} body={body} name={myName} comments={comments} createdAt={createdAt} id={id} />
       })
     }
   }
@@ -26,9 +31,9 @@ function Posts(props) {
     )
   }
 
-function mapStateToProps({ posts, feed }) {
+function mapStateToProps({ posts, feed, profilePosts }) {
 
-  return { posts, feed }
+  return { posts, feed, profilePosts }
 }
 
 export default connect(mapStateToProps)(Posts)

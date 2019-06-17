@@ -29,15 +29,17 @@ export default function renderer(req, store, client, context) {
   const helmet = Helmet.renderStatic()
 
   return `
-  <html>
+  <!DOCTYPE html>
+    <html>
       <head>
       <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="/f575a04ebbb31b5798a4c54783e745a2.png" type="image/png"/>
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
+      <link href="https://use.fontawesome.com/releases/v5.9.0/css/svg-with-js.css" rel="stylesheet"></link>
+      <link rel="stylesheet" href="/styles/main.css"/>
       ${styles}
-      <link rel="icon" href="/f575a04ebbb31b5798a4c54783e745a2.png" type="image/png"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles/main.css"/>
       </head>
       <body>
         <div id="root">${content}</div>
@@ -47,7 +49,7 @@ export default function renderer(req, store, client, context) {
         <script>
           window.__APOLLO_STATE__ = ${serialize(client.extract())}
         </script>
-        <script src="bundle.js"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
   

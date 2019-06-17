@@ -13,7 +13,7 @@ export const timeAgo = (current, previous) => {
   }
 
   else if (elapsed < msPerHour) {
-       return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+       return Math.round(elapsed/msPerMinute)  + ' minutes ago'
   }
 
   else if (elapsed < msPerDay ) {
@@ -21,14 +21,14 @@ export const timeAgo = (current, previous) => {
   }
 
   else if (elapsed < msPerMonth) {
-      return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';   
+      return Math.round(elapsed/msPerDay) + ' days ago';   
   }
 
   else if (elapsed < msPerYear) {
-      return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';   
+      return Math.round(elapsed/msPerMonth) + ' months ago';   
   }
 
   else {
-      return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
+      return Math.round(elapsed/msPerYear ) + ' years ago';   
   }
 }

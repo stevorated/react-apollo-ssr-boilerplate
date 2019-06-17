@@ -4,7 +4,7 @@ import { Container } from 'reactstrap'
 import { elevationJs } from '../Utils'
 import styled from 'styled-components'
 
-function PublicPage() {
+function PublicPage(props) {
   const [btnText, setBtnText] = useState('CLICK ME')
   const [counter, setCounter] = useState(0)
   const title = "Public Page"

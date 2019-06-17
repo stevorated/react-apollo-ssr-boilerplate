@@ -47,7 +47,7 @@ export default {
         const postToDeleteExists = await Post.findById(post)
         if (postToDeleteExists) {
           const postOwner = await User.findById(postToDeleteExists.createdBy)
-          if (postOwner.id !== req.session.userId ) {
+          if (postOwner.id !== req.session.userId) {
             return new UserInputError('Hey It\'s Not Your Post!')
           }
           await User.updateOne({ _id: ObjectId(postOwner.id) }, { $pull: { posts: post } })

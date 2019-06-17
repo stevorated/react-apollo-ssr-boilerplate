@@ -9,9 +9,9 @@ import { pushComment } from '../../Store/actions'
 class AddCommentContainer extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
-    console.log(this.props.commentCount)
-    console.log(this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS})
+    // console.log(props)
+    // console.log(this.props.commentCount)
+    // console.log(this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS})
   }
   state = {
     formGood: false,
@@ -34,7 +34,6 @@ class AddCommentContainer extends Component {
             mutation={CREATE_COMMENT_MUT}
             onCompleted={({createComment}) => {
               this.props.pushComment(createComment)
-              console.log('count',this.props.commentCount)
               this.props.setShowComments(true)
               this.props.setShowForm(false)
             }}

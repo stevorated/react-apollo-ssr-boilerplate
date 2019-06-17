@@ -1,5 +1,46 @@
 import gql from 'graphql-tag'
 
+export const SEARCH_USER = gql`
+query ($fname: String, $lname: String, $username: String){
+  searchUsers (filter: {
+    fname: $fname
+    lname: $lname
+    username: $username
+  }) {
+    id
+    email
+    fname
+    lname
+    username
+  }
+}
+`
+
+export const FETCH_USERS_POSTS = gql`
+  query getUsersPosts ($id: ID! $limit: Int, $skip: Int) {
+  getUsersPosts(id:$id limit:$limit skip:$skip) {
+    id
+    body
+    createdAt
+    createdBy {
+      id
+      fname
+      lname
+    }
+    comments {
+      id
+      body
+      createdAt
+      createdBy {
+        id
+        fname
+        lname
+      }
+    }
+  }
+}
+`
+
 export const GET_ME = gql`
 {
   me {
