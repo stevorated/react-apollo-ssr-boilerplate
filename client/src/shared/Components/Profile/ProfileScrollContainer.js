@@ -37,7 +37,7 @@ function ProfileScrollContainer(props) {
       }
       return (
         <StyledDiv>
-          <PostFormContainer feedMode={true} />
+          <PostFormContainer profileMode={true} id={props.id} />
           <Posts profileMode={true} />
           <Button onClick={handleFetchMore}>Load More</Button>
         </StyledDiv>

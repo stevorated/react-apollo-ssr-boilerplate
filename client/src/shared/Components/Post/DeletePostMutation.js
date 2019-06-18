@@ -36,7 +36,7 @@ class DeletePostMutation extends Component {
             mutation={DELETE_POST_MUT}
             variables={{ post: this.props.post }}
             onCompleted={async ({ deletePost }) => {
-              await this.props.deletePostAction(deletePost)
+              this.props.deletePostAction(this.props.post)
               this.props.handleDelete()
             }}
             refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}

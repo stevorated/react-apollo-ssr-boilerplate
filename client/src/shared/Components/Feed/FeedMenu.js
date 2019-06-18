@@ -46,6 +46,7 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
+  cursor: pointer;
   list-style: none;
   margin: .5rem .2rem .2rem 0rem ;
   padding: .2rem;

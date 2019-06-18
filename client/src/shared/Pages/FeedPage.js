@@ -11,7 +11,7 @@ import { FeedMenu, ProfileContainer, InfoContainer } from '../Components'
 import FeedScrollQuery from '../Components/Feed/FeedScrollQuery'
 import FeedExtraLeft from '../Components/Feed/FeedExtraLeft'
 import FeedExtraRight from '../Components/Feed/FeedExtraRight'
-
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { mediaQs } from '../Utils'
 
@@ -20,17 +20,27 @@ class FeedPage extends Component {
   constructor (props) {
     super(props)
     this.title = 'Scroll Page'
+    this.state = {
+      leaveClass: 'animeted fadeOutUp'
+    }
     // console.log(this.props)
   }
-
-  componentWillUnmount(){
-    console.log('unmount')
-    // this.props.clearFeed()
+  componentWillUnmount = () => {
+    
+    setTimeout(()=>{
+      this.setState = {leaveClass: ''}
+      console.log('unmount')
+    },1000)
+    
   }
-  
+
   render() {
     return(
-      <Row>
+    // <ReactCSSTransitionGroup
+    // transitionName="example"
+    // transitionLeaveTimeout={100}>
+    // >
+      <Row className="animated fadeIn">
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
           <FeedMenu />
@@ -44,6 +54,7 @@ class FeedPage extends Component {
           <FeedExtraRight />
         </Col>
       </Row>
+    // </ReactCSSTransitionGroup>
     )
   } 
 }

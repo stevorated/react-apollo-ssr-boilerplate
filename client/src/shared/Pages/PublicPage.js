@@ -28,7 +28,7 @@ function PublicPage(props) {
     }
   }
   return (
-    <Container>
+    <Container className="animated fadeIn slow">
       <HelmetComponent pageTitle={title} ogTitle={title} />
       <h1>Public Page</h1>
       <button

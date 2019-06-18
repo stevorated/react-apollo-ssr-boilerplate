@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col } from 'reactstrap'
-import { ProfileScrollContainer } from '../Components'
-import { HelmetComponent } from '../Components'
+import { ProfileScrollContainer, FeedMenu } from '../Components'
+import { HelmetComponent, ProfileContainer } from '../Components'
 import styled from 'styled-components'
 import { mediaQs } from '../Utils'
 import checkLoggedIn from '../HOC/checkLoggedIn'
+import requireAuth from '../HOC/requireAuth'
 import { clearUsersPosts } from '../Store/actions'
 
 class UserProfilePage extends Component {
@@ -21,12 +22,16 @@ class UserProfilePage extends Component {
     this.props.clearUsersPosts()
   }
   render() {
+    console.log(this.id)
     return (
-      <Row>
+
+      <Row className="animated fadeIn">
       <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
-      <FloatLeft lg="2">
+      <FloatLeft lg="3">
+        <FeedMenu />
       </FloatLeft>
-      <Col lg="7" className="offset-xl-2 order-3 order-lg-2" >
+      <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
+        <ProfileContainer id={this.id} profileMode={true} />
         <ProfileScrollContainer id={this.id} fatherProps={this.props} />
       </Col>
       <Col lg="3" className="order-2 order-lg-3">
@@ -37,13 +42,13 @@ class UserProfilePage extends Component {
 }
 
 export default  {
-  component: connect(undefined, {clearUsersPosts})(checkLoggedIn(UserProfilePage))
+  component: connect(undefined, {clearUsersPosts})(checkLoggedIn(requireAuth(UserProfilePage)))
 } 
 
 const FloatLeft = styled(Col)`
   position: fixed!important;
-  top: 4rem;
-  left: 0.9rem;
+  top: 4.8rem;
+  left: 0rem;
   ${mediaQs.papabear `
     position: static!important;
   `}

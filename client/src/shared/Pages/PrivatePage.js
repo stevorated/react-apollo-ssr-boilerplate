@@ -25,7 +25,7 @@ class PrivatePage extends Component {
   
   render() {
     return(
-      <Row>
+      <Row className="animated fadeIn">
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
           <ProfileContainer />

@@ -7,7 +7,9 @@ export default (state = [], { type, payload }) => {
       return [...state.concat(payload)]
 
     case 'DELETE_POST':
-        return console.log(payload)
+        return state.filter((post)=> {
+          return post.id !== payload
+        })
 
     case 'CREATE_POST':
       return [...payload.concat(state)]

@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect  } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
@@ -9,23 +10,25 @@ import { faBeer } from '@fortawesome/free-solid-svg-icons'
 import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } from './'
 import { SmallProfileImg } from '../../Elements'
 import { black, elevation, transition, timeAgo } from '../../Utils'
+
 import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
-export default function Post(props) {
+function Post(props) {
+  // console.log(props)
+  const MyPost = props.createdBy.id === props.auth.id
+  const profileUrl = `/profile/${props.createdBy.id}`
   const [ showForm, setShowForm ] = useState(false)
   const [ showComments, setShowComments ] = useState(false)
   const [ hideDeletedComment, setHideDeletedComment ] = useState(false)
   const [ clickDeleteCounter, setClickDeleteCounter ] = useState(0)
   const [ deleteMessage, setDeleteMessage ] = useState('')
-
   const openForm = () => {
     setShowForm(!showForm)
   }
   const toggleComments = () => {
     setShowComments(!showComments)
   }
-  
   const handleDelete = () => {
     if(clickDeleteCounter === 0) {
       setDeleteMessage('You Sure? click twice')
@@ -41,27 +44,31 @@ export default function Post(props) {
   useEffect(()=>{
   })
   
-  const animatedClass = hideDeletedComment ? 'animated flipOutY' : 'animated fadeIn slow'
+  const animatedClass = 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
     <div className={`mb-3 ${animatedClass}`}>
       <StyledCard  >
         <CardBody>
-          <DeletePostMutation 
+          {MyPost && <DeletePostMutation 
           handleDelete={handleDelete}
           hideDeletedComment={hideDeletedComment}
           post={props.id} 
           deleteMessage={deleteMessage} 
           clickDeleteCounter={clickDeleteCounter} 
           setClickDeleteCounter={setClickDeleteCounter}
-          close />
+          close />}
           <div className="d-flex">
-            <SmallProfileImg
-              className="mr-3"
-              src={imgAvatar}
-              alt="my profile img" />
+            <ProfileLink to={profileUrl} >
+              <SmallProfileImg
+                className="mr-3"
+                src={imgAvatar}
+                alt="my profile img" />
+            </ProfileLink>
             <div>
-              <CardTitle className="mb-0 text-capitalize">{props.name}</CardTitle>
+              <CardTitle className="mb-0 text-capitalize">
+                <ProfileLink to={profileUrl}>{props.name}</ProfileLink>
+              </CardTitle>
               <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
             </div>
           </div>
@@ -69,8 +76,10 @@ export default function Post(props) {
             {props.body}
           </CardText>
           <div className="d-flex">
-            <Button style={{padding: '0.3rem'}} onClick={props.comments.length >0 ? toggleComments : (()=>{})}>{props.comments ? props.comments.length : '0'} Comments</Button>
-            
+            <Button style={{padding: '0.3rem'}} 
+            onClick={ props.comments.length >0 ? toggleComments : (()=>{})}>
+            {props.comments ? props.comments.length : '0'} Comments
+            </Button>
             <div className="ml-auto" >
               <Button className="ml-2">
               0 Likes 
@@ -84,8 +93,10 @@ export default function Post(props) {
           commentCount={props.comments.length}
           setShowComments={setShowComments}
           setShowForm={setShowForm}
-          feedMode={props.feedMode} 
-          myPostsMode={props.myPostsMode} 
+          feedMode={props.feedMode}
+          myPostsMode={props.myPostsMode}
+          profileMode={props.profileMode}
+          createdBy={props.createdBy}
           id={props.id} 
           openForm={openForm} />}
       </StyledCard>
@@ -100,6 +111,7 @@ export default function Post(props) {
         <Comments 
         feedMode={props.feedMode} 
         myPostsMode={props.myPostsMode}  
+        profileMode={props.profileMode}
         comments={props.comments} 
         id={props.id} 
         />}
@@ -109,7 +121,17 @@ export default function Post(props) {
   )
 }
 
+function mapStateToProps({auth}){
+  return { auth }
+}
+ 
+export default connect(mapStateToProps)(Post)
 
+const ProfileLink = styled(Link)`
+&:hover {
+  text-decoration: none;
+}
+`
 
 const CreatedAt = styled.p`
 font-size: .6rem;

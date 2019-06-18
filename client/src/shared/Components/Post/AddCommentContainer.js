@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_COMMENT_MUT } from '../../Apollo/Mutaions'
-import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
+import { GET_MA_POSTS, FETCH_FEED, FETCH_USERS_POSTS } from '../../Apollo/Queries'
 import { AddCommentForm , Loading } from '..'
 import { pushComment } from '../../Store/actions'
 
 class AddCommentContainer extends Component {
   constructor(props) {
     super(props)
-    // console.log(props)
+    // console.log(this.props)
     // console.log(this.props.commentCount)
     // console.log(this.props.feedMode ? {query: FETCH_FEED} : {query:GET_MA_POSTS})
   }
@@ -33,11 +33,16 @@ class AddCommentContainer extends Component {
           <Mutation
             mutation={CREATE_COMMENT_MUT}
             onCompleted={({createComment}) => {
+              console.log(createComment)
               this.props.pushComment(createComment)
               this.props.setShowComments(true)
               this.props.setShowForm(false)
             }}
-            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}     
+            refetchQueries={[
+              {query: FETCH_FEED},
+              {query:GET_MA_POSTS}, 
+              {query: FETCH_USERS_POSTS, variables: { id: this.props.id }}
+            ]}     
             >
             {(createComment, {loading, error}) => {
               // if (loading) return <Loading />

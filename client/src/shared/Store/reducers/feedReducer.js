@@ -9,6 +9,11 @@ export default (state = initialState, { type, payload }) => {
       
     case 'CREATE_POST':
         return [...payload.concat(state)]
+    
+    case 'DELETE_POST':
+    return state.filter((post)=> {
+      return post.id !== payload
+    })
 
     case 'PUSH_COMMENT':
         const { id } = payload.post

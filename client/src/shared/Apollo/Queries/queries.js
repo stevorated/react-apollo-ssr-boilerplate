@@ -26,6 +26,8 @@ export const FETCH_USERS_POSTS = gql`
       id
       fname
       lname
+      email
+      username
     }
     comments {
       id

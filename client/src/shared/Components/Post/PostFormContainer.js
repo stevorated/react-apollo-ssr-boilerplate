@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { CREATE_POST_MUT } from '../../Apollo/Mutaions'
-import { GET_MA_POSTS, FETCH_FEED } from '../../Apollo/Queries'
+import { GET_MA_POSTS, FETCH_FEED, FETCH_USERS_POSTS } from '../../Apollo/Queries'
 import { Loading } from '../'
 import { PostForm } from './'
 import { createPost } from '../../Store/actions'
@@ -30,7 +30,11 @@ class PostFormContainer extends Component {
           <Mutation
             mutation={CREATE_POST_MUT}
             onCompleted={({createPost}) => this.props.createPost(createPost)}     
-            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}
+            refetchQueries={[
+              {query: FETCH_FEED},
+              {query:GET_MA_POSTS}, 
+              // {query: FETCH_USERS_POSTS, variables: { id: this.props.id }}
+            ]}
             >
             {(createPost, {loading, error}) => {
               if (error) {
