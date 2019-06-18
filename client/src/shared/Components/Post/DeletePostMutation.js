@@ -23,7 +23,7 @@ class DeletePostMutation extends Component {
   }
 
   handleDeleteButton = (deletePost) => {
-    this.setState({showPopUp: false})
+    this.setState({ showPopUp: false })
     this.props.setClickDeleteCounter(this.props.clickDeleteCounter + 1)
     this.props.handleDelete()
   }
@@ -39,7 +39,7 @@ class DeletePostMutation extends Component {
               this.props.deletePostAction(this.props.post)
               this.props.handleDelete()
             }}
-            refetchQueries={[{query: FETCH_FEED},{query:GET_MA_POSTS}]}
+            refetchQueries={[{ query: FETCH_FEED }, { query: GET_MA_POSTS }]}
           >
             {(deletePost, { loading, error, called }) => {
               if (loading) return <Loading />
@@ -50,30 +50,29 @@ class DeletePostMutation extends Component {
               }
               return (
                 <div>
-                <StyledPopover 
-                className="text-capitalized"
-                placement="top-end"
-                isOpen={this.props.clickDeleteCounter >= 1 && !this.state.showPopUp}
-                triger="focus"
-                target={`PopoverDeletePost_${this.props.post}`} 
-
-                >
-                  <PopoverHeader>Watch Out!</PopoverHeader>
-                  <PopoverBody>{this.props.deleteMessage}</PopoverBody>
-                </StyledPopover>
-                  <Button
-                  className={this.props.clickDeleteCounter >1 ? 'text-danger big-x' : ''} 
-                  id={`PopoverDeletePost_${this.props.post}`} 
-                  onClick={async () => {
-                    if (this.props.clickDeleteCounter < 2) {return this.handleDeleteButton()}
-                    else  {
-                      await this.setState({showPopUp: true})
-                      return deletePost()
-                    }
-                  }} 
-                  close 
+                  <StyledPopover
+                    className="text-capitalized"
+                    placement="top-end"
+                    isOpen={this.props.clickDeleteCounter >= 1 && !this.state.showPopUp}
+                    triger="focus"
+                    target={`PopoverDeletePost_${this.props.post}`}
+                  >
+                    <PopoverHeader>Watch Out!</PopoverHeader>
+                    <PopoverBody>{this.props.deleteMessage}</PopoverBody>
+                  </StyledPopover>
+                  <Button 
+                    style={{transition: 'all .5s ease'}}
+                    className={this.props.clickDeleteCounter >= 1 ? 'text-danger big-x' : ''}
+                    id={`PopoverDeletePost_${this.props.post}`}
+                    onClick={async () => {
+                      if (this.props.clickDeleteCounter < 2) { return this.handleDeleteButton() }
+                      else {
+                        await this.setState({ showPopUp: true })
+                        return deletePost()
+                      }
+                    }}
+                    close
                   />
-
                 </div>
               )
             }}

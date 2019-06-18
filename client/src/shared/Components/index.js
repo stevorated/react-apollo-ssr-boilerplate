@@ -4,7 +4,7 @@ import SmallLoading from './Fragment/SmallLoading'
 import LoginForm from './authComponents/LoginForm'
 import RegisterForm from './authComponents/RegisterForm'
 import Footer from './Fragment/Footer'
-import ProfileContainer from './wall/ProfileContainer'
+import ProfileContainer from './Profile/ProfileContainer'
 import ScrollContainer from './wall/ScrollContainer'
 import InfoContainer from './wall/InfoContainer'
 import SearchBar from './Fragment/SearchBar'
@@ -14,7 +14,7 @@ import ProfileScrollContainer from './Profile/ProfileScrollContainer'
 // import FeedRightBar from './Feed/FeedRightBar'
 // import FeedScroll from './Feed/FeedScroll'
 
-import { FeedMenu } from './Feed'
+import { Menu } from './Feed'
 
 import {
   PostForm,
@@ -48,7 +48,7 @@ export {
   SearchBar,
   SearchBarSuggest,
   ProfileScrollContainer,
-  FeedMenu
+  Menu
   // FeedLeftBar,
   // FeedRightBar,
   // FeedScroll

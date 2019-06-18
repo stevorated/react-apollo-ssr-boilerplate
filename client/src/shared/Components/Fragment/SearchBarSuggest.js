@@ -46,10 +46,16 @@ function SearchBarSuggest(props) {
             {data.searchUsers && data.searchUsers.map((user)=> {
               count ++ 
               return (
-                <Suggestion key={user.id} className={`suggestion_${count}`} pointer={props.pointer}>
-                  <SuggestLink id={user.id} onClick={handleClick} to={`/profile/${user.id}`} >
-                    {`${user.fname} ${user.lname}`}
-                    
+                <Suggestion 
+                key={user.id} 
+                pointer={props.pointer}
+                className={`suggestion_${count}`}>
+                  <SuggestLink 
+                  id={user.id} 
+                  onClick={handleClick} 
+                  to={`/profile/${user.id}`} 
+                  >
+                  {`${user.fname} ${user.lname}`}
                   </SuggestLink>
                 </Suggestion>
                 )
@@ -76,35 +82,37 @@ const FlyingSuggest = styled.div `
   background: white;
   text-align: left;
   border-radius: 0rem 0rem .3rem .3rem;
+  min-width: 11rem;
   ${mediaQs.mamabear `
     position: static!important;
-    max-width: 76vw;
+    min-width: 80vw;
   `}
 `
 
 const Suggestion = styled.div`
 background: ${(props) => {
-  // console.log(props.className)
   if(`suggestion_${props.pointer}` === props.className) {
-    console.log(props.className)
     return `rgb(199, 212, 206)`
   }
 }};
-width: 11.5rem;
-padding: 0.4rem 0rem 0.4rem 0.2rem;
   &:hover {
     background: rgb(199, 212, 206);
   }
+  ${mediaQs.mamabear `
+  `}
 `
 const SuggestList = styled.div`
 `
 const SuggestLink = styled(Link)`
+  font-size: 1.1rem;
   /* background: red; */
-  padding: .2rem;
-  padding-right: 4rem;
-  min-width: 5rem;
+  padding: 0 5.5rem 0 0.2rem;
   color: ${black};
+  ${mediaQs.mamabear `
+    padding: 0 15rem 0 0.2rem;
+  `}
   &:hover {
     text-decoration: none;
   }
+  /* max-width: 76vw; */
 `

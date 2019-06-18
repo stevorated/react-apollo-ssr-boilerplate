@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col } from 'reactstrap'
-import { ProfileScrollContainer, FeedMenu } from '../Components'
+import { ProfileScrollContainer, Menu } from '../Components'
 import { HelmetComponent, ProfileContainer } from '../Components'
 import styled from 'styled-components'
 import { mediaQs } from '../Utils'
@@ -22,13 +22,11 @@ class UserProfilePage extends Component {
     this.props.clearUsersPosts()
   }
   render() {
-    console.log(this.id)
     return (
-
       <Row className="animated fadeIn">
       <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
       <FloatLeft lg="3">
-        <FeedMenu />
+        <Menu />
       </FloatLeft>
       <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
         <ProfileContainer id={this.id} profileMode={true} />

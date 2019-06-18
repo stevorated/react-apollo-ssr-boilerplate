@@ -5,7 +5,7 @@ export default function FeedExtraLeft() {
   return (
     <div >
       <FlatCard>
-        <p>FeedExtra</p>
+        <p>Activity</p>
       </FlatCard>
     </div>
 

@@ -23,8 +23,10 @@ class PostFormContainer extends Component {
       ...data
     })
   }
+
   render() {
-    return (
+    const {profileMode, myProfile, feedMode, myPostsMode} = this.props
+    return (profileMode && myProfile) || myPostsMode || feedMode ? (
       <ApolloConsumer>
         {client => (
           <Mutation
@@ -47,7 +49,8 @@ class PostFormContainer extends Component {
                       errors={err.extensions.exception.errors} 
                       state={this.state} 
                       setFormState={this.handleFormState}
-                      createPost={createPost}
+                      // createPost={createPost}
+                      // myProfile={this.props.myProfile}
                       />
                     </Fragment>
                   )
@@ -60,15 +63,17 @@ class PostFormContainer extends Component {
                   state={this.state} 
                   setFormState={this.handleFormState}
                   createPost={createPost}  
+                  // myProfile={this.props.myProfile}
+                  // profileMode={this.props.profileMode}
                   />
                 </Fragment>
-              )
+              ) 
             }}
             
           </Mutation>
         )}
       </ApolloConsumer>
-    )
+    ): (<div></div>)
 
   }
 }

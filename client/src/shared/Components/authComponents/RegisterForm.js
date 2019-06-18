@@ -96,7 +96,7 @@ function RegisterForm ({state, handleFormState, register, errors}) {
     }
   }
   return (
-    <Container>
+    <Container className="animated fadeIn">
       <Row className="d-flex justify-content-center py-5">
       <Col xs={10}>
         <Form 

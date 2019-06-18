@@ -46,9 +46,10 @@ export default function PostForm({id, errors, state, setFormState, createPost}) 
             type="textarea" 
             name="body" 
             id="Post_add_body" 
+            rows="2"
             />
             <div className="d-flex">
-              <Button className="ml-auto">Post</Button>
+              <Button size="sm" className="ml-auto px-2">Post</Button>
             </div>
           </Form>
         </CardBody>

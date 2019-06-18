@@ -47,7 +47,7 @@ function Post(props) {
   const animatedClass = 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
-    <div className={`mb-3 ${animatedClass}`}>
+    <div className={`mb-4 ${animatedClass}`}>
       <StyledCard  >
         <CardBody>
           {MyPost && <DeletePostMutation 
@@ -72,16 +72,16 @@ function Post(props) {
               <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
             </div>
           </div>
-          <CardText className="mb-4 text-left">
+          <CardText className="mb-4 mt-2 text-left lead ml-2">
             {props.body}
           </CardText>
           <div className="d-flex">
-            <Button style={{padding: '0.3rem'}} 
+            <Button size="sm" className="px-2" style={{padding: '0.3rem'}} 
             onClick={ props.comments.length >0 ? toggleComments : (()=>{})}>
             {props.comments ? props.comments.length : '0'} Comments
             </Button>
             <div className="ml-auto" >
-              <Button className="ml-2">
+              <Button size="sm" className="ml-2 px-2">
               0 Likes 
               <FontAwesomeIcon icon={faBeer} className="ml-2 text-warning" />
               </Button>
@@ -99,13 +99,14 @@ function Post(props) {
           createdBy={props.createdBy}
           id={props.id} 
           openForm={openForm} />}
+
       </StyledCard>
       {!showComments && 
         <Link 
         to="#" 
         onClick={openForm} 
-        className="ml-2">
-        {showForm ? 'Hide' : 'Comment'}
+        className="">
+        {showForm ? 'Hide' : 'Add a Comment'}
         </Link>}
       {showComments &&  
         <Comments 
@@ -128,6 +129,7 @@ function mapStateToProps({auth}){
 export default connect(mapStateToProps)(Post)
 
 const ProfileLink = styled(Link)`
+color: ${black};
 &:hover {
   text-decoration: none;
 }

@@ -6,7 +6,7 @@ export default class FeedExtraRight extends Component {
     return (
       <div>
         <FlatCard>
-          <p>FeedExtra</p>
+          <p>Feed Update</p>
         </FlatCard>
       </div>
     )

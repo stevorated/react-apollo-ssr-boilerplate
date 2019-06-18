@@ -9,7 +9,6 @@ import { FETCH_MORE_POSTS, GET_MA_POSTS } from '../../Apollo/Queries'
 
 const QueryMorePosts = (props) => {
   const length = props.posts.length
-  console.log(length)
   return (
     <Query
     query={FETCH_MORE_POSTS}

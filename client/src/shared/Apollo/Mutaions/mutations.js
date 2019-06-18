@@ -19,6 +19,11 @@ export const CREATE_POST_MUT = gql`
       id
       fname
       lname
+      username
+      email
+      posts {
+        id
+      }
     }
     comments {
       id

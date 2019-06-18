@@ -6,18 +6,19 @@ import Loading from '../Fragment/Loading';
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 function ProfileContainer({ auth, profilePosts, profileMode }) {
-  console.log(profileMode)
   let details
   const profileData = profilePosts[0] ?  profilePosts[0].createdBy : null
   if(profileMode) {
       if(profileData) {
         details = profileData
+        console.log(profileData)
       }
   } else if (!profileMode) {
     details = auth
   }
   if(details !== undefined) {
-    let { fname, lname, email, username } = details
+    let { fname, lname, username, posts } = details
+    let postCount = posts ? posts.length : 0
     return (
       <div className="m-0 mt-2"  >
         {details !== undefined &&
@@ -29,6 +30,7 @@ function ProfileContainer({ auth, profilePosts, profileMode }) {
             />
             <p className="text-capitalize">{fname} {lname}</p>
             <p className="mb-2 pb-2">{username}</p>
+            <span>{postCount} Wisdoms</span>
           </FlatCard>
         }
       </div>

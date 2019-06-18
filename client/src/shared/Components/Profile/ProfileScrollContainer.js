@@ -9,6 +9,7 @@ import { PostFormContainer } from '../Post'
 import styled from 'styled-components'
 
 function ProfileScrollContainer(props) {
+  
   const length = props.profilePosts.length
   return (
     // <div></div>
@@ -37,7 +38,11 @@ function ProfileScrollContainer(props) {
       }
       return (
         <StyledDiv>
-          <PostFormContainer profileMode={true} id={props.id} />
+        <PostFormContainer 
+        profileMode={true} 
+        id={props.id} 
+        myProfile={props.auth.id === props.id} 
+        />
           <Posts profileMode={true} />
           <Button onClick={handleFetchMore}>Load More</Button>
         </StyledDiv>
@@ -47,8 +52,8 @@ function ProfileScrollContainer(props) {
   )
 }
 
-const mapStateToProps = ({ profilePosts }) => {
-  return {profilePosts}
+const mapStateToProps = ({ profilePosts, auth }) => {
+  return {profilePosts, auth}
 }
 export default connect(mapStateToProps, { fetchUsersPosts })(ProfileScrollContainer)
 

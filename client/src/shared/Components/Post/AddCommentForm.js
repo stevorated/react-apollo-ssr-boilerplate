@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Form, FormGroup, Input, Button } from 'reactstrap'
 import { isAlphanumeric, isLength } from 'validator'
 import styled from 'styled-components'
-import { Card } from '../../Elements'
+import { Card, FlatCard } from '../../Elements'
 export default function AddCommentForm({openForm, state, setFormState, createComment, id, errors}) {
 
   const [localState, setLocalstate] = useState({render: false})
@@ -32,20 +32,24 @@ export default function AddCommentForm({openForm, state, setFormState, createCom
     setFormState(newData)
   }
   return (
-    <Form onSubmit={handleSubmit}>
+
+    <form onSubmit={handleSubmit}>
       <FormGroup className="px-4">
         <Input 
         className="px-4 m-auto" 
         type="textarea" 
         name="body" 
         id="body_comment_add"
+        rows="1"
         value={state.body}
         onChange={handleOnChange}
         />
-      </FormGroup>
-      <div className="d-flex">
+        </FormGroup>
+        
+        <div className="d-flex mb-1">
         <Button className="ml-auto mr-4">share</Button>
-      </div>
-    </Form>
+        </div>
+    </form>
+  
   )
 }

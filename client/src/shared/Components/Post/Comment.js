@@ -6,8 +6,9 @@ import {
 import styled from 'styled-components'
 import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
-
+import { timeAgo } from '../../Utils'
 export default function Comment({ id, body, createdAt, name }) {
+  const PostedTime = timeAgo(Date.now(),createdAt)
   return (
     <FlatCard className="bg-white animated fadeIn" >
       <div className="d-flex">
@@ -17,7 +18,7 @@ export default function Comment({ id, body, createdAt, name }) {
           alt="my profile img" />
         <div>
           <CardTitle className="mb-0 text-capitalize">{name}</CardTitle>
-          <CreatedAt className="ml-0 pl-0">{createdAt}</CreatedAt>
+          <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
         </div>
       </div>
       <div className="text-left ml-2">{body}</div>

@@ -28,6 +28,9 @@ export const FETCH_USERS_POSTS = gql`
       lname
       email
       username
+      posts { 
+        id
+      }
     }
     comments {
       id
@@ -51,6 +54,9 @@ export const GET_ME = gql`
     fname
     lname
     username
+    posts { 
+      id
+    }
   }
 }
 `
@@ -74,6 +80,10 @@ query getMorePosts( $limit: Int, $skip: Int ){
       id
       fname
       lname
+      username
+      posts {
+        id
+      }
     }
     comments {
       id
@@ -100,6 +110,10 @@ query getMyPosts ($limit: Int, $skip: Int){
       id
       fname
       lname
+      username
+      posts {
+        id
+      }
     }
     comments {
       id
@@ -125,6 +139,10 @@ query getFeed ($limit: Int, $skip: Int) {
       id
       fname
       lname
+      username
+      posts {
+        id
+      }
     }
     comments {
       id

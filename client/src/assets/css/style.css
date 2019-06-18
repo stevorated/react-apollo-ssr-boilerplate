@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   background: rgb(199, 212, 206);
   margin: 0!important;
   padding: 0!important;
@@ -7,12 +8,22 @@ body {
 
 }
 
+/* *:focus, *:active {
+  border: none;
+  outline: none!important;
+} */
+
 div#root, .container-fluid, .container, .row {
   padding: 0.2rem!important;
 }
 
 button.big-x {
-  font-size: 2rem;
+  font-size: 3rem;
+}
+
+button.big-x:active, button.big-x:focus {
+  border: none;
+  outline: none;
 }
 
 ul.header-navbar {

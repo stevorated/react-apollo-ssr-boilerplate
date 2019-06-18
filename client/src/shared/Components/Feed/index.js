@@ -1,11 +1,11 @@
 import FeedExtraLeft from './FeedExtraLeft'
 import FeedExtraRight from './FeedExtraRight'
 import FeedScrollQuery from './FeedScrollQuery'
-import FeedMenu from './FeedMenu'
+import Menu from './Menu'
 
 export {
   FeedExtraLeft,
   FeedExtraRight,
   FeedScrollQuery,
-  FeedMenu
+  Menu
 }

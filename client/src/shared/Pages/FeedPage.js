@@ -6,7 +6,7 @@ import { HelmetComponent } from '../Components'
 import { fetchFeed, clearFeed } from '../Store/actions'
 import requireAuth from '../HOC/requireAuth'
 import checkLoggedIn from '../HOC/checkLoggedIn'
-import { FeedMenu, ProfileContainer, InfoContainer } from '../Components'
+import { Menu, ProfileContainer, InfoContainer } from '../Components'
 // import FeedRigntBar from '../Components/Feed/FeedRigntBar'
 import FeedScrollQuery from '../Components/Feed/FeedScrollQuery'
 import FeedExtraLeft from '../Components/Feed/FeedExtraLeft'
@@ -23,27 +23,17 @@ class FeedPage extends Component {
     this.state = {
       leaveClass: 'animeted fadeOutUp'
     }
-    // console.log(this.props)
   }
   componentWillUnmount = () => {
-    
-    setTimeout(()=>{
-      this.setState = {leaveClass: ''}
-      console.log('unmount')
-    },1000)
     
   }
 
   render() {
     return(
-    // <ReactCSSTransitionGroup
-    // transitionName="example"
-    // transitionLeaveTimeout={100}>
-    // >
       <Row className="animated fadeIn">
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
-          <FeedMenu />
+          <Menu />
           <FeedExtraLeft />
         </FloatLeft>
         <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
@@ -54,7 +44,6 @@ class FeedPage extends Component {
           <FeedExtraRight />
         </Col>
       </Row>
-    // </ReactCSSTransitionGroup>
     )
   } 
 }
