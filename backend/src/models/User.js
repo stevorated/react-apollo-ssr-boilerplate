@@ -53,6 +53,10 @@ const userSchema = new mongoose.Schema({
   posts: [{
     type: ObjectId,
     ref: 'Post'
+  }],
+  avatar: [{
+    type: ObjectId,
+    ref: 'File'
   }]
 },
 {

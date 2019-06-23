@@ -10,7 +10,8 @@ export const {
   SESSION_DB_HOST,
   SESSION_DB_PORT,
   SESSION_DB_NAME,
-  SESSION_DB_COLLECTION
+  SESSION_DB_COLLECTION,
+  ASSETS_DIR
 } = process.env
 
 export const IN_PROD = NODE_ENV === 'production'

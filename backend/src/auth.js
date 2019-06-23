@@ -16,7 +16,7 @@ export const attmeptSignIn = async (email, password) => {
   return user
 }
 
-const signedIn = req => req.session.userId
+export const signedIn = req => req.session.userId
 
 export const ensureSignedIn = req => {
   if (!signedIn(req)) {
@@ -37,3 +37,11 @@ export const signOut = (req, res) => new Promise((resolve, reject) => {
     resolve(true)
   })
 })
+
+export const protectedStatic = (req, res, done) => {
+  if (!req.session.userId) {
+    res.status(403).send({ error: 'u must be logged in for that' })
+  } else {
+    done()
+  }
+}

@@ -3,10 +3,11 @@ import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import session from 'express-session'
 import mongoDBStore from 'connect-mongodb-session'
-// import connectRedis from 'connect-redis'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import cookieParser from 'cookie-parser'
+import path from 'path'
+import { protectedStatic } from './auth'
 import {
   APP_PORT,
   IN_PROD,
@@ -16,7 +17,8 @@ import {
   SESSION_NAME,
   SESSION_LIFE,
   SESSION_SECRET,
-  SESSION_DB_COLLECTION
+  SESSION_DB_COLLECTION,
+  ASSETS_DIR
 } from './config'
 import schemaDirectives from './directives'
 
@@ -56,6 +58,10 @@ import schemaDirectives from './directives'
       }
     }))
 
+    app.use('/images', protectedStatic)
+    const assetsDir = path.join(__dirname, ASSETS_DIR)
+    app.use('/images', express.static(assetsDir))
+
     const server = new ApolloServer({
       typeDefs,
       resolvers,
@@ -65,6 +71,10 @@ import schemaDirectives from './directives'
           'request.credentials': 'same-origin'
         }
       },
+      uploads: {
+        maxFieldSize: 2000000,
+        maxFiles: 10
+      },
       context: ({ req, res }) => ({ req, res })
     })
 
@@ -73,10 +83,11 @@ import schemaDirectives from './directives'
       credentials: true,
       sameSite: true
     }
-
     server.applyMiddleware({
       app,
+      // multer: upload.single('avatar'),
       cors: corsOptions
+      // graphqlUploadExpress: graphqlUploadExpress({ maxFileSize: 10000000 })
     })
 
     app.listen({ port: APP_PORT }, () =>

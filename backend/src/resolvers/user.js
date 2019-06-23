@@ -27,7 +27,7 @@ export default {
         { username: { $regex: `${args.filter.username}`, $options: 'i' } },
         { email: { $regex: `${args.filter.email}`, $options: 'i' } }
       ]
-      }, null, { limit: 2 })
+      }, null, { limit: 4 })
       if (users.legnth) {
         throw new UserInputError(`Found no Users`)
       }
@@ -63,6 +63,10 @@ export default {
   User: {
     posts: async (user, args, context, info) => {
       return (await user.populate({ path: 'posts', options: { sort: { createdAt: -1 } } }).execPopulate()).posts
+    },
+    avatar: async (user, args, context, info) => {
+      const res = await user.populate({ path: 'avatar', options: { sort: { createdAt: -1 } } }).execPopulate()
+      return res.avatar
     }
   }
 }
