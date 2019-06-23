@@ -1,5 +1,14 @@
 import gql from 'graphql-tag'
 
+export const UPLOAD_FILE_TEST = gql`
+mutation ($file: Upload!, $size: String!) {
+  singleUpload (file: $file, size: $size) {
+    url
+  }
+}
+`
+
+
 export const DELETE_POST_MUT = gql`
 mutation ($post: ID!) {
   deletePost (post: $post)
@@ -21,6 +30,9 @@ export const CREATE_POST_MUT = gql`
       lname
       username
       email
+      avatar {
+        url
+      }
       posts {
         id
       }
@@ -59,6 +71,9 @@ export const CREATE_COMMENT_MUT = gql`
     createdBy {
       fname
       lname
+      avatar {
+        url
+      }
     }
   }
 }
@@ -93,6 +108,12 @@ export const LOGIN_USER_MUT = gql`
     fname
     lname
     username
+    avatar {
+      url
+    }
+    posts {
+      id
+    }
   }
 }
 `

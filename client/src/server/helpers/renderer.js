@@ -43,6 +43,7 @@ export default function renderer(req, store, client, context) {
       </head>
       <body>
         <div id="root">${content}</div>
+        <div id="portal"></div>
         <script>
           window.__INITIAL_STATE__ = ${serialize(store.getState())}
         </script>

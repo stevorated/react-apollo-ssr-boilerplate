@@ -1,12 +1,12 @@
 import express from 'express'
 import cors from 'cors'
 import { matchRoutes } from 'react-router-config'
-import proxy from 'express-http-proxy'
+import proxy from 'express-http-proxy' //TODO: return the proxy
 import cookieParser from 'cookie-parser'
 import routes from '../shared/Routes/mainRoutes'
 import { renderer, createStore } from './helpers'
 import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client' 
 import fetch from 'node-fetch'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
@@ -24,7 +24,7 @@ app.use(cors())
 app.use(express.static('build/public'))
 
 app.get('*', async (req, res) => {
-  const linkHttp = createHttpLink({
+  const linkHttp = createUploadLink({
     ssrMode: true,
     uri: GRAPH_URL,
     credentials: 'include',

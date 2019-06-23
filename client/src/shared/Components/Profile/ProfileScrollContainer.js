@@ -37,7 +37,7 @@ function ProfileScrollContainer(props) {
         })
       }
       return (
-        <StyledDiv>
+        <StyledDiv className="text-center">
         <PostFormContainer 
         profileMode={true} 
         id={props.id} 
@@ -53,7 +53,7 @@ function ProfileScrollContainer(props) {
 }
 
 const mapStateToProps = ({ profilePosts, auth }) => {
-  return {profilePosts, auth}
+  return { profilePosts, auth }
 }
 export default connect(mapStateToProps, { fetchUsersPosts })(ProfileScrollContainer)
 

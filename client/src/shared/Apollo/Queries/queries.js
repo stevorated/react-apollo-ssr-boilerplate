@@ -12,6 +12,9 @@ query ($fname: String, $lname: String, $username: String){
     fname
     lname
     username
+    avatar {
+      url
+    }
   }
 }
 `
@@ -27,6 +30,9 @@ export const FETCH_USERS_POSTS = gql`
       fname
       lname
       email
+      avatar {
+        url
+      }
       username
       posts { 
         id
@@ -40,6 +46,9 @@ export const FETCH_USERS_POSTS = gql`
         id
         fname
         lname
+        avatar {
+          url
+        }
       }
     }
   }
@@ -53,6 +62,9 @@ export const GET_ME = gql`
     email
     fname
     lname
+    avatar {
+      url
+    }
     username
     posts { 
       id
@@ -67,6 +79,9 @@ export const GET_MA_DETAILS = gql`
     lname
     username
     email
+    avatar {
+      url
+    }
   }
 }
 `
@@ -81,6 +96,9 @@ query getMorePosts( $limit: Int, $skip: Int ){
       fname
       lname
       username
+      avatar {
+        url
+      }
       posts {
         id
       }
@@ -93,6 +111,9 @@ query getMorePosts( $limit: Int, $skip: Int ){
         id
         fname
         lname
+        avatar {
+          url
+        }
       }
     }
   }
@@ -111,6 +132,9 @@ query getMyPosts ($limit: Int, $skip: Int){
       fname
       lname
       username
+      avatar {
+        url
+      }
       posts {
         id
       }
@@ -123,6 +147,9 @@ query getMyPosts ($limit: Int, $skip: Int){
         id
         fname
         lname
+        avatar {
+          url
+        }
       }
     }
   }
@@ -140,6 +167,9 @@ query getFeed ($limit: Int, $skip: Int) {
       fname
       lname
       username
+      avatar {
+        url
+      }
       posts {
         id
       }
@@ -152,6 +182,9 @@ query getFeed ($limit: Int, $skip: Int) {
         id
         fname
         lname
+        avatar {
+          url
+        }
       }
     }
   }
@@ -166,6 +199,9 @@ export const GET_USERS = gql`
     fname
     username
     email
+    avatar {
+      url
+    }
   }
 }
 `
