@@ -28,9 +28,9 @@ function PublicPage(props) {
     }
   }
   return (
-    <Container className="animated fadeIn slow">
+    <Container className="animated fadeIn slow text-center">
       <HelmetComponent pageTitle={title} ogTitle={title} />
-      <h1>Public Page</h1>
+      <h1 className="pt-4">Public Page</h1>
       <button
       style={elevationJs[3]}
       onClick={handleClick}

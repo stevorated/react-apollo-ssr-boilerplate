@@ -7,9 +7,9 @@ import { fetchMyPosts } from '../Store/actions'
 import requireAuth from '../HOC/requireAuth'
 import checkLoggedIn from '../HOC/checkLoggedIn'
 import { ProfileContainer, ScrollContainer, InfoContainer } from '../Components'
-import { mediaQs } from '../Utils'
+import { mediaQueries } from '../Utils'
 
-class PrivatePage extends Component {
+class ProfilePage extends Component {
 
   constructor (props) {
     super(props)
@@ -25,18 +25,20 @@ class PrivatePage extends Component {
   
   render() {
     return(
-      <Row className="animated fadeIn">
+      <ProfilePageRow className="animated fadeIn">
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
           <ProfileContainer />
         </FloatLeft>
-        <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
+        <Col lg="6" className="offset-lg-3 order-3 order-lg-2" >
           <ScrollContainer />
         </Col>
-        <Col lg="3" className="order-2 order-lg-3">
+        <Col lg="3" className="order-2 order-lg-3 mt-lg-3 mt-1">
+          <InfoContainer />
+          <InfoContainer />
           <InfoContainer />
         </Col>
-      </Row>
+      </ProfilePageRow>
     )
   } 
 }
@@ -46,10 +48,13 @@ function mapStateToProps({ users, posts }) {
 }
 
 export default {
-  component: connect(mapStateToProps, {fetchMyPosts})(checkLoggedIn(requireAuth(PrivatePage))),
+  component: connect(mapStateToProps, {fetchMyPosts})(checkLoggedIn(requireAuth(ProfilePage))),
   loadData: ({ dispatch }) => dispatch(fetchMyPosts())
 }
 
+const ProfilePageRow = styled(Row)`
+  /* display: block; */
+`
 // const StyledInfo = styled(InfoContainer)`
 // /* ${mediaQs.mamabear `
 //     margin-top:0;
@@ -57,20 +62,16 @@ export default {
 //   margin-top: 0!important;
 // `
 
-
+const x = '4rem'
 const FloatLeft = styled(Col)`
-  position: fixed!important;
-  top: 4.8rem;
+  margin: 0!important;
+  padding: 0!important;
+  position: static!important;
+  top: 4rem;
   left: 0rem;
-  ${mediaQs.papabear `
-    position: static!important;
+  ${mediaQueries.lg`
+  position: fixed!important;
   `}
-  ${mediaQs.brotherbear `
-    position: static!important;
-  `}
-  ${mediaQs.mamabear `
-    position: static!important;
-  `}
-`
+  `
 
 

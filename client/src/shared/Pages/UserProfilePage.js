@@ -8,7 +8,7 @@ import { mediaQs } from '../Utils'
 import checkLoggedIn from '../HOC/checkLoggedIn'
 import requireAuth from '../HOC/requireAuth'
 import { clearUsersPosts } from '../Store/actions'
-
+import { FeedActivity, FeedExtraRight } from '../Components/Feed'
 class UserProfilePage extends Component {
   constructor(props) {
     super(props)
@@ -32,7 +32,10 @@ class UserProfilePage extends Component {
         <ProfileContainer id={this.id} profileMode={true} />
         <ProfileScrollContainer id={this.id} fatherProps={this.props} />
       </Col>
-      <Col lg="3" className="order-2 order-lg-3">
+      <Col lg="3" className="order-2 order-lg-3 mt-lg-3">
+        <FeedActivity />
+        <FeedExtraRight />
+        <FeedExtraRight />
       </Col>
     </Row>
     )

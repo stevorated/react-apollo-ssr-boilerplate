@@ -20,7 +20,8 @@ export default function Comments(props) {
     return comments.map(({ id, body, createdBy, createdAt })=>{
       const commentID = id
       const name = `${createdBy.fname} ${createdBy.lname}`
-      return <Comment key={commentID} body={body} createdAt={createdAt} name={name} />
+      const profileImgUrl = createdBy.avatar && createdBy.avatar.length ? createdBy.avatar[0].url : null
+      return <Comment key={commentID} body={body} createdAt={createdAt} name={name} createdBy={createdBy} profileImgUrl={profileImgUrl} />
     })
 
   }

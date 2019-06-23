@@ -9,11 +9,11 @@ import checkLoggedIn from '../HOC/checkLoggedIn'
 import { Menu, ProfileContainer, InfoContainer } from '../Components'
 // import FeedRigntBar from '../Components/Feed/FeedRigntBar'
 import FeedScrollQuery from '../Components/Feed/FeedScrollQuery'
-import FeedExtraLeft from '../Components/Feed/FeedExtraLeft'
+import FeedActivity from '../Components/Feed/FeedActivity'
 import FeedExtraRight from '../Components/Feed/FeedExtraRight'
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { mediaQs } from '../Utils'
+import { mediaQs, mediaQueries } from '../Utils'
 
 class FeedPage extends Component {
 
@@ -21,7 +21,7 @@ class FeedPage extends Component {
     super(props)
     this.title = 'Scroll Page'
     this.state = {
-      leaveClass: 'animeted fadeOutUp'
+      leaveClass: 'animated fadeOutUp'
     }
   }
   componentWillUnmount = () => {
@@ -34,14 +34,16 @@ class FeedPage extends Component {
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
           <Menu />
-          <FeedExtraLeft />
         </FloatLeft>
         <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
           <FeedScrollQuery />
         </Col>
-        <Col lg="3" className="order-2 order-lg-3">
+        <Col lg="3" className="order-2 order-lg-3 mt-2">
           <FeedExtraRight />
           <FeedExtraRight />
+          <FeedActivity />
+          <FeedActivity />
+          <FeedActivity />
         </Col>
       </Row>
     )
@@ -56,21 +58,13 @@ export default {
   component: connect(mapStateToProps, {fetchFeed, clearFeed})(checkLoggedIn(requireAuth(FeedPage))),
   loadData: ({ dispatch }) => dispatch(fetchFeed())
 }
-
 const FloatLeft = styled(Col)`
-  position: fixed!important;
-  top: 4.8rem;
+  position: static!important;
+  top: 3.5rem;
   left: 0rem;
-  ${mediaQs.papabear `
-    position: static!important;
+  ${mediaQueries.xl`
+  position: fixed!important;
   `}
-  ${mediaQs.brotherbear `
-    position: static!important;
-  `}
-  ${mediaQs.mamabear `
-    position: static!important;
-    // display:none;
-  `}
-`
+  `
 
 

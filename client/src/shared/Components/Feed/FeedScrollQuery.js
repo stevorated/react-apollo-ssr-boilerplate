@@ -44,10 +44,10 @@ const FeedScrollQuery = (props) => {
         if (loading) return <Loading />
         if (error) return <Loading />
         return (
-          <StyledDiv>
+          <StyledDiv className="text-center">
             <PostFormContainer feedMode={true} />
             <Posts feedMode={true} />
-            <Button onClick={handleFatchMore}>Load More</Button>
+            <Button className="mb-5" onClick={handleFatchMore}>Load More</Button>
           </StyledDiv>
         )
       }}
@@ -64,7 +64,7 @@ export default connect(mapStateToProps, { fetchFeed })(FeedScrollQuery)
 const StyledDiv = styled.div `
   margin: 0;
   padding: 0;
-  margin-bottom: 20rem;
+  display: block;
 `
 
 

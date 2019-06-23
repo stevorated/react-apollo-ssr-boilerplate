@@ -38,7 +38,7 @@ const QueryMorePosts = (props) => {
       if (loading) return <Loading />
       if (error) return <h1>`Error! ${error}`</h1>
       return (
-        <button onClick={handleFatchMore}>get More</button>
+        <button className="mb-5" onClick={handleFatchMore}>get More</button>
       );
     }}
   </Query>

@@ -28,6 +28,7 @@ class DeletePostMutation extends Component {
     this.props.handleDelete()
   }
 
+
   render() {
     return (
       <ApolloConsumer>
@@ -62,7 +63,7 @@ class DeletePostMutation extends Component {
                   </StyledPopover>
                   <Button 
                     style={{transition: 'all .5s ease'}}
-                    className={this.props.clickDeleteCounter >= 1 ? 'text-danger big-x' : ''}
+                    className={this.props.clickDeleteCounter >= 1 ? 'text-danger animated shake fast big-x' : ''}
                     id={`PopoverDeletePost_${this.props.post}`}
                     onClick={async () => {
                       if (this.props.clickDeleteCounter < 2) { return this.handleDeleteButton() }

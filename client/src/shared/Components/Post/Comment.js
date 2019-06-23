@@ -7,14 +7,15 @@ import styled from 'styled-components'
 import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 import { timeAgo } from '../../Utils'
-export default function Comment({ id, body, createdAt, name }) {
+export default function Comment({ id, body, createdAt, name, profileImgUrl }) {
   const PostedTime = timeAgo(Date.now(),createdAt)
   return (
     <FlatCard className="bg-white animated fadeIn" >
+      <Button close></Button>
       <div className="d-flex">
         <SmallProfileImg
           className="mr-3"
-          src={imgAvatar}
+          src={profileImgUrl ? profileImgUrl : imgAvatar}
           alt="my profile img" />
         <div>
           <CardTitle className="mb-0 text-capitalize">{name}</CardTitle>

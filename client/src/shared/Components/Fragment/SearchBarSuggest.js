@@ -7,14 +7,11 @@ import { SEARCH_USER, FETCH_USERS_POSTS } from '../../Apollo/Queries'
 import { clearUsersPosts, clearUsersPostsAndRefetch } from '../../Store/actions'
 import styled from 'styled-components'
 import { black, ceruleam, mediaQs } from '../../Utils'
-import RefetchQuery from '../Profile/RefetchQuery'
 
 function SearchBarSuggest(props) {
   const handleClick = (e) => {
-    // e.preventDefault()
     props.setShowSuggest(false)
     props.setSearchTerm(e.target.text)
-    // console.log(e.target.text)
     
     if(props.choices && props.choices.length ) {
       const fullName = `${props.choices[props.pointer].fname} ${props.choices[props.pointer].lname}`
@@ -82,7 +79,7 @@ const FlyingSuggest = styled.div `
   background: white;
   text-align: left;
   border-radius: 0rem 0rem .3rem .3rem;
-  min-width: 11rem;
+  width: 11.6rem;
   ${mediaQs.mamabear `
     position: static!important;
     min-width: 80vw;
@@ -105,11 +102,10 @@ const SuggestList = styled.div`
 `
 const SuggestLink = styled(Link)`
   font-size: 1.1rem;
-  /* background: red; */
-  padding: 0 5.5rem 0 0.2rem;
+  display: block;
   color: ${black};
   ${mediaQs.mamabear `
-    padding: 0 15rem 0 0.2rem;
+  
   `}
   &:hover {
     text-decoration: none;

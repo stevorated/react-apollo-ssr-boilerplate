@@ -29,15 +29,15 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
   }
 
   const authBtn = auth ? (
-      <NavLink className='nav-link' to="/login" onClick={handleLogout}>Logout</NavLink>
-    ) : (
+    <NavLink className='nav-link' to="/login" onClick={handleLogout}>Logout</NavLink>
+  ) : (
       <div className="d-md-flex">
         <NavLink className='nav-link' to="/login" onClick={handleClick}  >Login</NavLink>
         <NavLink className='nav-link' to="/register" onClick={handleClick}  >Register</NavLink>
       </div>
     )
   return (
-    <Navbar color="dark" style={elevationJs[4]} dark expand="md" fixed="top">
+    <Navbar className="text-capitalize" color="dark" style={elevationJs[4]} dark expand="md" fixed="top">
       <NavLink
         style={{ fontSize: '1.1rem' }}
         className="nav-link text-white"
@@ -48,16 +48,20 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
         onClick={handleToggleNav}
       />
       <Collapse isOpen={collapsed} navbar>
-        <SearchBar setRedirect={setRedirect} setWhereTo={setWhereTo} whereTo={whereTo} handleClick={handleClick}  />
+        <SearchBar
+          setRedirect={setRedirect}
+          setWhereTo={setWhereTo}
+          whereTo={whereTo}
+          handleClick={handleClick} />
         <Nav className="ml-auto pr-4" navbar>
           <NavItem>
             <NavLink
               className='nav-link'
               onClick={handleClick}
-              to='/admins'
+              to='/profile'
             >
               Profile
-              </NavLink>
+          </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
@@ -66,8 +70,9 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
               to='/feed'
             >
               Feed
-              </NavLink>
+          </NavLink>
           </NavItem>
+
           <NavItem>
             {authBtn}
           </NavItem>

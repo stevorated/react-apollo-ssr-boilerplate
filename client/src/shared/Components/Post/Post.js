@@ -15,7 +15,6 @@ import Avatar from '../../../assets/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 function Post(props) {
-  // console.log(props)
   const MyPost = props.createdBy.id === props.auth.id
   const profileUrl = `/profile/${props.createdBy.id}`
   const [ showForm, setShowForm ] = useState(false)
@@ -47,7 +46,7 @@ function Post(props) {
   const animatedClass = 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
   return !hideDeletedComment ? (
-    <div className={`mb-4 ${animatedClass}`}>
+    <div className={`mb-4 text-center ${animatedClass}`}>
       <StyledCard  >
         <CardBody>
           {MyPost && <DeletePostMutation 
@@ -62,19 +61,27 @@ function Post(props) {
             <ProfileLink to={profileUrl} >
               <SmallProfileImg
                 className="mr-3"
-                src={imgAvatar}
+                src={props.linkUrl ? props.linkUrl : imgAvatar}
                 alt="my profile img" />
             </ProfileLink>
             <div>
               <CardTitle className="mb-0 text-capitalize">
                 <ProfileLink to={profileUrl}>{props.name}</ProfileLink>
+                <span className="small-text"> posted</span>
               </CardTitle>
               <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
             </div>
           </div>
-          <CardText className="mb-4 mt-2 text-left lead ml-2">
+          {props.body.length > 20 
+          ?
+          <CardText className="mb-4 mt-2 text-left ml-2">
             {props.body}
           </CardText>
+          :
+          <CardText className="mb-4 mt-2 text-left ml-2">
+           {props.body}
+          </CardText> 
+          }
           <div className="d-flex">
             <Button size="sm" className="px-2" style={{padding: '0.3rem'}} 
             onClick={ props.comments.length >0 ? toggleComments : (()=>{})}>
@@ -99,15 +106,14 @@ function Post(props) {
           createdBy={props.createdBy}
           id={props.id} 
           openForm={openForm} />}
-
       </StyledCard>
       {!showComments && 
-        <Link 
+        <StyledLink 
         to="#" 
         onClick={openForm} 
-        className="">
+        className="small-text">
         {showForm ? 'Hide' : 'Add a Comment'}
-        </Link>}
+        </StyledLink>}
       {showComments &&  
         <Comments 
         feedMode={props.feedMode} 
@@ -156,4 +162,12 @@ const StyledCard = styled(Card)`
 `
 const StyledCardBody = styled(CardBody)`
   transition: all 1s ease;
+`
+
+const StyledLink = styled(Link)`
+  color: ${black};
+  &:hover {
+    color: ${black};
+    text-decoration: none;
+  }
 `

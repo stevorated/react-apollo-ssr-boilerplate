@@ -1,6 +1,10 @@
+html {
+  overflow-x: hidden;
+
+}
 body {
   overflow-x: hidden;
-  background: rgb(199, 212, 206);
+  background: rgb(218, 223, 220);
   margin: 0!important;
   padding: 0!important;
   /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
@@ -8,13 +12,41 @@ body {
 
 }
 
+.grow-on-hover {
+  transition: all .1s step-start;
+  display: block;
+}
+.grow-on-hover:hover {
+  transform: scale(1.1) translateX(10px);
+}
+.noPadding {
+  margin: 0;
+  padding: 0!important;
+}
+
+/* .tiny-text {
+  font-weight: 100;
+  font-size: .4rem;
+} */
+.small-text {
+  font-weight: 100;
+  font-size: .8rem;
+}
+
+.small-text-header {
+  font-weight: 300;
+  font-size: .8rem;
+}
 /* *:focus, *:active {
   border: none;
   outline: none!important;
 } */
 
-div#root, .container-fluid, .container, .row {
-  padding: 0.2rem!important;
+div#root {
+  padding: 0rem!important;
+}
+.container-fluid, .container, .row, .col {
+  padding: 0.05rem;
 }
 
 button.big-x {

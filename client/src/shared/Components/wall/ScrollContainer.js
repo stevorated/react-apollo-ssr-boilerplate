@@ -7,7 +7,7 @@ import { QueryMorePosts } from '../Post'
 
 function ScrollContainer() {
   return (
-    <StyledDiv>
+    <StyledDiv className="text-center">
       <PostFormContainer myPostsMode={true} />
       <Posts myPostsMode={true} />
       <QueryMorePosts />
@@ -18,7 +18,8 @@ function ScrollContainer() {
 const StyledDiv = styled.div `
   margin: 0;
   padding: 0;
-  margin-bottom: 20rem;
+  /* display: block; */
+  /* margin-bottom: 20rem; */
 `
 
 export default ScrollContainer

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import { REGISTER_USER_MUT } from '../Apollo/Mutaions'
 import { RegisterForm, Loading } from '../Components'
@@ -64,12 +65,14 @@ class RegisterPage extends Component {
                 }
               }
               return (
-              <div>
+              <div className="text-center">
+              
                 <RegisterForm 
                 register={signUp} 
                 state={this.state} 
                 handleFormState={this.handleFormState} 
                 />
+                
                 {loading && <Loading />}
               </div>
               )

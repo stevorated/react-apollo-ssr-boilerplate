@@ -29,7 +29,7 @@ export const FlatCard = styled.div `
       opacity: .9;
       border-radius: .3rem;
       padding: 0.5rem;
-      margin-bottom: .3rem;
+      /* margin-bottom: .3rem; */
       ${elevation[1]};
       transition: all 3s ease;
       ${transition({
@@ -42,7 +42,7 @@ export const FlatCard = styled.div `
 
 export const MenuCard = styled.div `
       color: ${white};
-      min-height: 50vh;
+      /* min-height: 50vh; */
       background: ${black};
       opacity: .5;
       border-radius: .3rem;

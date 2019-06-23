@@ -8,12 +8,12 @@ export default (ChildComponent) => {
     render() {
         switch (this.props.auth) {
           case null:
-            return <Redirect to="/" />
+            return <Redirect to="/login" />
           default:
             if(isMongoId(this.props.auth.id)) {
               return <ChildComponent {...this.props}/>
             } else {
-              return <Redirect to="/" />
+              return <Redirect to="/login" />
             }
         }
       }

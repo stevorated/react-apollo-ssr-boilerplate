@@ -12,7 +12,7 @@ export default (ChildComponent) => {
             return <ChildComponent {...this.props}/>
           default:
             if(isMongoId(this.props.auth.id)) {
-              return <Redirect to="/feed" />
+              return <Redirect to="/profile" />
             } else {
               return <ChildComponent {...this.props}/>
             }

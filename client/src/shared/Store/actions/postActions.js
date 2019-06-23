@@ -21,11 +21,11 @@ export const clearFeed = () => async (dispatch, getState, client) => {
   })
 }
 
-export const fetchFeed = (CrowserData, count = 5) => async (dispatch, getState, client) => {
+export const fetchFeed = (BrowserData, count = 5) => async (dispatch, getState, client) => {
   if(count > 10) {
     count = 10  
   }
-  const data = CrowserData ? CrowserData : await client.query({
+  const data = BrowserData ? BrowserData : await client.query({
     query: FETCH_FEED,
     variables: { limit: count }
   })

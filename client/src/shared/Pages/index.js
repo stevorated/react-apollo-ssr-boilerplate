@@ -1,4 +1,4 @@
-import PrivatePage from './PrivatePage'
+import ProfilePage from './ProfilePage'
 import PublicPage from './PublicPage'
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
@@ -9,7 +9,7 @@ import UserProfilePage from './UserProfilePage'
 
 export {
   TestPage,
-  PrivatePage,
+  ProfilePage,
   PublicPage,
   LoginPage,
   RegisterPage,

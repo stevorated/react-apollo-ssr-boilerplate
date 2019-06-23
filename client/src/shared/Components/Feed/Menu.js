@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Container, Col, Row } from 'reactstrap'
-import { FlatCard, Card, MenuCard } from '../../Elements'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { MenuCard } from '../../Elements'
+import { mediaQs } from '../../Utils'
+import { logoutUser } from '../../Store/actions'
 import {
   faSearch,
   faAirFreshener,
@@ -12,55 +14,46 @@ import {
   faHome,
   faAnchor,
   faScrewdriver
-}
-  from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import MenuItem from './MenuItem'
-import { black, white } from '../../Utils'
+// import { black, white, elevation } from '../../Utils'
 
-export default function Menu() {
+function Menu({ logoutUser }) {
+  const handleLogout = async () => {
+    await logoutUser()
+  }
   return (
-    <MenuCard>
-      <h3 className="header-4 mt-2">Menu</h3>
+    <MenuCard className="text-center">
+      <h3 className="header-4 mt-3 py-1">Menu</h3>
       <hr className="lead mb-3" style={{ color: 'white', borderWidth: '2px', borderColor: 'white' }} />
-      <Container >
-        <Row>
-          <Col lg={12} xs={6}>
-            <StyledList className="p-0 m-0">
-              <MenuItem icon={faHome} text="Profile" />
-              <MenuItem icon={faAnchor} text="Event Board" />
-              <MenuItem icon={faAddressBook} text="Feed" />
-              <MenuItem icon={faAmbulance} text="Logout" />
+      <Container>
+        <Row >
+          <Col lg={12} xs={6} className="p-0">
+            <StyledList className="p-0 m-0 pb-2">
+              <MenuItem icon={faHome} text="Profile" to="/profile" />
+              <MenuItem icon={faAnchor} text="Event Board" to="/myevents" />
+              <MenuItem icon={faAddressBook} text="Feed" to="/feed"/>
             </StyledList>
           </Col>
-          <Col lg={12} xs={6}>
+          <Col lg={12} xs={6} className="p-0 pb-2">
             <StyledList className="p-0 m-0">
-              <MenuItem icon={faAmbulance} text="Settings" />
-              <MenuItem icon={faScrewdriver} text="Prefs" />
-              <MenuItem icon={faAmericanSignLanguageInterpreting} text="Follows" />
-              <MenuItem icon={faAirFreshener} text="Followers" />
+              <MenuItem icon={faAmbulance} text="Settings" to="/settings" />
+              <MenuItem icon={faScrewdriver} text="Prefs" to="/prefrences" />
+              <MenuItem icon={faAmbulance} text="Logout" to="/logout" handleLogout={handleLogout} />
             </StyledList>
           </Col>
         </Row>
       </Container>
-      <hr style={{ color: 'white', borderWidth: '2px', borderColor: 'white' }} />
+      
     </MenuCard>
   )
 }
 
 const StyledList = styled.ul`
-  padding: 0;
-  margin: 0;
+  display: block;
 `
 
-const StyledListItem = styled.li`
-  cursor: pointer;
-  list-style: none;
-  margin: .5rem .2rem .2rem 0rem ;
-  padding: .2rem;
-  transition: all .5s ease;
-  &:hover {
-    background: antiquewhite;
-    color: black;
-  }
-`
+export default connect(undefined, { logoutUser })(Menu)
+
+// <hr style={{ color: 'white', borderWidth: '2px', borderColor: 'white' }} />

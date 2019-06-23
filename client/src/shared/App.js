@@ -2,12 +2,13 @@ import React from 'react'
 import { Container } from 'reactstrap'
 import { renderRoutes } from 'react-router-config'
 import { fetchCurrentUser } from './Store/actions'
+import { black } from './Utils'
 
 
 function App({ route }) {
   
   return (
-    <Container  fluid className="mx-0 text-center" style={{marginTop: '4rem', marginLeft: '0!important', marginRight: '0!important', padding: '0'}}>
+    <Container  fluid className="mx-0" style={{marginTop: '3.4rem', marginLeft: '0!important', marginRight: '0!important', padding: '0', color: `${black}`}}>
       
       {renderRoutes(route.routes)}
     </Container>

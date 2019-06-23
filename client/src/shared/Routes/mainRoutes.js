@@ -4,7 +4,7 @@ import {
   RegisterPage,
   PublicPage, 
   NotFoundPage, 
-  PrivatePage,
+  ProfilePage,
   FeedPage,
   UserProfilePage
 } from '../Pages'
@@ -20,9 +20,9 @@ const routes = [
         ...PublicPage
       },
       {
-        path: '/admins',
+        path: '/profile',
         exact: true,
-        ...PrivatePage,
+        ...ProfilePage,
       },
       {
         path: '/feed',

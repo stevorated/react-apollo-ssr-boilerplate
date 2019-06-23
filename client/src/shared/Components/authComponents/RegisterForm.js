@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap'
 import { isEmail, isLength } from 'validator'
 import { registerUser } from '../../Store/actions'
@@ -96,13 +97,13 @@ function RegisterForm ({state, handleFormState, register, errors}) {
     }
   }
   return (
-    <Container className="animated fadeIn">
-      <Row className="d-flex justify-content-center py-5">
+    <Container className="animated fadeIn mb-5 pb-5">
+      <Row className="d-flex justify-content-center py-3">
       <Col xs={10}>
         <Form 
         onSubmit={handleReg}
         method="post">
-          <h1 className="display-4 mb-5">Register</h1>
+          <h1 className="display-4 mb-3 mt-1">Register</h1>
           <FormGroup>
             <Label for="fname-reg">first name</Label>
             <Input
@@ -175,8 +176,8 @@ function RegisterForm ({state, handleFormState, register, errors}) {
             />
             {errors && (errors.password && <FormFeedback>{errors.password.message}</FormFeedback>)}
           </FormGroup>
+          <p>Already Have an Acount?? <Link to="/login">Login</Link></p> 
           <Button>Sign In</Button>
-          
         </Form>
       </Col>
     </Row>
