@@ -6,15 +6,20 @@ const document = document || null
 export default () => {
   if(document) {
     const portalRoot = document.getElementById('portal')
+    console.log(portalRoot)
     class Portal extends Component {
   
       constructor() {
         super ()
-        this.el = document.createElement('div')
+        
+        
       }
     
       componentDidMount = () => {
-        portalRoot.append(this.el)    
+        console.log('modal mounted')
+        this.el = document.createElement('div')
+        console.log(this.el, 'fsdgdfgfdg')
+        portalRoot.append(this.el)
       }
     
       componentWillUnmount() {
@@ -26,7 +31,7 @@ export default () => {
         return reactDOM.createPortal(children, this.el)
       }
     }
-    return Portal
+    return <Portal />
   } else {
     class Portal extends Component {
       render() {
@@ -35,7 +40,7 @@ export default () => {
         )
       }
     }
-    return Portal
+    return <Portal />
   }
 }
 
