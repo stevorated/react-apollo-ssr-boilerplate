@@ -6,7 +6,8 @@ import {
   NotFoundPage, 
   ProfilePage,
   FeedPage,
-  UserProfilePage
+  UserProfilePage,
+  PrivacyPolicyPage
 } from '../Pages'
 import App from '../App'
 
@@ -20,7 +21,7 @@ const routes = [
         ...PublicPage
       },
       {
-        path: '/profile',
+        path: '/my-profile',
         exact: true,
         ...ProfilePage,
       },
@@ -49,6 +50,11 @@ const routes = [
         path: '/test',
         exact: true,
         ...TestPage
+      },
+      {
+        path: '/privacy',
+        exact: true,
+        ...PrivacyPolicyPage
       },
       {
         path: '/profile/:id',

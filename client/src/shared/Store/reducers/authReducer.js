@@ -1,14 +1,25 @@
-export default (state = null, action) => {
-  switch (action.type) {
+export default (state = null, { payload, type }) => {
+  switch (type) {
     case 'FETCH_CURRENT_USER':
-      return action.payload.me || false
+      return payload.me || false
     case 'LOGIN_USER':
-        return action.payload.signIn || false
+      return payload.signIn || false
     case 'REGISTER_USER':
-        return action.payload.signUp || false
+      return payload.signUp || false
     case 'LOGOUT_USER':
-        return null
-    default:
+      return null
+    case 'UPDATE_AVATAR':
+      const newAvatar = [{ url: payload }]
+      return { ...state, avatar: newAvatar.concat(state.avatar) }
+    case 'CREATE_POST':
+      const newPost = [{id:payload[0].id}]
+      return { ...state, posts: newPost.concat(state.posts)}
+    case 'DELETE_POST':
+        const newposts = state.posts.filter((post)=> {
+          return post.id !== payload
+        })
+        return { ...state, posts: newposts }
+    default: 
       return state
   }
 }

@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react'
+import { connect } from 'react-redux'
 import { Button, Card } from 'reactstrap'
 import Comment from './Comment'
 import AddCommentContainer from './AddCommentContainer'
 import { Link, NavLink } from 'react-router-dom'
 
-export default function Comments(props) {
-  const { comments, id } = props
+function Comments(props) {
+  const { comments, id, auth } = props
   const [ showForm, setShowForm ] = useState(false)
   const [ showComments, setShowComments ] = useState(false)
   const openForm = () => {
@@ -18,10 +19,14 @@ export default function Comments(props) {
 
   const renderQuery = () => {
     return comments.map(({ id, body, createdBy, createdAt })=>{
+      const myComment = auth.id === createdBy.id
+      console.log(auth.id)
+      console.log(createdBy.id)
+      console.log(myComment)
       const commentID = id
       const name = `${createdBy.fname} ${createdBy.lname}`
       const profileImgUrl = createdBy.avatar && createdBy.avatar.length ? createdBy.avatar[0].url : null
-      return <Comment key={commentID} body={body} createdAt={createdAt} name={name} createdBy={createdBy} profileImgUrl={profileImgUrl} />
+      return <Comment key={commentID} body={body} createdAt={createdAt} name={name} createdBy={createdBy} profileImgUrl={myComment ? auth.avatar[0].url : profileImgUrl} />
     })
 
   }
@@ -41,3 +46,8 @@ export default function Comments(props) {
     </div>
   )
 }
+
+const mapStateToProps = ({ auth }) => {
+  return { auth }
+}
+export default connect(mapStateToProps)(Comments)

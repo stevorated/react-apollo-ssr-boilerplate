@@ -11,7 +11,7 @@ function MenuItem({ icon, text, to = "/", handleLogout }) {
   return (
   <StyledListItem className="text-center pl-3">
     <StyledNavLink to={to} onClick={handleClick} className="text-left py-1">
-      <FontAwesomeIcon className="mx-3" icon={icon} />{text}
+      <FontAwesomeIcon className="mx-3" icon={icon} size={'lg'} /><span>{text}</span> 
     </StyledNavLink>
   </StyledListItem>
   )

@@ -22,6 +22,10 @@ function ProfileContainer({ auth, profilePosts, profileMode }) {
   if (details !== undefined) {
     let { id, fname, lname, username, posts, avatar } = details
     const myProfile = id === auth.id ? true : false
+    console.log(myProfile)
+    const myAvatarUrl = auth.avatar[0].url
+    const avatarOfUser = avatar && avatar.length ? avatar[0].url : imgAvatar
+    const imgUrl = myProfile ? myAvatarUrl : avatarOfUser
     let postCount = posts ? posts.length : null
     // console.log(avatar.length)
     return (
@@ -47,7 +51,7 @@ function ProfileContainer({ auth, profilePosts, profileMode }) {
                 <div className="mt-1">
                   <BigProfileImg
                   className="text-center mr-3"
-                  src={avatar && avatar.length ? avatar[0].url : imgAvatar}
+                  src={imgUrl}
                   alt=""
                   />
                   

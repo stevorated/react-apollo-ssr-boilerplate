@@ -35,8 +35,8 @@ class AddCommentContainer extends Component {
             onCompleted={({createComment}) => {
               console.log(createComment)
               this.props.pushComment(createComment)
-              this.props.setShowComments(true)
               this.props.setShowForm(false)
+              this.props.setShowComments(true)
             }}
             refetchQueries={[
               {query: FETCH_FEED},

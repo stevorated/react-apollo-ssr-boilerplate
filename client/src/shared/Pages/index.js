@@ -6,6 +6,7 @@ import NotFoundPage from './NotFoundPage'
 import TestPage from './TestPage'
 import FeedPage from './FeedPage'
 import UserProfilePage from './UserProfilePage'
+import PrivacyPolicyPage from './PrivacyPolicyPage'
 
 export {
   TestPage,
@@ -15,5 +16,6 @@ export {
   RegisterPage,
   NotFoundPage,
   FeedPage,
-  UserProfilePage
+  UserProfilePage,
+  PrivacyPolicyPage
 }

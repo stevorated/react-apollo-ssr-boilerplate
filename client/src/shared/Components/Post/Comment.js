@@ -10,7 +10,7 @@ import { timeAgo } from '../../Utils'
 export default function Comment({ id, body, createdAt, name, profileImgUrl }) {
   const PostedTime = timeAgo(Date.now(),createdAt)
   return (
-    <FlatCard className="bg-white animated fadeIn" >
+    <FlatCard className="bg-white animated fadeIn mt-1" >
       <Button close></Button>
       <div className="d-flex">
         <SmallProfileImg

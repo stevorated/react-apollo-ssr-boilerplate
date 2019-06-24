@@ -5,11 +5,14 @@ import { MenuCard } from '../../Elements'
 import { mediaQs } from '../../Utils'
 import { logoutUser } from '../../Store/actions'
 import {
+  faCalendarAlt,
   faSearch,
   faAirFreshener,
   faAddressBook,
+  faUserAlt,
   faAmericanSignLanguageInterpreting,
   faAmbulance,
+  faWrench,
   faMale,
   faHome,
   faAnchor,
@@ -31,16 +34,18 @@ function Menu({ logoutUser }) {
         <Row >
           <Col lg={12} xs={6} className="p-0">
             <StyledList className="p-0 m-0 pb-2">
-              <MenuItem icon={faHome} text="Profile" to="/profile" />
+              <MenuItem icon={faHome} text="Home" to="/" />
+              <MenuItem icon={faUserAlt} text="Profile" to="/my-profile"/>
               <MenuItem icon={faAnchor} text="Event Board" to="/myevents" />
-              <MenuItem icon={faAddressBook} text="Feed" to="/feed"/>
+              <MenuItem icon={faAmericanSignLanguageInterpreting} text="Event Feed" to="/board"/>
             </StyledList>
           </Col>
           <Col lg={12} xs={6} className="p-0 pb-2">
             <StyledList className="p-0 m-0">
-              <MenuItem icon={faAmbulance} text="Settings" to="/settings" />
-              <MenuItem icon={faScrewdriver} text="Prefs" to="/prefrences" />
-              <MenuItem icon={faAmbulance} text="Logout" to="/logout" handleLogout={handleLogout} />
+              <MenuItem icon={faAirFreshener} text="Privacy" to="/privacy" />
+              <MenuItem icon={faScrewdriver} text="Prefs" to="/preferences" />
+              <MenuItem icon={faWrench} text="Settings" to="/settings" />
+              <MenuItem icon={faCalendarAlt} text="Calander" to="/calander" />
             </StyledList>
           </Col>
         </Row>
@@ -57,3 +62,5 @@ const StyledList = styled.ul`
 export default connect(undefined, { logoutUser })(Menu)
 
 // <hr style={{ color: 'white', borderWidth: '2px', borderColor: 'white' }} />
+
+// <MenuItem icon={faAmbulance} text="Logout" to="/logout" handleLogout={handleLogout} />

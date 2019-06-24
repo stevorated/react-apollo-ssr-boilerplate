@@ -14,7 +14,7 @@ export default (ChildComponent) => {
       return (
         <Query
         query={GET_ME}
-        pollInterval={60000}
+        pollInterval={120000}
       >
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (error) {

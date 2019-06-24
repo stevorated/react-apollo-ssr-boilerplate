@@ -29,9 +29,10 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
   }
 
   const authBtn = auth ? (
-    <NavLink className='nav-link' to="/login" onClick={handleLogout}>Logout</NavLink>
+      <NavLink className='nav-link' to="/logout" onClick={handleLogout}>Logout</NavLink>
   ) : (
       <div className="d-md-flex">
+        <NavLink className='nav-link' to="/privacy">Privacy</NavLink>
         <NavLink className='nav-link' to="/login" onClick={handleClick}  >Login</NavLink>
         <NavLink className='nav-link' to="/register" onClick={handleClick}  >Register</NavLink>
       </div>
@@ -42,7 +43,7 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
         style={{ fontSize: '1.1rem' }}
         className="nav-link text-white"
         onClick={handleClick}
-        to="/">Wisdom Of De Crowd
+        to={auth ? '/feed' : '/'}>Wisdom Of De Crowd
       </NavLink>
       <NavbarToggler
         onClick={handleToggleNav}
@@ -58,7 +59,7 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
             <NavLink
               className='nav-link'
               onClick={handleClick}
-              to='/profile'
+              to='/my-profile'
             >
               Profile
           </NavLink>

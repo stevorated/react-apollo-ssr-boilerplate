@@ -69,6 +69,7 @@ export const CREATE_COMMENT_MUT = gql`
     }
     createdAt
     createdBy {
+      id
       fname
       lname
       avatar {
