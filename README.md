@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@stevorated 
-0
-0 0 stevorated/REACT_REDUX_APOLLO_LOGIN_BOILERPLATE
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
-REACT_REDUX_APOLLO_LOGIN_BOILERPLATE/README.md
-@stevorated stevorated Update README.md
-e076c5d yesterday
-25 lines (14 sloc)  2.54 KB
-    
 REACT_REDUX_APOLLO_LOGIN_BOILERPLATE
 
 THIS IS A SIMPLE REACT REDUX SERVER SIDE RENDERED APP WITH LOGIN SYSTEM, GRAPHQL APOLLO CLIENT AND SERVER BY STEVORATED (Shirel Garber)
@@ -37,16 +19,3 @@ hope you'll try it out and report any bugs or suggestions u might have.
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

@@ -33,7 +33,6 @@ class AddCommentContainer extends Component {
           <Mutation
             mutation={CREATE_COMMENT_MUT}
             onCompleted={({createComment}) => {
-              console.log(createComment)
               this.props.pushComment(createComment)
               this.props.setShowForm(false)
               this.props.setShowComments(true)

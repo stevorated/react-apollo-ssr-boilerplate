@@ -14,7 +14,6 @@ function ProfileContainer({ auth, profilePosts, profileMode }) {
   if (profileMode) {
     if (profileData) {
       details = profileData
-      console.log(profileData)
     }
   } else if (!profileMode) {
     details = auth
@@ -22,7 +21,6 @@ function ProfileContainer({ auth, profilePosts, profileMode }) {
   if (details !== undefined) {
     let { id, fname, lname, username, posts, avatar } = details
     const myProfile = id === auth.id ? true : false
-    console.log(myProfile)
     const myAvatarUrl = auth.avatar[0].url
     const avatarOfUser = avatar && avatar.length ? avatar[0].url : imgAvatar
     const imgUrl = myProfile ? myAvatarUrl : avatarOfUser

@@ -20,9 +20,6 @@ function Comments(props) {
   const renderQuery = () => {
     return comments.map(({ id, body, createdBy, createdAt })=>{
       const myComment = auth.id === createdBy.id
-      console.log(auth.id)
-      console.log(createdBy.id)
-      console.log(myComment)
       const commentID = id
       const name = `${createdBy.fname} ${createdBy.lname}`
       const profileImgUrl = createdBy.avatar && createdBy.avatar.length ? createdBy.avatar[0].url : null

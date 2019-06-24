@@ -10,7 +10,6 @@ export default (state = initialState, { type, payload }) => {
         }
         return state
     case 'PUSH_COMMENT':
-      console.log('payload',payload)
         const { id } = payload.post
         return state.map((post) => {
           if (post.id === id) {
