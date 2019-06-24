@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from '@hapi/joi'
 
 const email = Joi.string().email().required().label('Email')
 const username = Joi.string().alphanum().min(4).max(30).required().label('Username')

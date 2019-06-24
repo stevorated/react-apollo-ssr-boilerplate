@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express'
 export default gql`
 
   extend type Mutation {
-    singleUpload(file: Upload, size: String!): File!
+    singleUpload(file: Upload, size: String!): File! @auth
   }
 
   extend type Query {

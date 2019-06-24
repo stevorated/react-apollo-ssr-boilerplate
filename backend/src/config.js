@@ -13,5 +13,6 @@ export const {
   SESSION_DB_COLLECTION,
   ASSETS_DIR
 } = process.env
-
 export const IN_PROD = NODE_ENV === 'production'
+
+console.log(IN_PROD)

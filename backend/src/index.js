@@ -7,6 +7,7 @@ import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import cookieParser from 'cookie-parser'
 import path from 'path'
+import errorHandler from 'errorhandler'
 import { protectedStatic } from './auth'
 import {
   APP_PORT,
@@ -61,6 +62,8 @@ import schemaDirectives from './directives'
     app.use('/images', protectedStatic)
     const assetsDir = path.join(__dirname, ASSETS_DIR)
     app.use('/images', express.static(assetsDir))
+
+    if (!IN_PROD) app.use(errorHandler({ dumpExceptions: true, showStack: true }))
 
     const server = new ApolloServer({
       typeDefs,

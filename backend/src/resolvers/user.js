@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from '@hapi/joi'
 import mongoose from 'mongoose'
 import { User } from '../models'
 import { UserInputError } from 'apollo-server-express'
@@ -8,10 +8,8 @@ import { signIn, signUp } from '../joiSchemas'
 export default {
   Query: {
     me: (root, args, { req }, info) => {
-      // TODO: projection
       return User.findById(req.session.userId)
     },
-    // TODO: pagination
     users: (root, args, { req }, info) => {
       const users = User.find({})
       if (users.legnth) {
@@ -19,7 +17,6 @@ export default {
       }
       return users
     },
-    // TODO: pagination
     searchUsers: (root, args, { req }, info) => {
       const users = User.find({ $or: [
         { fname: { $regex: `${args.filter.fname}`, $options: 'i' } },
@@ -34,7 +31,6 @@ export default {
       return users
     },
     user: (root, { id }, { req }, info) => {
-      // TODO: projection
       if (!mongoose.Types.ObjectId.isValid(id)) {
         throw new UserInputError(`invalid ID`)
       }

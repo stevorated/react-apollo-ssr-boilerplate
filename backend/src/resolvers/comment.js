@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from '@hapi/joi'
 import { createComment } from '../joiSchemas'
 import { Post, Comment } from '../models'
 // import { UserInputError } from 'apollo-server-core'

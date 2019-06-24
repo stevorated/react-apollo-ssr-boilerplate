@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production node -r esm .",
+    "prod": "env-cmd ./.env node -r esm .",
     "dev": "env-cmd ./config/dev.env nodemon -r esm"
   },
   "dependencies": {
+    "@hapi/joi": "^15.1.0",
     "apollo-server-express": "^2.6.4",
     "bcryptjs": "^2.4.3",
     "connect-mongodb-session": "^2.1.1",
@@ -18,12 +19,12 @@
     "express": "^4.17.1",
     "express-session": "^1.16.1",
     "graphql": "^14.3.1",
-    "joi": "^14.3.1",
     "mkdirp": "^0.5.1",
     "mongoose": "^5.5.5",
     "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
+    "errorhandler": "^1.5.1",
     "nodemon": "^1.18.4",
     "standard": "^12.0.1"
   }
