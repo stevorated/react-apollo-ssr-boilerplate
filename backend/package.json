@@ -19,8 +19,12 @@
     "express": "^4.17.1",
     "express-session": "^1.16.1",
     "graphql": "^14.3.1",
+    "helmet": "^3.18.0",
+    "jimp": "^0.6.4",
     "mkdirp": "^0.5.1",
     "mongoose": "^5.5.5",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
     "react-router-dom": "^5.0.0"
   },
   "devDependencies": {

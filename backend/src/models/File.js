@@ -23,6 +23,10 @@ const fileSchema = new Schema({
     type: String,
     required: true
   },
+  // bigUrl: {
+  //   type: String
+  //   // required: true
+  // },
   size: {
     type: String,
     required: true

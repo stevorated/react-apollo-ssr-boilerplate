@@ -61,7 +61,7 @@ export default {
       return (await user.populate({ path: 'posts', options: { sort: { createdAt: -1 } } }).execPopulate()).posts
     },
     avatar: async (user, args, context, info) => {
-      const res = await user.populate({ path: 'avatar', options: { sort: { createdAt: -1 } } }).execPopulate()
+      const res = await user.populate({ path: 'avatar' }).execPopulate()
       return res.avatar
     }
   }

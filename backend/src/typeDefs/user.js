@@ -34,7 +34,7 @@ export default gql`
         fname: String!
         lname: String!
         posts: [Post]!
-        avatar: [File]
+        avatar: File
         createdAt: String!
         updatedAt: String!
     }

@@ -54,10 +54,14 @@ const userSchema = new mongoose.Schema({
     type: ObjectId,
     ref: 'Post'
   }],
-  avatar: [{
+  avatar: {
     type: ObjectId,
     ref: 'File'
-  }]
+  },
+  events: {
+    type: ObjectId,
+    ref: 'Event'
+  }
 },
 {
   timestamps: true

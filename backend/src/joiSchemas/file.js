@@ -1,6 +1,6 @@
-import Joi from './JoiFiles'
+import Joi from './JoiImage'
 
-export const uploadAvatar = file => Joi.object().keys({
-  mimetype: Joi.string().avatarType().label('Invalid File Type'),
+export const uploadImage = file => Joi.object().keys({
+  mimetype: Joi.string().imageType().label('Invalid File Type'),
   size: Joi.number().required().max(2000000).label('File too big')
 })
