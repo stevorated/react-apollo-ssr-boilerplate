@@ -1,5 +1,73 @@
 import gql from 'graphql-tag'
 
+export const FETCH_EVENTS = gql`
+query ($skip: Int, $limit: Int $id: ID) {
+  getEvents (skip: $skip, limit: $limit, id:$id) {
+    id
+    name
+    fbId
+    description
+    coverPhoto {
+      url
+    }
+    thumbnil {
+      url
+    }
+    venue
+    address
+    artists
+    startDate
+    startTime
+    endDate
+    endTime
+    createdBy {
+      id
+      fname
+      lname
+      avatar {
+        url
+      }
+    }
+    createdAt
+  }
+ }
+
+`
+
+export const FETCH_MY_EVENTS = gql`
+query ($skip: Int, $limit: Int, $sort: Int) {
+  getMyEvents (skip: $skip, limit: $limit, sort: $sort) {
+    id
+    name
+    fbId
+    description
+    coverPhoto {
+      url
+    }
+    thumbnil {
+      url
+    }
+    venue
+    address
+    artists
+    startDate
+    startTime
+    endDate
+    endTime
+    createdBy {
+      id
+      fname
+      lname
+      avatar {
+        url
+      }
+    }
+    createdAt
+  }
+ }
+
+`
+
 export const SEARCH_USER = gql`
 query ($fname: String, $lname: String, $username: String){
   searchUsers (filter: {
@@ -86,7 +154,7 @@ export const GET_MA_DETAILS = gql`
 }
 `
 export const FETCH_MORE_POSTS = gql`
-query getMorePosts( $limit: Int, $skip: Int ){
+query( $limit: Int, $skip: Int ){
   getMyPosts (limit: $limit, skip: $skip) {
     id
     body
@@ -122,7 +190,7 @@ query getMorePosts( $limit: Int, $skip: Int ){
 
 
 export const GET_MA_POSTS = gql`
-query getMyPosts ($limit: Int, $skip: Int){
+query ($limit: Int, $skip: Int){
   getMyPosts (limit: $limit, skip: $skip) {
     id
     body

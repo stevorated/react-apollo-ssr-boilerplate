@@ -1,3 +1,4 @@
+
 import express from 'express'
 import cors from 'cors'
 import { matchRoutes } from 'react-router-config'
@@ -11,12 +12,17 @@ import fetch from 'node-fetch'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
 import { onError } from 'apollo-link-error'
+
+// import '../assets/css/ReactCrop.css'
+import '../assets/css/react-datepicker.css'
 import '../assets/css/animate.css'
 import '../assets/css/bootstrap.min.css'
 import '../assets/css/style.css'
 
 const { GRAPH_URL }  = process.env
 const PORT = process.env.PORT || 3000
+const isProd = process.env.NODE_ENV === 'production' ? true : false
+// if(!isProd) process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const app = express()
 app.use(cookieParser())
@@ -24,8 +30,8 @@ app.use(cors())
 app.use(express.static('build/public'))
 
 app.get('*', async (req, res) => {
+  // console.log(req.header('Cookie'))
   const linkHttp = createUploadLink({
-    ssrMode: true,
     uri: GRAPH_URL,
     credentials: 'include',
     headers: {
@@ -35,6 +41,7 @@ app.get('*', async (req, res) => {
   })
 
   const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
+    console.log(networkError)
     if (graphQLErrors) {
       // console.log(graphQLErrors)
       for (let err of graphQLErrors) {
@@ -63,7 +70,9 @@ app.get('*', async (req, res) => {
       return route.loadData ? route.loadData(store) : null
     }).map(promise => {
       if (promise) {
+        // console.log(promise)
         return new Promise((resolve, rej) => {
+          // console.log(resolve)
           promise.then(resolve).catch(resolve)
         })
       }
@@ -88,4 +97,8 @@ app.listen(PORT, (req, res) => {
   console.log(`APP IS RUNNING ON PORT ${PORT}`)
   
 })
+console.log('is Browser? ',__isBrowser__)
 
+
+// console.log(__url__)
+// console.log(__dirname)

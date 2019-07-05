@@ -7,6 +7,13 @@ import TestPage from './TestPage'
 import FeedPage from './FeedPage'
 import UserProfilePage from './UserProfilePage'
 import PrivacyPolicyPage from './PrivacyPolicyPage'
+import CalanderPage from './CalanderPage'
+import PreferencesPage from './PreferencesPage'
+import EventFeedPage from './EventFeedPage'
+import EventBoardPage from './EventBoardPage'
+import SettingsPage from './SettingsPage'
+import EngagePage from './EngagePage'
+import EventPage from './EventPage'
 
 export {
   TestPage,
@@ -17,5 +24,12 @@ export {
   NotFoundPage,
   FeedPage,
   UserProfilePage,
-  PrivacyPolicyPage
+  PrivacyPolicyPage,
+  CalanderPage,
+  PreferencesPage,
+  EventFeedPage,
+  EventBoardPage,
+  SettingsPage,
+  EngagePage,
+  EventPage
 }

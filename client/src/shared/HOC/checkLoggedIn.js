@@ -14,10 +14,11 @@ export default (ChildComponent) => {
       return (
         <Query
         query={GET_ME}
-        pollInterval={120000}
+        pollInterval={600}
       >
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (error) {
+            // console.log('HOC ERROR', error)
             console.log('loggin OUt')
             {this.props.checkUserLoggedOut()}
             return <Redirect to="/login" />

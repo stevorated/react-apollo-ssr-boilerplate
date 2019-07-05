@@ -4,7 +4,7 @@ import {
   Col, Row, Card, CardTitle, CardSubtitle, CardText, Button, CardBody
 } from 'reactstrap'
 import styled from 'styled-components'
-import Avatar from '../../../assets/new_logo.png'
+import Avatar from '../../../assets/logos/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 import { timeAgo } from '../../Utils'
 export default function Comment({ id, body, createdAt, name, profileImgUrl }) {
@@ -18,7 +18,8 @@ export default function Comment({ id, body, createdAt, name, profileImgUrl }) {
           src={profileImgUrl ? profileImgUrl : imgAvatar}
           alt="my profile img" />
         <div>
-          <CardTitle className="mb-0 text-capitalize">{name}</CardTitle>
+          <CardTitle className="mb-0 text-capitalize">{name}<span className="lo-text" > commented</span></CardTitle>
+          
           <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
         </div>
       </div>

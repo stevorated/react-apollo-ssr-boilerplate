@@ -5,7 +5,8 @@ import {
 import { isLength } from 'validator'
 import {
   elevation,
-  transition
+  transition,
+  orange
 } from '../../Utils'
 
 import styled from 'styled-components'
@@ -49,7 +50,7 @@ export default function PostForm({id, errors, state, setFormState, createPost}) 
             rows="2"
             />
             <div className="d-flex">
-              <Button size="sm" className="ml-auto px-2">Post</Button>
+              <Button size="sm" className="btn-mainclr px-4 m-auto px-2">Post</Button>
             </div>
           </Form>
         </CardBody>
@@ -70,6 +71,10 @@ ${transition({
       })};
 &:hover {
       ${elevation[4]};
+}
+&:active, &:focus {
+  border-color: ${orange};
+  outline-color: ${orange};
 }
 ` 
 

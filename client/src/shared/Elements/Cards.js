@@ -3,7 +3,8 @@ import {
   elevation,
   transition,
   black,
-  white
+  white,
+  orange
 } from '../Utils'
 
 export const Card = styled.div `
@@ -30,7 +31,7 @@ export const FlatCard = styled.div `
       border-radius: .3rem;
       padding: 0.5rem;
       /* margin-bottom: .3rem; */
-      ${elevation[1]};
+      ${elevation[1]}
       transition: all 3s ease;
       ${transition({
             property: 'box-shadow'
@@ -40,8 +41,18 @@ export const FlatCard = styled.div `
       }
 `
 
+export const FlatCardStatic = styled.div `
+      color: ${black};
+      background: whitesmoke ;
+      opacity: .9;
+      border-radius: .3rem;
+      padding: 0.5rem;
+      /* margin-bottom: .3rem; */
+      ${elevation[6]}
+`
+
 export const MenuCard = styled.div `
-      color: ${white};
+      color: ${orange};
       /* min-height: 50vh; */
       background: ${black};
       opacity: .5;

@@ -34,6 +34,7 @@ export default function renderer(req, store, client, context) {
       <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
       <link rel="icon" href="/f575a04ebbb31b5798a4c54783e745a2.png" type="image/png"/>
       ${helmet.title.toString()}
       ${helmet.meta.toString()}

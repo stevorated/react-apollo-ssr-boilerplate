@@ -11,17 +11,20 @@ import { Comments, AddCommentForm, AddCommentContainer, DeletePostMutation } fro
 import { SmallProfileImg } from '../../Elements'
 import { black, elevation, transition, timeAgo } from '../../Utils'
 
-import Avatar from '../../../assets/new_logo.png'
+import Avatar from '../../../assets/logos/new_logo.png'
 const imgAvatar = Avatar.replace('build', '').replace('/public', '')
 
 function Post(props) {
-  const MyPost = props.createdBy.id === props.auth.id
-  const profileUrl = `/profile/${props.createdBy.id}`
+
   const [ showForm, setShowForm ] = useState(false)
   const [ showComments, setShowComments ] = useState(false)
   const [ hideDeletedComment, setHideDeletedComment ] = useState(false)
   const [ clickDeleteCounter, setClickDeleteCounter ] = useState(0)
   const [ deleteMessage, setDeleteMessage ] = useState('')
+
+  const MyPost = props.createdBy.id === props.auth.id
+  const profileUrl = `/profile/${props.createdBy.id}`
+
   const openForm = () => {
     setShowForm(!showForm)
   }
@@ -39,9 +42,6 @@ function Post(props) {
       setHideDeletedComment(true)
     }
   }
-
-  useEffect(()=>{
-  })
   
   const animatedClass = 'animated fadeIn slow'
   const PostedTime = timeAgo(Date.now(),props.createdAt)
@@ -62,12 +62,12 @@ function Post(props) {
               <SmallProfileImg
                 className="mr-3"
                 src={props.linkUrl ? props.linkUrl : imgAvatar}
-                alt="my profile img" />
+                alt=".." />
             </ProfileLink>
             <div>
               <CardTitle className="mb-0 text-capitalize">
                 <ProfileLink to={profileUrl}>{props.name}</ProfileLink>
-                <span className="small-text"> posted</span>
+                <span className="lo-text"> posted</span>
               </CardTitle>
               <CreatedAt className="ml-0 pl-0">{PostedTime}</CreatedAt>
             </div>
@@ -83,12 +83,15 @@ function Post(props) {
           </CardText> 
           }
           <div className="d-flex">
-            <Button size="sm" className="px-2" style={{padding: '0.3rem'}} 
+            <Button 
+            size="sm" 
+            className="px-2 btn-mainclr"
+            // style={{padding: '0.3rem'}} 
             onClick={ props.comments.length >0 ? toggleComments : (()=>{})}>
             {props.comments ? props.comments.length : '0'} Comments
             </Button>
             <div className="ml-auto" >
-              <Button size="sm" className="ml-2 px-2">
+              <Button size="sm" className="btn-mainclr ml-2 px-2">
               0 Likes 
               <FontAwesomeIcon icon={faBeer} className="ml-2 text-warning" />
               </Button>
@@ -150,7 +153,7 @@ const StyledCard = styled(Card)`
       background: whitesmoke;
       opacity: .9;
       border-radius: .3rem;
-      margin: .6rem;
+      margin: .4rem;
       ${elevation[3]};
       transition: all 3s ease;
       ${transition({
@@ -159,9 +162,6 @@ const StyledCard = styled(Card)`
       &:hover {
             ${elevation[4]};
       }
-`
-const StyledCardBody = styled(CardBody)`
-  transition: all 1s ease;
 `
 
 const StyledLink = styled(Link)`

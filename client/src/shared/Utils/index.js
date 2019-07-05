@@ -6,9 +6,10 @@ import transition from './transition'
 import colors from './colors'
 import mediaQs from './mediaQs'
 import mediaQueries from './mediaQueries'
+import getCroppedImg from './getCroppedImg.js'
 export * from './positions'
 export * from './colors'
 export * from './funcs'
 export * from './timeAgo'
 
-export {Portal, mediaQueries, mediaQs,Toggle, elevationJs, elevation, transition, colors }
+export {getCroppedImg, Portal, mediaQueries, mediaQs,Toggle, elevationJs, elevation, transition, colors }

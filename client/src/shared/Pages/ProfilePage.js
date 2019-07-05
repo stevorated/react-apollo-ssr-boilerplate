@@ -13,7 +13,7 @@ class ProfilePage extends Component {
 
   constructor (props) {
     super(props)
-    this.title = 'Wall Page'
+    this.title = 'Profile Page'
   }
 
   componentDidMount() {
@@ -64,8 +64,6 @@ const ProfilePageRow = styled(Row)`
 
 const x = '4rem'
 const FloatLeft = styled(Col)`
-  margin: 0!important;
-  padding: 0!important;
   position: static!important;
   top: 4rem;
   left: 0rem;

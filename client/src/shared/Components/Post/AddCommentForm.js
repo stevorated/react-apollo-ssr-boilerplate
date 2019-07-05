@@ -47,7 +47,7 @@ export default function AddCommentForm({openForm, state, setFormState, createCom
         </FormGroup>
         
         <div className="d-flex mb-1">
-        <Button className="ml-auto mr-4">share</Button>
+        <Button size="sm" className="btn-mainclr ml-auto mr-4">share</Button>
         </div>
     </form>
   

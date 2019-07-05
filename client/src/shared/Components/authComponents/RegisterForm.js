@@ -103,7 +103,7 @@ function RegisterForm ({state, handleFormState, register, errors}) {
         <Form 
         onSubmit={handleReg}
         method="post">
-          <h1 className="display-4 mb-3 mt-1">Register</h1>
+          <h1 className="sigmar-one mt-md-3 mb-1 mb-md-4">Register</h1>
           <FormGroup>
             <Label for="fname-reg">first name</Label>
             <Input
@@ -176,8 +176,8 @@ function RegisterForm ({state, handleFormState, register, errors}) {
             />
             {errors && (errors.password && <FormFeedback>{errors.password.message}</FormFeedback>)}
           </FormGroup>
-          <p>Already Have an Acount?? <Link to="/login">Login</Link></p> 
           <Button>Sign In</Button>
+          <p className="pt-3">Already Have an Acount? <Link className="sigmar-one orange-color-hover no-underline-hover" to="/login">Login</Link></p> 
         </Form>
       </Col>
     </Row>

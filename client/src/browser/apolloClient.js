@@ -7,18 +7,20 @@ import history from './history'
 
 const { NODE_ENV } = process.env 
 const isProd = (NODE_ENV === 'production') ? true : false
-
+// console.log(__GRAPH_URL__)
 const cache = new InMemoryCache({
   addTypename: false
 }).restore(window.__APOLLO_STATE__)
-// CHANGED FROM HTTPLink off apollo-client-link
+// CHANGED FROM HTTPLink of apollo-client-link
 const linkHttp = createUploadLink ({
-  uri: 'http://localhost:4001/graphql',
+  uri: 'http://localhost:4000/graphql',
   credentials: 'include',
+  ssrMode: true,
   ssrForceFetchDelay: 100,
 })
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response, error }) => {
+  console.log(graphQLErrors)
   if (graphQLErrors){
     {!isProd && graphQLErrors.forEach((err)=> console.log(err.extensions.code))}
     if(graphQLErrors.find((err)=>err.extensions.code === 'UNAUTHENTICATED')) {

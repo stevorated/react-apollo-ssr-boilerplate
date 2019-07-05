@@ -1,8 +1,66 @@
 import gql from 'graphql-tag'
 
+export const CREATE_EVENT = gql`
+mutation ( 
+  $fbId: String,
+  $name: String!,
+  $description: String,
+  $image: Upload!,
+  $venue: String!,
+  $address: String,
+  $artists: [String!]!,
+  $startDate: String!,
+  $startTime: String!,
+  $endDate: String,
+  $endTime: String
+ ) {
+  createEvent (
+  fbId: $fbId,
+  name: $name,
+  description: $description,
+  image: $image,
+  venue: $venue,
+  address: $address,
+  artists: $artists,
+  startDate: $startDate,
+  startTime: $startTime,
+  endDate: $endDate,
+  endTime: $endTime
+  ) {
+    id
+    name
+    fbId
+    description
+    coverPhoto {
+      url
+    }
+    thumbnil {
+      url
+    }
+    venue
+    address
+    artists
+    startDate
+    startTime
+    endDate
+    endTime
+    createdBy {
+      id
+      fname
+      lname
+      avatar {
+        url
+      }
+    }
+    createdAt
+  }
+ }
+
+`
+
 export const UPLOAD_FILE_TEST = gql`
-mutation ($file: Upload!, $size: String!) {
-  singleUpload (file: $file, size: $size) {
+mutation ($file: Upload!, $size: String!, $asect: Int, $height: Int, $unit: String, $width: Int, $x: Int, $y: Int, $scaleX: Int, $scaleY:Int) {
+  singleUpload (file: $file, size: $size, asect: $asect, height: $height, unit: $unit, width: $width, x: $x, y: $y, scaleX: $scaleX, scaleY: $scaleY) {
     url
   }
 }

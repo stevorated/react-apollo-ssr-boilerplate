@@ -52,7 +52,7 @@ class RegisterPage extends Component {
                 for (let err of error.graphQLErrors) {
                   // console.log(err.extensions.exception.errors)
                   return (
-                  <div>
+                  <div className="text-center">
                     <RegisterForm 
                     register={signUp} 
                     errors={err.extensions.exception.errors} 

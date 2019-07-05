@@ -19,26 +19,21 @@ class FeedPage extends Component {
 
   constructor (props) {
     super(props)
-    this.title = 'Scroll Page'
-    this.state = {
-      leaveClass: 'animated fadeOutUp'
-    }
+    this.title = 'Feed'
   }
-  componentWillUnmount = () => {
-    
-  }
+
 
   render() {
     return(
-      <Row className="animated fadeIn">
+      <Row className="">
         <HelmetComponent pageTitle={this.title} ogTitle={this.title} />
         <FloatLeft lg="3">
           <Menu />
         </FloatLeft>
-        <Col lg="6" className="offset-xl-3 order-3 order-lg-2" >
+        <Col lg="6" className="offset-lg-3 order-3 order-lg-2 animated fadeIn" >
           <FeedScrollQuery />
         </Col>
-        <Col lg="3" className="order-2 order-lg-3 mt-2">
+        <Col lg="3" className="order-2 order-lg-3 mt-2 animated fadeIn">
           <FeedExtraRight />
           <FeedExtraRight />
           <FeedActivity />
@@ -62,7 +57,7 @@ const FloatLeft = styled(Col)`
   position: static!important;
   top: 3.5rem;
   left: 0rem;
-  ${mediaQueries.xl`
+  ${mediaQueries.lg`
   position: fixed!important;
   `}
   `

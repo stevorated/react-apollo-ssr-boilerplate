@@ -9,8 +9,8 @@ export default (state = null, { payload, type }) => {
     case 'LOGOUT_USER':
       return null
     case 'UPDATE_AVATAR':
-      const newAvatar = [{ url: payload }]
-      return { ...state, avatar: newAvatar.concat(state.avatar) }
+      const avatar = { url: payload }
+      return { ...state, avatar }
     case 'CREATE_POST':
       const newPost = [{id:payload[0].id}]
       return { ...state, posts: newPost.concat(state.posts)}

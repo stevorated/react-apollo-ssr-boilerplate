@@ -12,6 +12,7 @@ export const fetchUsers = () => async (dispatch, getState, client) => {
 }
 
 export const fetchCurrentUser = () => async (dispatch, getState, client) => {
+  console.log('fetchCurrentUser')
   const { data } = await client.query({
     query: GET_ME,
 

@@ -5,10 +5,10 @@ import { Collapse, Navbar, NavbarToggler, Nav, NavItem, Input, Button, Label } f
 import { SearchBar } from '../Components'
 import styled from 'styled-components'
 
-import { elevationJs } from '../Utils'
+import { elevationJs, orange, lightOrange, mediaQueries } from '../Utils'
 import { logoutUser } from '../Store/actions'
-
-
+import Logo from '../../assets/logos/logo7.png'
+const linkLogo = Logo.replace('build', '').replace('/public', '')
 function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo }) {
 
   const [collapsed, toggleNavbar] = useState(false)
@@ -29,22 +29,22 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
   }
 
   const authBtn = auth ? (
-      <NavLink className='nav-link' to="/logout" onClick={handleLogout}>Logout</NavLink>
+      <StyledNavLink className='nav-link' to="/logout" onClick={handleLogout}>Logout</StyledNavLink>
   ) : (
       <div className="d-md-flex">
-        <NavLink className='nav-link' to="/privacy">Privacy</NavLink>
-        <NavLink className='nav-link' to="/login" onClick={handleClick}  >Login</NavLink>
-        <NavLink className='nav-link' to="/register" onClick={handleClick}  >Register</NavLink>
+        <StyledNavLink className='nav-link' to="/privacy">Privacy</StyledNavLink>
+        <StyledNavLink className='nav-link' to="/login" onClick={handleClick}  >Login</StyledNavLink>
+        <StyledNavLink className='nav-link' to="/register" onClick={handleClick}  >Register</StyledNavLink>
       </div>
     )
   return (
-    <Navbar className="text-capitalize" color="dark" style={elevationJs[4]} dark expand="md" fixed="top">
-      <NavLink
-        style={{ fontSize: '1.1rem' }}
+    <Navbar className="text-capitalize " color="dark" style={elevationJs[4]} dark expand="md" fixed="top">
+      <StyledNavLink
+        style={{ fontSize: '1.1rem', margin: '0', padding: '0' }}
         className="nav-link text-white"
         onClick={handleClick}
-        to={auth ? '/feed' : '/'}>Wisdom Of De Crowd
-      </NavLink>
+        to={auth ? '/feed' : '/'}> <LogoImg className="ml-sm-0" src={linkLogo} alt=""/>
+      </StyledNavLink>
       <NavbarToggler
         onClick={handleToggleNav}
       />
@@ -55,24 +55,35 @@ function NavbarComponent({ auth, logoutUser, setRedirect, setWhereTo, whereTo })
           whereTo={whereTo}
           handleClick={handleClick} />
         <Nav className="ml-auto pr-4" navbar>
-          <NavItem>
-            <NavLink
+          {auth && <Fragment>
+            <NavItem>
+            <StyledNavLink
               className='nav-link'
               onClick={handleClick}
               to='/my-profile'
             >
               Profile
-          </NavLink>
+          </StyledNavLink>
           </NavItem>
           <NavItem>
-            <NavLink
+            <StyledNavLink
               className='nav-link'
               onClick={handleClick}
               to='/feed'
             >
               Feed
-          </NavLink>
+          </StyledNavLink>
           </NavItem>
+          <NavItem>
+            <StyledNavLink
+              className='nav-link'
+              onClick={handleClick}
+              to='/event-board'
+            >
+              Events
+          </StyledNavLink>
+          </NavItem>
+          </Fragment>}
 
           <NavItem>
             {authBtn}
@@ -89,8 +100,17 @@ function mapStateToProps({ auth }) {
 
 export default connect(mapStateToProps, { logoutUser })(NavbarComponent)
 
+const StyledNavLink = styled(NavLink)`
+/* color: ${lightOrange}; */
+`
 
-// <Switch>
+const LogoImg = styled.img`
+  height: 2.2rem;
+  ${mediaQueries.md`
+  height: 3rem;
+  `}
+  `
+
+  // <Switch>
 // {routes.map(route => <Route key={route.name} {...route} />)}
 // </Switch>
-

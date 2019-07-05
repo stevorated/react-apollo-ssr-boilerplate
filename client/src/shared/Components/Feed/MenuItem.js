@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import styled from 'styled-components'
-import { black } from '../../Utils'
+import { black, mediaQueries, orange } from '../../Utils'
 
 
 function MenuItem({ icon, text, to = "/", handleLogout }) {
   const handleClick = to === '/logout' ? handleLogout : () => { }
   return (
-  <StyledListItem className="text-center pl-3">
+  <StyledListItem className="text-center pl-3 m-2">
     <StyledNavLink to={to} onClick={handleClick} className="text-left py-1">
       <FontAwesomeIcon className="mx-3" icon={icon} size={'lg'} /><span>{text}</span> 
     </StyledNavLink>
@@ -20,19 +21,25 @@ function MenuItem({ icon, text, to = "/", handleLogout }) {
 export default connect()(MenuItem)
 
 const StyledListItem = styled.li`
+  border: 5px solid black;
+  background: black;
   cursor: pointer;
   list-style: none;
   display: block;
   margin: .5rem .2rem .2rem 0rem ;
   transition: all .5s ease;
+  ${mediaQueries.lg`
+    border: none;
+    background: none;
+  `}
   &:hover {
-    background: antiquewhite;
+    background: ${orange};
     color: black;
   }
 `
 
 const StyledNavLink = styled(NavLink)`
-  color: white;
+  color: #c9783e;
   display: block;
   &:active {
     text-decoration: none;

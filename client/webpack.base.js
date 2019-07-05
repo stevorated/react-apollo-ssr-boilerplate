@@ -6,10 +6,12 @@ const { NODE_ENV } = process.env
 isProd = (NODE_ENV === 'production') ? true : false
 
 module.exports = {
+  // devtool:'inline-source-map',
   devtool: isProd ? 'source-map' : 'inline-source-map',
   mode: NODE_ENV,
   module: {
     rules: [
+
       {
         test: /\.css$/,
         use: [
@@ -20,7 +22,7 @@ module.exports = {
               hmr: process.env.NODE_ENV === 'development',
             },
           },
-          'css-loader'
+          {loader: 'css-loader'},
         ],
       },
       {
@@ -81,6 +83,6 @@ module.exports = {
       filename: '/styles/[name].css',
       chunkFilename: '[id].css',
     })
-  ],
+  ]
   
 }

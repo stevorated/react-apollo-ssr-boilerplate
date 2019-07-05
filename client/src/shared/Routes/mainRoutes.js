@@ -7,7 +7,14 @@ import {
   ProfilePage,
   FeedPage,
   UserProfilePage,
-  PrivacyPolicyPage
+  PrivacyPolicyPage,
+  CalanderPage,
+  PreferencesPage,
+  EventFeedPage,
+  EventBoardPage,
+  SettingsPage,
+  EngagePage,
+  EventPage
 } from '../Pages'
 import App from '../App'
 
@@ -30,6 +37,31 @@ const routes = [
         exact: true,
         ...FeedPage,
       },
+      {
+        path: '/event-feed',
+        exact: true,
+        ...EventFeedPage,
+      },
+      {
+        path: '/event-board',
+        exact: true,
+        ...EventBoardPage,
+      },
+      {
+        path: '/event/:id',
+        exact: true,
+        ...EventPage,
+      },
+      {
+        path: '/engage-gauge',
+        exact: true,
+        ...EngagePage,
+      },
+      {
+        path: '/settings',
+        exact: true,
+        ...SettingsPage,
+      },
 
       {
         path: '/login',
@@ -50,6 +82,16 @@ const routes = [
         path: '/test',
         exact: true,
         ...TestPage
+      },
+      {
+        path: '/preferences',
+        exact: true,
+        ...PreferencesPage
+      },
+      {
+        path: '/calander',
+        exact: true,
+        ...CalanderPage
       },
       {
         path: '/privacy',

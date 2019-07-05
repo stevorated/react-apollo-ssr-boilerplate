@@ -20,9 +20,9 @@ function LoginForm(props) {
         <Col xs={10}>
           <Form
             onSubmit={props.handleLogin}
-            method="post"
+            
           >
-            <h1 className="display-4 mb-5 mt-2">Login</h1>
+            <h1 className="display-4 sigmar-one mb-5 mt-2">Login</h1>
             <FormGroup>
               <Label for="email">Email</Label>
               <Input
@@ -53,8 +53,8 @@ function LoginForm(props) {
               />
               {formError && <FormFeedback className="mt-3"><strong>Wrong Details</strong></FormFeedback>}
             </FormGroup>
-            <p>Don't Have an Acount?? <Link to="/register">Register</Link></p>
             <Button>Sign In</Button>
+            <p className="pt-3 mt-3">Don't Have an Acount?<br/> <Link className="sigmar-one orange-color-hover no-underline-hover" to="/register"> Register</Link></p>
           </Form>
         </Col>
       </Row>
